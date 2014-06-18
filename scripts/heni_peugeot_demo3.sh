@@ -1,0 +1,2 @@
+rm obituator.xml
+../build/EBT -o ../../data/obituator --width 640 --height 480 -i normal -s 0.02 --intrinsic ../../data/Intrinsics_normal.xml --distortion ../../data/Distortion_normal.xml --network 0 --init_pose 1,0,0,0,0,1,0,0,0,0,1,1.0,0,0,0,1

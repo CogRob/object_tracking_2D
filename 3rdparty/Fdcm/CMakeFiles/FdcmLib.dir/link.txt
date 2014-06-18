@@ -1,0 +1,2 @@
+/usr/bin/ar cr libFdcmLib.a  CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o
+/usr/bin/ranlib libFdcmLib.a

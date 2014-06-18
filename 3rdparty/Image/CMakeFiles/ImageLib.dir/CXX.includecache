@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.cpp
+DistanceTransform.h
+/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.h
+
+/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.h
+algorithm
+-
+cmath
+-
+Image.h
+/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/Image.h
+
+/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/Image.h
+cstring
+-
+assert.h
+-
+

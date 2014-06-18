@@ -1,0 +1,77 @@
+HOWTO file for the MODEL-BASED VISUAL TRACKING PROGRAM
+
+Author: Changhyun Choi (cchoi@cc.gatech.edu)
+Date: Oct 20, 2010
+
+DESCRIPTION
+
+This program is to track a GM car door and to estimate 6-DOF pose in real-time (and sub real-time). This program has two algorithmic options. The first algorithmic option is IRLS (iterative re-weighted least square) which is fast but not so accurate. The second option is Particle Filtering which is more accurate than IRLS but computationally expensive. Both algorithms exploit 3D CAD model of the car door to estimate accurate pose. The program assume 640 x 480 image sequence is fed from the Visual Tracker MRDS service. 
+
+PLATFORM
+
+OS: Windows XP Professional Service Pack 3
+Compiler: Microsoft Visual Studio 2008 (C++ and C# should be installed)
+
+(OpenCV and OpenGL parts are inside the solution folder, so there is no need to install OpenCV and OpenGL. The version fo the included OpenCV is '1.1pre'.)
+
+COMPILE
+To compile,
+. open 'edgeBasedTracker.sln' file and build
+
+CAMERA CALIBRATION
+
+To estimate pose accurately, a camera calibration for your camera that will be used is required. The initial files 'Intrinsics_mrds.xml' and 'Distortion_mrds.xml' contain camera calibraion related information, but those files are example files which might not apt to your camera. 
+The former has 3x3 intrinsic matrix, and the latter contains 4x1 lens distortion vector. This program does not provide any calibration function, but you can easily download and install 
+a camera calibration program from web. 'Camera Calibration Toolbox for Matlab' is one of the good calibration program (http://www.vision.caltech.edu/bouguetj/calib_doc/). 
+For your information, we use OpenCV camera calibration code. 
+
+Here are some tips for more accurate calibration. For better calibration, you should place a calibration plate for larger coverage. It means that the calibration plate should be large enough in the images. 
+But the calibration plate should be fully visible during calibration. 
+
+If you have any program to execute this program, feel free to send an email.
+(cchoi@cc.gatech.edu)
+
+Thank you.
+
+
+KEY
+
+'t' key: Start the program (when the program has no keyframes). Before pressing this key, the user should move the camera in order to align the projected 3D model to the input image.
+
+'r' key: (Re-)Initialize the program. When the program loses its target, press this key to initialize the program.
+
+'k' key: Capture and save a keyframe and relevant information. 
+
+
+
+This program use 3D CAD model to track a GM car door. The program assumes that
+the Prosilica camera is connected to a PC in which this program will run. This
+program was tested with the GC650C Prosilica camera in 640 x 480 resolution.
+We followed the basic setting of the camera recommended by the user manual. I
+guess no additional installation of relevant libraries is necessary, and that
+is why we distribute in binary. 
+
+
+TCP/IP COMMUNICATION
+
+This program listens the connection of any client. The port number the program
+use is 1701. The program only get the op code as floows:
+0 0 	>> return: "0 0.0 0.0 0.0 0.0 0.0 0.0"
+1000 0	>> return: "1 (three-position-parameter)"
+1003 0	>> return: "1 (six-pose-parameter)"
+If the program is in the global pose estimation and thus it doesn't know the 
+current pose, it returns "2 0.0 0.0 0.0 0.0 0.0 0.0". The dimension of positions 
+is inch, and the dimension of angles is degree.
+
+
+
+
+OPENGL WINDOW OVERLAP PROBLEM
+
+We use OpenGL to test self-occlusion of the tracked object. Unfortunately, the 
+occlusion query in OpenGL only works when the OpenGL window (in this program the 
+window's name is 'c') is not covered with other windows. Note that there are a 
+bunch of OpenCV windows which show the tracker's results. 
+
+
+

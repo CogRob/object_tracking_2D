@@ -1,0 +1,2 @@
+/usr/bin/ar cr libLineFitLib.a  CMakeFiles/LineFitLib.dir/fitline.cpp.o CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o
+/usr/bin/ranlib libLineFitLib.a
