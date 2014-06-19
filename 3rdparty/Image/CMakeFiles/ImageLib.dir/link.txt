@@ -1,2 +1,0 @@
-/usr/bin/ar cr libImageLib.a  CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o
-/usr/bin/ranlib libImageLib.a
