@@ -4,9 +4,9 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/LFLineFitter.cpp" "/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o"
-  "/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/LFLineSegment.cpp" "/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o"
-  "/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/fitline.cpp" "/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o"
+  "/home/tox/git/object_tracking_2D/3rdparty/Fitline/LFLineFitter.cpp" "/home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o"
+  "/home/tox/git/object_tracking_2D/3rdparty/Fitline/LFLineSegment.cpp" "/home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o"
+  "/home/tox/git/object_tracking_2D/3rdparty/Fitline/fitline.cpp" "/home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,8 +16,10 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "."
-  "Fitline/.."
+  "/"
+  ".."
+  "/usr/local/include/opencv"
+  "/usr/local/include"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

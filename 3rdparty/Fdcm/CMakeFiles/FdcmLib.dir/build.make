@@ -38,225 +38,225 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_SOURCE_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fdcm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_BINARY_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fdcm
 
 # Include any dependencies generated for this target.
-include Fdcm/CMakeFiles/FdcmLib.dir/depend.make
+include CMakeFiles/FdcmLib.dir/depend.make
 
 # Include the progress variables for this target.
-include Fdcm/CMakeFiles/FdcmLib.dir/progress.make
+include CMakeFiles/FdcmLib.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include Fdcm/CMakeFiles/FdcmLib.dir/flags.make
+include CMakeFiles/FdcmLib.dir/flags.make
 
-Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o: Fdcm/CMakeFiles/FdcmLib.dir/flags.make
-Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o: Fdcm/EIEdgeImage.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/EIEdgeImage.cpp
+CMakeFiles/FdcmLib.dir/EIEdgeImage.o: CMakeFiles/FdcmLib.dir/flags.make
+CMakeFiles/FdcmLib.dir/EIEdgeImage.o: EIEdgeImage.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/FdcmLib.dir/EIEdgeImage.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/EIEdgeImage.o -c /home/tox/git/object_tracking_2D/3rdparty/Fdcm/EIEdgeImage.cpp
 
-Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/EIEdgeImage.cpp > CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.i
+CMakeFiles/FdcmLib.dir/EIEdgeImage.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/EIEdgeImage.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fdcm/EIEdgeImage.cpp > CMakeFiles/FdcmLib.dir/EIEdgeImage.i
 
-Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/EIEdgeImage.cpp -o CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.s
+CMakeFiles/FdcmLib.dir/EIEdgeImage.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/EIEdgeImage.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fdcm/EIEdgeImage.cpp -o CMakeFiles/FdcmLib.dir/EIEdgeImage.s
 
-Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o.requires:
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o.requires
+CMakeFiles/FdcmLib.dir/EIEdgeImage.o.requires:
+.PHONY : CMakeFiles/FdcmLib.dir/EIEdgeImage.o.requires
 
-Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o.provides: Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o.requires
-	$(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o.provides.build
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o.provides
+CMakeFiles/FdcmLib.dir/EIEdgeImage.o.provides: CMakeFiles/FdcmLib.dir/EIEdgeImage.o.requires
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/EIEdgeImage.o.provides.build
+.PHONY : CMakeFiles/FdcmLib.dir/EIEdgeImage.o.provides
 
-Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o.provides.build: Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o
+CMakeFiles/FdcmLib.dir/EIEdgeImage.o.provides.build: CMakeFiles/FdcmLib.dir/EIEdgeImage.o
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o: Fdcm/CMakeFiles/FdcmLib.dir/flags.make
-Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o: Fdcm/LMDirectionalIntegralDistanceImage.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMDirectionalIntegralDistanceImage.cpp
+CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o: CMakeFiles/FdcmLib.dir/flags.make
+CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o: LMDirectionalIntegralDistanceImage.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o -c /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMDirectionalIntegralDistanceImage.cpp
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMDirectionalIntegralDistanceImage.cpp > CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.i
+CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMDirectionalIntegralDistanceImage.cpp > CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.i
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMDirectionalIntegralDistanceImage.cpp -o CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.s
+CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMDirectionalIntegralDistanceImage.cpp -o CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.s
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o.requires:
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o.requires
+CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o.requires:
+.PHONY : CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o.requires
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o.provides: Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o.requires
-	$(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o.provides.build
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o.provides
+CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o.provides: CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o.requires
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o.provides.build
+.PHONY : CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o.provides
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o.provides.build: Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o
+CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o.provides.build: CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o: Fdcm/CMakeFiles/FdcmLib.dir/flags.make
-Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o: Fdcm/LMDisplay.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMDisplay.cpp
+CMakeFiles/FdcmLib.dir/LMDisplay.o: CMakeFiles/FdcmLib.dir/flags.make
+CMakeFiles/FdcmLib.dir/LMDisplay.o: LMDisplay.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/FdcmLib.dir/LMDisplay.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMDisplay.o -c /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMDisplay.cpp
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMDisplay.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMDisplay.cpp > CMakeFiles/FdcmLib.dir/LMDisplay.cpp.i
+CMakeFiles/FdcmLib.dir/LMDisplay.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMDisplay.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMDisplay.cpp > CMakeFiles/FdcmLib.dir/LMDisplay.i
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMDisplay.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMDisplay.cpp -o CMakeFiles/FdcmLib.dir/LMDisplay.cpp.s
+CMakeFiles/FdcmLib.dir/LMDisplay.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMDisplay.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMDisplay.cpp -o CMakeFiles/FdcmLib.dir/LMDisplay.s
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o.requires:
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o.requires
+CMakeFiles/FdcmLib.dir/LMDisplay.o.requires:
+.PHONY : CMakeFiles/FdcmLib.dir/LMDisplay.o.requires
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o.provides: Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o.requires
-	$(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o.provides.build
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o.provides
+CMakeFiles/FdcmLib.dir/LMDisplay.o.provides: CMakeFiles/FdcmLib.dir/LMDisplay.o.requires
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDisplay.o.provides.build
+.PHONY : CMakeFiles/FdcmLib.dir/LMDisplay.o.provides
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o.provides.build: Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o
+CMakeFiles/FdcmLib.dir/LMDisplay.o.provides.build: CMakeFiles/FdcmLib.dir/LMDisplay.o
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o: Fdcm/CMakeFiles/FdcmLib.dir/flags.make
-Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o: Fdcm/LMDistanceImage.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMDistanceImage.cpp
+CMakeFiles/FdcmLib.dir/LMDistanceImage.o: CMakeFiles/FdcmLib.dir/flags.make
+CMakeFiles/FdcmLib.dir/LMDistanceImage.o: LMDistanceImage.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/FdcmLib.dir/LMDistanceImage.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMDistanceImage.o -c /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMDistanceImage.cpp
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMDistanceImage.cpp > CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.i
+CMakeFiles/FdcmLib.dir/LMDistanceImage.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMDistanceImage.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMDistanceImage.cpp > CMakeFiles/FdcmLib.dir/LMDistanceImage.i
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMDistanceImage.cpp -o CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.s
+CMakeFiles/FdcmLib.dir/LMDistanceImage.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMDistanceImage.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMDistanceImage.cpp -o CMakeFiles/FdcmLib.dir/LMDistanceImage.s
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o.requires:
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o.requires
+CMakeFiles/FdcmLib.dir/LMDistanceImage.o.requires:
+.PHONY : CMakeFiles/FdcmLib.dir/LMDistanceImage.o.requires
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o.provides: Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o.requires
-	$(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o.provides.build
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o.provides
+CMakeFiles/FdcmLib.dir/LMDistanceImage.o.provides: CMakeFiles/FdcmLib.dir/LMDistanceImage.o.requires
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDistanceImage.o.provides.build
+.PHONY : CMakeFiles/FdcmLib.dir/LMDistanceImage.o.provides
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o.provides.build: Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o
+CMakeFiles/FdcmLib.dir/LMDistanceImage.o.provides.build: CMakeFiles/FdcmLib.dir/LMDistanceImage.o
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o: Fdcm/CMakeFiles/FdcmLib.dir/flags.make
-Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o: Fdcm/LMLineMatcher.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMLineMatcher.cpp
+CMakeFiles/FdcmLib.dir/LMLineMatcher.o: CMakeFiles/FdcmLib.dir/flags.make
+CMakeFiles/FdcmLib.dir/LMLineMatcher.o: LMLineMatcher.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/FdcmLib.dir/LMLineMatcher.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMLineMatcher.o -c /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMLineMatcher.cpp
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMLineMatcher.cpp > CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.i
+CMakeFiles/FdcmLib.dir/LMLineMatcher.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMLineMatcher.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMLineMatcher.cpp > CMakeFiles/FdcmLib.dir/LMLineMatcher.i
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMLineMatcher.cpp -o CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.s
+CMakeFiles/FdcmLib.dir/LMLineMatcher.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMLineMatcher.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMLineMatcher.cpp -o CMakeFiles/FdcmLib.dir/LMLineMatcher.s
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o.requires:
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o.requires
+CMakeFiles/FdcmLib.dir/LMLineMatcher.o.requires:
+.PHONY : CMakeFiles/FdcmLib.dir/LMLineMatcher.o.requires
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o.provides: Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o.requires
-	$(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o.provides.build
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o.provides
+CMakeFiles/FdcmLib.dir/LMLineMatcher.o.provides: CMakeFiles/FdcmLib.dir/LMLineMatcher.o.requires
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMLineMatcher.o.provides.build
+.PHONY : CMakeFiles/FdcmLib.dir/LMLineMatcher.o.provides
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o.provides.build: Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o
+CMakeFiles/FdcmLib.dir/LMLineMatcher.o.provides.build: CMakeFiles/FdcmLib.dir/LMLineMatcher.o
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o: Fdcm/CMakeFiles/FdcmLib.dir/flags.make
-Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o: Fdcm/LMNonMaximumSuppression.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_6)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMNonMaximumSuppression.cpp
+CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o: CMakeFiles/FdcmLib.dir/flags.make
+CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o: LMNonMaximumSuppression.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o -c /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMNonMaximumSuppression.cpp
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMNonMaximumSuppression.cpp > CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.i
+CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMNonMaximumSuppression.cpp > CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.i
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/LMNonMaximumSuppression.cpp -o CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.s
+CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fdcm/LMNonMaximumSuppression.cpp -o CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.s
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o.requires:
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o.requires
+CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o.requires:
+.PHONY : CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o.requires
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o.provides: Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o.requires
-	$(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o.provides.build
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o.provides
+CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o.provides: CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o.requires
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o.provides.build
+.PHONY : CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o.provides
 
-Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o.provides.build: Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o
+CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o.provides.build: CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o
 
-Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o: Fdcm/CMakeFiles/FdcmLib.dir/flags.make
-Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o: Fdcm/MatchingCostMap.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_7)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/MatchingCostMap.cpp
+CMakeFiles/FdcmLib.dir/MatchingCostMap.o: CMakeFiles/FdcmLib.dir/flags.make
+CMakeFiles/FdcmLib.dir/MatchingCostMap.o: MatchingCostMap.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/FdcmLib.dir/MatchingCostMap.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/FdcmLib.dir/MatchingCostMap.o -c /home/tox/git/object_tracking_2D/3rdparty/Fdcm/MatchingCostMap.cpp
 
-Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/MatchingCostMap.cpp > CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.i
+CMakeFiles/FdcmLib.dir/MatchingCostMap.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FdcmLib.dir/MatchingCostMap.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fdcm/MatchingCostMap.cpp > CMakeFiles/FdcmLib.dir/MatchingCostMap.i
 
-Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/MatchingCostMap.cpp -o CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.s
+CMakeFiles/FdcmLib.dir/MatchingCostMap.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FdcmLib.dir/MatchingCostMap.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fdcm/MatchingCostMap.cpp -o CMakeFiles/FdcmLib.dir/MatchingCostMap.s
 
-Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o.requires:
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o.requires
+CMakeFiles/FdcmLib.dir/MatchingCostMap.o.requires:
+.PHONY : CMakeFiles/FdcmLib.dir/MatchingCostMap.o.requires
 
-Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o.provides: Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o.requires
-	$(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o.provides.build
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o.provides
+CMakeFiles/FdcmLib.dir/MatchingCostMap.o.provides: CMakeFiles/FdcmLib.dir/MatchingCostMap.o.requires
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/MatchingCostMap.o.provides.build
+.PHONY : CMakeFiles/FdcmLib.dir/MatchingCostMap.o.provides
 
-Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o.provides.build: Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o
+CMakeFiles/FdcmLib.dir/MatchingCostMap.o.provides.build: CMakeFiles/FdcmLib.dir/MatchingCostMap.o
 
 # Object files for target FdcmLib
 FdcmLib_OBJECTS = \
-"CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o" \
-"CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o" \
-"CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o" \
-"CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o" \
-"CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o" \
-"CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o" \
-"CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o"
+"CMakeFiles/FdcmLib.dir/EIEdgeImage.o" \
+"CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o" \
+"CMakeFiles/FdcmLib.dir/LMDisplay.o" \
+"CMakeFiles/FdcmLib.dir/LMDistanceImage.o" \
+"CMakeFiles/FdcmLib.dir/LMLineMatcher.o" \
+"CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o" \
+"CMakeFiles/FdcmLib.dir/MatchingCostMap.o"
 
 # External object files for target FdcmLib
 FdcmLib_EXTERNAL_OBJECTS =
 
-Fdcm/libFdcmLib.a: Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o
-Fdcm/libFdcmLib.a: Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o
-Fdcm/libFdcmLib.a: Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o
-Fdcm/libFdcmLib.a: Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o
-Fdcm/libFdcmLib.a: Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o
-Fdcm/libFdcmLib.a: Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o
-Fdcm/libFdcmLib.a: Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o
-Fdcm/libFdcmLib.a: Fdcm/CMakeFiles/FdcmLib.dir/build.make
-Fdcm/libFdcmLib.a: Fdcm/CMakeFiles/FdcmLib.dir/link.txt
+libFdcmLib.a: CMakeFiles/FdcmLib.dir/EIEdgeImage.o
+libFdcmLib.a: CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o
+libFdcmLib.a: CMakeFiles/FdcmLib.dir/LMDisplay.o
+libFdcmLib.a: CMakeFiles/FdcmLib.dir/LMDistanceImage.o
+libFdcmLib.a: CMakeFiles/FdcmLib.dir/LMLineMatcher.o
+libFdcmLib.a: CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o
+libFdcmLib.a: CMakeFiles/FdcmLib.dir/MatchingCostMap.o
+libFdcmLib.a: CMakeFiles/FdcmLib.dir/build.make
+libFdcmLib.a: CMakeFiles/FdcmLib.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libFdcmLib.a"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && $(CMAKE_COMMAND) -P CMakeFiles/FdcmLib.dir/cmake_clean_target.cmake
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FdcmLib.dir/link.txt --verbose=$(VERBOSE)
+	$(CMAKE_COMMAND) -P CMakeFiles/FdcmLib.dir/cmake_clean_target.cmake
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FdcmLib.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-Fdcm/CMakeFiles/FdcmLib.dir/build: Fdcm/libFdcmLib.a
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/build
+CMakeFiles/FdcmLib.dir/build: libFdcmLib.a
+.PHONY : CMakeFiles/FdcmLib.dir/build
 
-Fdcm/CMakeFiles/FdcmLib.dir/requires: Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o.requires
-Fdcm/CMakeFiles/FdcmLib.dir/requires: Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o.requires
-Fdcm/CMakeFiles/FdcmLib.dir/requires: Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o.requires
-Fdcm/CMakeFiles/FdcmLib.dir/requires: Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o.requires
-Fdcm/CMakeFiles/FdcmLib.dir/requires: Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o.requires
-Fdcm/CMakeFiles/FdcmLib.dir/requires: Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o.requires
-Fdcm/CMakeFiles/FdcmLib.dir/requires: Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o.requires
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/requires
+CMakeFiles/FdcmLib.dir/requires: CMakeFiles/FdcmLib.dir/EIEdgeImage.o.requires
+CMakeFiles/FdcmLib.dir/requires: CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o.requires
+CMakeFiles/FdcmLib.dir/requires: CMakeFiles/FdcmLib.dir/LMDisplay.o.requires
+CMakeFiles/FdcmLib.dir/requires: CMakeFiles/FdcmLib.dir/LMDistanceImage.o.requires
+CMakeFiles/FdcmLib.dir/requires: CMakeFiles/FdcmLib.dir/LMLineMatcher.o.requires
+CMakeFiles/FdcmLib.dir/requires: CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o.requires
+CMakeFiles/FdcmLib.dir/requires: CMakeFiles/FdcmLib.dir/MatchingCostMap.o.requires
+.PHONY : CMakeFiles/FdcmLib.dir/requires
 
-Fdcm/CMakeFiles/FdcmLib.dir/clean:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm && $(CMAKE_COMMAND) -P CMakeFiles/FdcmLib.dir/cmake_clean.cmake
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/clean
+CMakeFiles/FdcmLib.dir/clean:
+	$(CMAKE_COMMAND) -P CMakeFiles/FdcmLib.dir/cmake_clean.cmake
+.PHONY : CMakeFiles/FdcmLib.dir/clean
 
-Fdcm/CMakeFiles/FdcmLib.dir/depend:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/CMakeFiles/FdcmLib.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/depend
+CMakeFiles/FdcmLib.dir/depend:
+	cd /home/tox/git/object_tracking_2D/3rdparty/Fdcm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tox/git/object_tracking_2D/3rdparty/Fdcm /home/tox/git/object_tracking_2D/3rdparty/Fdcm /home/tox/git/object_tracking_2D/3rdparty/Fdcm /home/tox/git/object_tracking_2D/3rdparty/Fdcm /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles/FdcmLib.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : CMakeFiles/FdcmLib.dir/depend
 

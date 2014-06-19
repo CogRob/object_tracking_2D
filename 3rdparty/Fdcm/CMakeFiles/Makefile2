@@ -38,22 +38,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/acosgun/repos/peugeot/edge_based_tracker/Fdcm
+CMAKE_SOURCE_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fdcm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/acosgun/repos/peugeot/edge_based_tracker/Fdcm
+CMAKE_BINARY_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fdcm
 
 #=============================================================================
 # Target rules for target CMakeFiles/FdcmLib.dir
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = /home/acosgun/repos/peugeot/edge_based_tracker/Fdcm
 CMakeFiles/FdcmLib.dir/all:
 	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/depend
 	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/acosgun/repos/peugeot/edge_based_tracker/Fdcm/CMakeFiles  1 2 3 4 5 6 7
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles  1 2 3 4 5 6 7
 	@echo "Built target FdcmLib"
 .PHONY : CMakeFiles/FdcmLib.dir/all
 
@@ -72,9 +72,9 @@ all: CMakeFiles/FdcmLib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/FdcmLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/acosgun/repos/peugeot/edge_based_tracker/Fdcm/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/FdcmLib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/acosgun/repos/peugeot/edge_based_tracker/Fdcm/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles 0
 .PHONY : CMakeFiles/FdcmLib.dir/rule
 
 # Convenience name for target.

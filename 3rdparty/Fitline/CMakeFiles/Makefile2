@@ -47,13 +47,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/acosgun/repos/peugeot/edge_based_tracker/Fitline
+CMAKE_SOURCE_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fitline
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/acosgun/repos/peugeot/edge_based_tracker/Fitline
+CMAKE_BINARY_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fitline
 
 #=============================================================================
 # Target rules for target CMakeFiles/LineFitLib.dir
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = /home/acosgun/repos/peugeot/edge_based_tracker/Fitline
 CMakeFiles/LineFitLib.dir/all:
 	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/depend
 	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/acosgun/repos/peugeot/edge_based_tracker/Fitline/CMakeFiles  1 2 3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles  1 2 3
 	@echo "Built target LineFitLib"
 .PHONY : CMakeFiles/LineFitLib.dir/all
 
@@ -72,9 +72,9 @@ all: CMakeFiles/LineFitLib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/LineFitLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/acosgun/repos/peugeot/edge_based_tracker/Fitline/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/LineFitLib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/acosgun/repos/peugeot/edge_based_tracker/Fitline/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles 0
 .PHONY : CMakeFiles/LineFitLib.dir/rule
 
 # Convenience name for target.

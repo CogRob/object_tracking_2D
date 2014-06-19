@@ -1,11 +1,11 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o"
-  "CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o"
-  "CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o"
-  "CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o"
-  "CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o"
-  "CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o"
-  "CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o"
+  "CMakeFiles/FdcmLib.dir/EIEdgeImage.o"
+  "CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o"
+  "CMakeFiles/FdcmLib.dir/LMDisplay.o"
+  "CMakeFiles/FdcmLib.dir/LMDistanceImage.o"
+  "CMakeFiles/FdcmLib.dir/LMLineMatcher.o"
+  "CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o"
+  "CMakeFiles/FdcmLib.dir/MatchingCostMap.o"
   "libFdcmLib.pdb"
   "libFdcmLib.a"
 )

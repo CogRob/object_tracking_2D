@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.cpp" "/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o"
+  "/home/tox/git/object_tracking_2D/3rdparty/Image/DistanceTransform.cpp" "/home/tox/git/object_tracking_2D/3rdparty/Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

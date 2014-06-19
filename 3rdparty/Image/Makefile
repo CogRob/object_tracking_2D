@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_SOURCE_DIR = /home/tox/git/object_tracking_2D/3rdparty/Image
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_BINARY_DIR = /home/tox/git/object_tracking_2D/3rdparty/Image
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -E cmake_progress_start /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/CMakeFiles/progress.marks
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Image/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Image/CMakeFiles /home/tox/git/object_tracking_2D/3rdparty/Image/CMakeFiles/progress.marks
+	$(MAKE) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Image/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Image/clean
+	$(MAKE) -f CMakeFiles/Makefile2 clean
 .PHONY : clean
 
 # The main clean target
@@ -88,31 +88,30 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Image/preinstall
+	$(MAKE) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Image/preinstall
+	$(MAKE) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-Image/CMakeFiles/ImageLib.dir/rule:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Image/CMakeFiles/ImageLib.dir/rule
-.PHONY : Image/CMakeFiles/ImageLib.dir/rule
+#=============================================================================
+# Target rules for targets named ImageLib
 
-# Convenience name for target.
-ImageLib: Image/CMakeFiles/ImageLib.dir/rule
+# Build rule for target.
+ImageLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ImageLib
 .PHONY : ImageLib
 
 # fast build rule for target.
 ImageLib/fast:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Image/CMakeFiles/ImageLib.dir/build.make Image/CMakeFiles/ImageLib.dir/build
+	$(MAKE) -f CMakeFiles/ImageLib.dir/build.make CMakeFiles/ImageLib.dir/build
 .PHONY : ImageLib/fast
 
 DistanceTransform.o: DistanceTransform.cpp.o
@@ -120,7 +119,7 @@ DistanceTransform.o: DistanceTransform.cpp.o
 
 # target to build an object file
 DistanceTransform.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Image/CMakeFiles/ImageLib.dir/build.make Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o
+	$(MAKE) -f CMakeFiles/ImageLib.dir/build.make CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o
 .PHONY : DistanceTransform.cpp.o
 
 DistanceTransform.i: DistanceTransform.cpp.i
@@ -128,7 +127,7 @@ DistanceTransform.i: DistanceTransform.cpp.i
 
 # target to preprocess a source file
 DistanceTransform.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Image/CMakeFiles/ImageLib.dir/build.make Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.i
+	$(MAKE) -f CMakeFiles/ImageLib.dir/build.make CMakeFiles/ImageLib.dir/DistanceTransform.cpp.i
 .PHONY : DistanceTransform.cpp.i
 
 DistanceTransform.s: DistanceTransform.cpp.s
@@ -136,7 +135,7 @@ DistanceTransform.s: DistanceTransform.cpp.s
 
 # target to generate assembly for a file
 DistanceTransform.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Image/CMakeFiles/ImageLib.dir/build.make Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.s
+	$(MAKE) -f CMakeFiles/ImageLib.dir/build.make CMakeFiles/ImageLib.dir/DistanceTransform.cpp.s
 .PHONY : DistanceTransform.cpp.s
 
 # Help Target
@@ -162,6 +161,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

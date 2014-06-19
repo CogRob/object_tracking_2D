@@ -38,42 +38,42 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_SOURCE_DIR = /home/tox/git/object_tracking_2D/3rdparty/Image
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_BINARY_DIR = /home/tox/git/object_tracking_2D/3rdparty/Image
 
 # Include any dependencies generated for this target.
-include Image/CMakeFiles/ImageLib.dir/depend.make
+include CMakeFiles/ImageLib.dir/depend.make
 
 # Include the progress variables for this target.
-include Image/CMakeFiles/ImageLib.dir/progress.make
+include CMakeFiles/ImageLib.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include Image/CMakeFiles/ImageLib.dir/flags.make
+include CMakeFiles/ImageLib.dir/flags.make
 
-Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o: Image/CMakeFiles/ImageLib.dir/flags.make
-Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o: Image/DistanceTransform.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.cpp
+CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o: CMakeFiles/ImageLib.dir/flags.make
+CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o: DistanceTransform.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Image/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o -c /home/tox/git/object_tracking_2D/3rdparty/Image/DistanceTransform.cpp
 
-Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.i: cmake_force
+CMakeFiles/ImageLib.dir/DistanceTransform.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ImageLib.dir/DistanceTransform.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.cpp > CMakeFiles/ImageLib.dir/DistanceTransform.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Image/DistanceTransform.cpp > CMakeFiles/ImageLib.dir/DistanceTransform.cpp.i
 
-Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.s: cmake_force
+CMakeFiles/ImageLib.dir/DistanceTransform.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ImageLib.dir/DistanceTransform.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.cpp -o CMakeFiles/ImageLib.dir/DistanceTransform.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Image/DistanceTransform.cpp -o CMakeFiles/ImageLib.dir/DistanceTransform.cpp.s
 
-Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.requires:
-.PHONY : Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.requires
+CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.requires:
+.PHONY : CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.requires
 
-Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.provides: Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.requires
-	$(MAKE) -f Image/CMakeFiles/ImageLib.dir/build.make Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.provides.build
-.PHONY : Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.provides
+CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.provides: CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ImageLib.dir/build.make CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.provides.build
+.PHONY : CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.provides
 
-Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.provides.build: Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o
+CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.provides.build: CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o
 
 # Object files for target ImageLib
 ImageLib_OBJECTS = \
@@ -82,25 +82,25 @@ ImageLib_OBJECTS = \
 # External object files for target ImageLib
 ImageLib_EXTERNAL_OBJECTS =
 
-Image/libImageLib.a: Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o
-Image/libImageLib.a: Image/CMakeFiles/ImageLib.dir/build.make
-Image/libImageLib.a: Image/CMakeFiles/ImageLib.dir/link.txt
+libImageLib.a: CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o
+libImageLib.a: CMakeFiles/ImageLib.dir/build.make
+libImageLib.a: CMakeFiles/ImageLib.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libImageLib.a"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image && $(CMAKE_COMMAND) -P CMakeFiles/ImageLib.dir/cmake_clean_target.cmake
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ImageLib.dir/link.txt --verbose=$(VERBOSE)
+	$(CMAKE_COMMAND) -P CMakeFiles/ImageLib.dir/cmake_clean_target.cmake
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ImageLib.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-Image/CMakeFiles/ImageLib.dir/build: Image/libImageLib.a
-.PHONY : Image/CMakeFiles/ImageLib.dir/build
+CMakeFiles/ImageLib.dir/build: libImageLib.a
+.PHONY : CMakeFiles/ImageLib.dir/build
 
-Image/CMakeFiles/ImageLib.dir/requires: Image/CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.requires
-.PHONY : Image/CMakeFiles/ImageLib.dir/requires
+CMakeFiles/ImageLib.dir/requires: CMakeFiles/ImageLib.dir/DistanceTransform.cpp.o.requires
+.PHONY : CMakeFiles/ImageLib.dir/requires
 
-Image/CMakeFiles/ImageLib.dir/clean:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image && $(CMAKE_COMMAND) -P CMakeFiles/ImageLib.dir/cmake_clean.cmake
-.PHONY : Image/CMakeFiles/ImageLib.dir/clean
+CMakeFiles/ImageLib.dir/clean:
+	$(CMAKE_COMMAND) -P CMakeFiles/ImageLib.dir/cmake_clean.cmake
+.PHONY : CMakeFiles/ImageLib.dir/clean
 
-Image/CMakeFiles/ImageLib.dir/depend:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/CMakeFiles/ImageLib.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : Image/CMakeFiles/ImageLib.dir/depend
+CMakeFiles/ImageLib.dir/depend:
+	cd /home/tox/git/object_tracking_2D/3rdparty/Image && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tox/git/object_tracking_2D/3rdparty/Image /home/tox/git/object_tracking_2D/3rdparty/Image /home/tox/git/object_tracking_2D/3rdparty/Image /home/tox/git/object_tracking_2D/3rdparty/Image /home/tox/git/object_tracking_2D/3rdparty/Image/CMakeFiles/ImageLib.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : CMakeFiles/ImageLib.dir/depend
 

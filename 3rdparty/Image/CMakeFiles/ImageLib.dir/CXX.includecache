@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.cpp
+/home/tox/git/object_tracking_2D/3rdparty/Image/DistanceTransform.cpp
 DistanceTransform.h
-/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.h
+/home/tox/git/object_tracking_2D/3rdparty/Image/DistanceTransform.h
 
-/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/DistanceTransform.h
+/home/tox/git/object_tracking_2D/3rdparty/Image/DistanceTransform.h
 algorithm
 -
 cmath
 -
 Image.h
-/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/Image.h
+/home/tox/git/object_tracking_2D/3rdparty/Image/Image.h
 
-/home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Image/Image.h
+/home/tox/git/object_tracking_2D/3rdparty/Image/Image.h
 cstring
 -
 assert.h

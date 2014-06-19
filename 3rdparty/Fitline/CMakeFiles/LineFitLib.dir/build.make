@@ -38,88 +38,88 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_SOURCE_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fitline
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_BINARY_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fitline
 
 # Include any dependencies generated for this target.
-include Fitline/CMakeFiles/LineFitLib.dir/depend.make
+include CMakeFiles/LineFitLib.dir/depend.make
 
 # Include the progress variables for this target.
-include Fitline/CMakeFiles/LineFitLib.dir/progress.make
+include CMakeFiles/LineFitLib.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include Fitline/CMakeFiles/LineFitLib.dir/flags.make
+include CMakeFiles/LineFitLib.dir/flags.make
 
-Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o: Fitline/CMakeFiles/LineFitLib.dir/flags.make
-Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o: Fitline/fitline.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/LineFitLib.dir/fitline.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/fitline.cpp
+CMakeFiles/LineFitLib.dir/fitline.cpp.o: CMakeFiles/LineFitLib.dir/flags.make
+CMakeFiles/LineFitLib.dir/fitline.cpp.o: fitline.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/LineFitLib.dir/fitline.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/LineFitLib.dir/fitline.cpp.o -c /home/tox/git/object_tracking_2D/3rdparty/Fitline/fitline.cpp
 
-Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.i: cmake_force
+CMakeFiles/LineFitLib.dir/fitline.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LineFitLib.dir/fitline.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/fitline.cpp > CMakeFiles/LineFitLib.dir/fitline.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fitline/fitline.cpp > CMakeFiles/LineFitLib.dir/fitline.cpp.i
 
-Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.s: cmake_force
+CMakeFiles/LineFitLib.dir/fitline.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LineFitLib.dir/fitline.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/fitline.cpp -o CMakeFiles/LineFitLib.dir/fitline.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fitline/fitline.cpp -o CMakeFiles/LineFitLib.dir/fitline.cpp.s
 
-Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o.requires:
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o.requires
+CMakeFiles/LineFitLib.dir/fitline.cpp.o.requires:
+.PHONY : CMakeFiles/LineFitLib.dir/fitline.cpp.o.requires
 
-Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o.provides: Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o.requires
-	$(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o.provides.build
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o.provides
+CMakeFiles/LineFitLib.dir/fitline.cpp.o.provides: CMakeFiles/LineFitLib.dir/fitline.cpp.o.requires
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/fitline.cpp.o.provides.build
+.PHONY : CMakeFiles/LineFitLib.dir/fitline.cpp.o.provides
 
-Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o.provides.build: Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o
+CMakeFiles/LineFitLib.dir/fitline.cpp.o.provides.build: CMakeFiles/LineFitLib.dir/fitline.cpp.o
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o: Fitline/CMakeFiles/LineFitLib.dir/flags.make
-Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o: Fitline/LFLineFitter.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/LFLineFitter.cpp
+CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o: CMakeFiles/LineFitLib.dir/flags.make
+CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o: LFLineFitter.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o -c /home/tox/git/object_tracking_2D/3rdparty/Fitline/LFLineFitter.cpp
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.i: cmake_force
+CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/LFLineFitter.cpp > CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fitline/LFLineFitter.cpp > CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.i
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.s: cmake_force
+CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/LFLineFitter.cpp -o CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fitline/LFLineFitter.cpp -o CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.s
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.requires:
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.requires
+CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.requires:
+.PHONY : CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.requires
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.provides: Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.requires
-	$(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.provides.build
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.provides
+CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.provides: CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.requires
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.provides.build
+.PHONY : CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.provides
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.provides.build: Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o
+CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.provides.build: CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o: Fitline/CMakeFiles/LineFitLib.dir/flags.make
-Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o: Fitline/LFLineSegment.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o -c /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/LFLineSegment.cpp
+CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o: CMakeFiles/LineFitLib.dir/flags.make
+CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o: LFLineSegment.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o -c /home/tox/git/object_tracking_2D/3rdparty/Fitline/LFLineSegment.cpp
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.i: cmake_force
+CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.i"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/LFLineSegment.cpp > CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/tox/git/object_tracking_2D/3rdparty/Fitline/LFLineSegment.cpp > CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.i
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.s: cmake_force
+CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.s"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/LFLineSegment.cpp -o CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/tox/git/object_tracking_2D/3rdparty/Fitline/LFLineSegment.cpp -o CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.s
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.requires:
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.requires
+CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.requires:
+.PHONY : CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.requires
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.provides: Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.requires
-	$(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.provides.build
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.provides
+CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.provides: CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.requires
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.provides.build
+.PHONY : CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.provides
 
-Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.provides.build: Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o
+CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.provides.build: CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o
 
 # Object files for target LineFitLib
 LineFitLib_OBJECTS = \
@@ -130,29 +130,29 @@ LineFitLib_OBJECTS = \
 # External object files for target LineFitLib
 LineFitLib_EXTERNAL_OBJECTS =
 
-Fitline/libLineFitLib.a: Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o
-Fitline/libLineFitLib.a: Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o
-Fitline/libLineFitLib.a: Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o
-Fitline/libLineFitLib.a: Fitline/CMakeFiles/LineFitLib.dir/build.make
-Fitline/libLineFitLib.a: Fitline/CMakeFiles/LineFitLib.dir/link.txt
+libLineFitLib.a: CMakeFiles/LineFitLib.dir/fitline.cpp.o
+libLineFitLib.a: CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o
+libLineFitLib.a: CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o
+libLineFitLib.a: CMakeFiles/LineFitLib.dir/build.make
+libLineFitLib.a: CMakeFiles/LineFitLib.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libLineFitLib.a"
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && $(CMAKE_COMMAND) -P CMakeFiles/LineFitLib.dir/cmake_clean_target.cmake
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LineFitLib.dir/link.txt --verbose=$(VERBOSE)
+	$(CMAKE_COMMAND) -P CMakeFiles/LineFitLib.dir/cmake_clean_target.cmake
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LineFitLib.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-Fitline/CMakeFiles/LineFitLib.dir/build: Fitline/libLineFitLib.a
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/build
+CMakeFiles/LineFitLib.dir/build: libLineFitLib.a
+.PHONY : CMakeFiles/LineFitLib.dir/build
 
-Fitline/CMakeFiles/LineFitLib.dir/requires: Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o.requires
-Fitline/CMakeFiles/LineFitLib.dir/requires: Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.requires
-Fitline/CMakeFiles/LineFitLib.dir/requires: Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.requires
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/requires
+CMakeFiles/LineFitLib.dir/requires: CMakeFiles/LineFitLib.dir/fitline.cpp.o.requires
+CMakeFiles/LineFitLib.dir/requires: CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o.requires
+CMakeFiles/LineFitLib.dir/requires: CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o.requires
+.PHONY : CMakeFiles/LineFitLib.dir/requires
 
-Fitline/CMakeFiles/LineFitLib.dir/clean:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline && $(CMAKE_COMMAND) -P CMakeFiles/LineFitLib.dir/cmake_clean.cmake
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/clean
+CMakeFiles/LineFitLib.dir/clean:
+	$(CMAKE_COMMAND) -P CMakeFiles/LineFitLib.dir/cmake_clean.cmake
+.PHONY : CMakeFiles/LineFitLib.dir/clean
 
-Fitline/CMakeFiles/LineFitLib.dir/depend:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/CMakeFiles/LineFitLib.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/depend
+CMakeFiles/LineFitLib.dir/depend:
+	cd /home/tox/git/object_tracking_2D/3rdparty/Fitline && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tox/git/object_tracking_2D/3rdparty/Fitline /home/tox/git/object_tracking_2D/3rdparty/Fitline /home/tox/git/object_tracking_2D/3rdparty/Fitline /home/tox/git/object_tracking_2D/3rdparty/Fitline /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles/LineFitLib.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : CMakeFiles/LineFitLib.dir/depend
 

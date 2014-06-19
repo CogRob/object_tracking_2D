@@ -47,13 +47,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/acosgun/repos/peugeot/edge_based_tracker/Image
+CMAKE_SOURCE_DIR = /home/tox/git/object_tracking_2D/3rdparty/Image
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/acosgun/repos/peugeot/edge_based_tracker/Image
+CMAKE_BINARY_DIR = /home/tox/git/object_tracking_2D/3rdparty/Image
 
 #=============================================================================
 # Target rules for target CMakeFiles/ImageLib.dir
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = /home/acosgun/repos/peugeot/edge_based_tracker/Image
 CMakeFiles/ImageLib.dir/all:
 	$(MAKE) -f CMakeFiles/ImageLib.dir/build.make CMakeFiles/ImageLib.dir/depend
 	$(MAKE) -f CMakeFiles/ImageLib.dir/build.make CMakeFiles/ImageLib.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/acosgun/repos/peugeot/edge_based_tracker/Image/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/tox/git/object_tracking_2D/3rdparty/Image/CMakeFiles  1
 	@echo "Built target ImageLib"
 .PHONY : CMakeFiles/ImageLib.dir/all
 
@@ -72,9 +72,9 @@ all: CMakeFiles/ImageLib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ImageLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/acosgun/repos/peugeot/edge_based_tracker/Image/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Image/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ImageLib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/acosgun/repos/peugeot/edge_based_tracker/Image/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Image/CMakeFiles 0
 .PHONY : CMakeFiles/ImageLib.dir/rule
 
 # Convenience name for target.

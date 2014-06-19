@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_SOURCE_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fdcm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_BINARY_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fdcm
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -E cmake_progress_start /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fdcm/CMakeFiles/progress.marks
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fdcm/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles/progress.marks
+	$(MAKE) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Fdcm/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fdcm/clean
+	$(MAKE) -f CMakeFiles/Makefile2 clean
 .PHONY : clean
 
 # The main clean target
@@ -88,200 +88,136 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fdcm/preinstall
+	$(MAKE) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fdcm/preinstall
+	$(MAKE) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-Fdcm/CMakeFiles/FdcmLib.dir/rule:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fdcm/CMakeFiles/FdcmLib.dir/rule
-.PHONY : Fdcm/CMakeFiles/FdcmLib.dir/rule
+#=============================================================================
+# Target rules for targets named FdcmLib
 
-# Convenience name for target.
-FdcmLib: Fdcm/CMakeFiles/FdcmLib.dir/rule
+# Build rule for target.
+FdcmLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FdcmLib
 .PHONY : FdcmLib
 
 # fast build rule for target.
 FdcmLib/fast:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/build
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/build
 .PHONY : FdcmLib/fast
 
-EIEdgeImage.o: EIEdgeImage.cpp.o
+# target to build an object file
+EIEdgeImage.o:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/EIEdgeImage.o
 .PHONY : EIEdgeImage.o
 
-# target to build an object file
-EIEdgeImage.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.o
-.PHONY : EIEdgeImage.cpp.o
-
-EIEdgeImage.i: EIEdgeImage.cpp.i
+# target to preprocess a source file
+EIEdgeImage.i:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/EIEdgeImage.i
 .PHONY : EIEdgeImage.i
 
-# target to preprocess a source file
-EIEdgeImage.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.i
-.PHONY : EIEdgeImage.cpp.i
-
-EIEdgeImage.s: EIEdgeImage.cpp.s
+# target to generate assembly for a file
+EIEdgeImage.s:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/EIEdgeImage.s
 .PHONY : EIEdgeImage.s
 
-# target to generate assembly for a file
-EIEdgeImage.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/EIEdgeImage.cpp.s
-.PHONY : EIEdgeImage.cpp.s
-
-LMDirectionalIntegralDistanceImage.o: LMDirectionalIntegralDistanceImage.cpp.o
+# target to build an object file
+LMDirectionalIntegralDistanceImage.o:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.o
 .PHONY : LMDirectionalIntegralDistanceImage.o
 
-# target to build an object file
-LMDirectionalIntegralDistanceImage.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.o
-.PHONY : LMDirectionalIntegralDistanceImage.cpp.o
-
-LMDirectionalIntegralDistanceImage.i: LMDirectionalIntegralDistanceImage.cpp.i
+# target to preprocess a source file
+LMDirectionalIntegralDistanceImage.i:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.i
 .PHONY : LMDirectionalIntegralDistanceImage.i
 
-# target to preprocess a source file
-LMDirectionalIntegralDistanceImage.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.i
-.PHONY : LMDirectionalIntegralDistanceImage.cpp.i
-
-LMDirectionalIntegralDistanceImage.s: LMDirectionalIntegralDistanceImage.cpp.s
+# target to generate assembly for a file
+LMDirectionalIntegralDistanceImage.s:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.s
 .PHONY : LMDirectionalIntegralDistanceImage.s
 
-# target to generate assembly for a file
-LMDirectionalIntegralDistanceImage.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDirectionalIntegralDistanceImage.cpp.s
-.PHONY : LMDirectionalIntegralDistanceImage.cpp.s
-
-LMDisplay.o: LMDisplay.cpp.o
+# target to build an object file
+LMDisplay.o:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDisplay.o
 .PHONY : LMDisplay.o
 
-# target to build an object file
-LMDisplay.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.o
-.PHONY : LMDisplay.cpp.o
-
-LMDisplay.i: LMDisplay.cpp.i
+# target to preprocess a source file
+LMDisplay.i:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDisplay.i
 .PHONY : LMDisplay.i
 
-# target to preprocess a source file
-LMDisplay.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.i
-.PHONY : LMDisplay.cpp.i
-
-LMDisplay.s: LMDisplay.cpp.s
+# target to generate assembly for a file
+LMDisplay.s:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDisplay.s
 .PHONY : LMDisplay.s
 
-# target to generate assembly for a file
-LMDisplay.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDisplay.cpp.s
-.PHONY : LMDisplay.cpp.s
-
-LMDistanceImage.o: LMDistanceImage.cpp.o
+# target to build an object file
+LMDistanceImage.o:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDistanceImage.o
 .PHONY : LMDistanceImage.o
 
-# target to build an object file
-LMDistanceImage.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.o
-.PHONY : LMDistanceImage.cpp.o
-
-LMDistanceImage.i: LMDistanceImage.cpp.i
+# target to preprocess a source file
+LMDistanceImage.i:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDistanceImage.i
 .PHONY : LMDistanceImage.i
 
-# target to preprocess a source file
-LMDistanceImage.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.i
-.PHONY : LMDistanceImage.cpp.i
-
-LMDistanceImage.s: LMDistanceImage.cpp.s
+# target to generate assembly for a file
+LMDistanceImage.s:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMDistanceImage.s
 .PHONY : LMDistanceImage.s
 
-# target to generate assembly for a file
-LMDistanceImage.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMDistanceImage.cpp.s
-.PHONY : LMDistanceImage.cpp.s
-
-LMLineMatcher.o: LMLineMatcher.cpp.o
+# target to build an object file
+LMLineMatcher.o:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMLineMatcher.o
 .PHONY : LMLineMatcher.o
 
-# target to build an object file
-LMLineMatcher.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.o
-.PHONY : LMLineMatcher.cpp.o
-
-LMLineMatcher.i: LMLineMatcher.cpp.i
+# target to preprocess a source file
+LMLineMatcher.i:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMLineMatcher.i
 .PHONY : LMLineMatcher.i
 
-# target to preprocess a source file
-LMLineMatcher.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.i
-.PHONY : LMLineMatcher.cpp.i
-
-LMLineMatcher.s: LMLineMatcher.cpp.s
+# target to generate assembly for a file
+LMLineMatcher.s:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMLineMatcher.s
 .PHONY : LMLineMatcher.s
 
-# target to generate assembly for a file
-LMLineMatcher.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMLineMatcher.cpp.s
-.PHONY : LMLineMatcher.cpp.s
-
-LMNonMaximumSuppression.o: LMNonMaximumSuppression.cpp.o
+# target to build an object file
+LMNonMaximumSuppression.o:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.o
 .PHONY : LMNonMaximumSuppression.o
 
-# target to build an object file
-LMNonMaximumSuppression.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.o
-.PHONY : LMNonMaximumSuppression.cpp.o
-
-LMNonMaximumSuppression.i: LMNonMaximumSuppression.cpp.i
+# target to preprocess a source file
+LMNonMaximumSuppression.i:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.i
 .PHONY : LMNonMaximumSuppression.i
 
-# target to preprocess a source file
-LMNonMaximumSuppression.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.i
-.PHONY : LMNonMaximumSuppression.cpp.i
-
-LMNonMaximumSuppression.s: LMNonMaximumSuppression.cpp.s
+# target to generate assembly for a file
+LMNonMaximumSuppression.s:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.s
 .PHONY : LMNonMaximumSuppression.s
 
-# target to generate assembly for a file
-LMNonMaximumSuppression.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/LMNonMaximumSuppression.cpp.s
-.PHONY : LMNonMaximumSuppression.cpp.s
-
-MatchingCostMap.o: MatchingCostMap.cpp.o
+# target to build an object file
+MatchingCostMap.o:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/MatchingCostMap.o
 .PHONY : MatchingCostMap.o
 
-# target to build an object file
-MatchingCostMap.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.o
-.PHONY : MatchingCostMap.cpp.o
-
-MatchingCostMap.i: MatchingCostMap.cpp.i
+# target to preprocess a source file
+MatchingCostMap.i:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/MatchingCostMap.i
 .PHONY : MatchingCostMap.i
 
-# target to preprocess a source file
-MatchingCostMap.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.i
-.PHONY : MatchingCostMap.cpp.i
-
-MatchingCostMap.s: MatchingCostMap.cpp.s
-.PHONY : MatchingCostMap.s
-
 # target to generate assembly for a file
-MatchingCostMap.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fdcm/CMakeFiles/FdcmLib.dir/build.make Fdcm/CMakeFiles/FdcmLib.dir/MatchingCostMap.cpp.s
-.PHONY : MatchingCostMap.cpp.s
+MatchingCostMap.s:
+	$(MAKE) -f CMakeFiles/FdcmLib.dir/build.make CMakeFiles/FdcmLib.dir/MatchingCostMap.s
+.PHONY : MatchingCostMap.s
 
 # Help Target
 help:
@@ -324,6 +260,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline
+# Install script for directory: /home/tox/git/object_tracking_2D/3rdparty/Fitline
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -32,3 +32,13 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   SET(CMAKE_INSTALL_SO_NO_EXE "1")
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
+IF(CMAKE_INSTALL_COMPONENT)
+  SET(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
+ELSE(CMAKE_INSTALL_COMPONENT)
+  SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
+ENDIF(CMAKE_INSTALL_COMPONENT)
+
+FILE(WRITE "/home/tox/git/object_tracking_2D/3rdparty/Fitline/${CMAKE_INSTALL_MANIFEST}" "")
+FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
+  FILE(APPEND "/home/tox/git/object_tracking_2D/3rdparty/Fitline/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+ENDFOREACH(file)

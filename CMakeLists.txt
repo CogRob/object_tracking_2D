@@ -40,7 +40,7 @@ add_executable(EBT src/Camera.cpp src/EdgeTracker.cpp src/epnp.cpp src/glm.cpp s
 
 add_executable(edge_templates_generator src/Camera.cpp src/EdgeTracker.cpp src/epnp.cpp src/glm.cpp src/HomoTransform.cpp  src/objectmodel.cpp src/ParticleFilter.cpp src/PoseEstimationSURF.cpp src/edge_templates_generator.cpp)
 
-#target_link_libraries(edge_templates_generator ${OPENGL_LIBRARY} ${GLEW_LIBRARIES} ${GLUT_LIBRARIES} ${OpenCV_LIBS} ${ADDITIONAL_BOOST_LIBS} ${Boost_LIBRARIES} ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Fitline/libLineFitLib.a  ${LAPACK_LIBRARIES} )
+#target_link_libraries(edge_templates_generator ${OPENGL_LIBRARY} ${GLEW_LIBRARIES} ${GLUT_LIBRARIES} ${OpenCV_LIBS} ${ADDITIONAL_BOOST_LIBS} ${Boost_LIBRARIES} ${EdgeBasedTracker_SOURCE_DIR}/Fitline/libLineFitLib.a  ${LAPACK_LIBRARIES} )
 
 target_link_libraries(edge_templates_generator ${OPENGL_LIBRARY} ${ADDITIONAL_BOOST_LIBS} ${Boost_LIBRARIES}  ${GLEW_LIBRARIES} ${GLUT_LIBRARIES} ${LAPACK_LIBRARIES} ${OpenCV_LIBS} ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Fdcm/libFdcmLib.a ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Fitline/libLineFitLib.a ${OpenCV_LIBS} ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Image/libImageLib.a)
 
@@ -51,7 +51,7 @@ add_dependencies(edge_templates_generator FdcmLib)
 
 
 target_link_libraries(EBT ${OPENGL_LIBRARY} ${ADDITIONAL_BOOST_LIBS} ${Boost_LIBRARIES}  ${GLEW_LIBRARIES} ${GLUT_LIBRARIES} ${LAPACK_LIBRARIES} ${OpenCV_LIBS} ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Fdcm/libFdcmLib.a ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Fitline/libLineFitLib.a ${OpenCV_LIBS} ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Image/libImageLib.a)
-#target_link_libraries(Fdcmr ${OPENGL_LIBRARY} ${ADDITIONAL_BOOST_LIBS} ${Boost_LIBRARIES}  ${GLEW_LIBRARIES} ${GLUT_LIBRARIES} ${LAPACK_LIBRARIES} ${OpenCV_LIBS} ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Fdcm/libFdcmLib.a ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Fitline/libLineFitLib.a ${OpenCV_LIBS} ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Image/libImageLib.a)
+#target_link_libraries(Fdcmr ${OPENGL_LIBRARY} ${ADDITIONAL_BOOST_LIBS} ${Boost_LIBRARIES}  ${GLEW_LIBRARIES} ${GLUT_LIBRARIES} ${LAPACK_LIBRARIES} ${OpenCV_LIBS} ${EdgeBasedTracker_SOURCE_DIR}/Fdcm/libFdcmLib.a ${EdgeBasedTracker_SOURCE_DIR}/Fitline/libLineFitLib.a ${OpenCV_LIBS} ${EdgeBasedTracker_SOURCE_DIR}/Image/libImageLib.a)
 
 add_dependencies(EBT ImageLib)
 add_dependencies(EBT LineFitLib)

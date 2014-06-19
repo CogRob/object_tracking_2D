@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_SOURCE_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fitline
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker
+CMAKE_BINARY_DIR = /home/tox/git/object_tracking_2D/3rdparty/Fitline
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -E cmake_progress_start /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/Fitline/CMakeFiles/progress.marks
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fitline/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles/progress.marks
+	$(MAKE) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tox/git/object_tracking_2D/3rdparty/Fitline/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fitline/clean
+	$(MAKE) -f CMakeFiles/Makefile2 clean
 .PHONY : clean
 
 # The main clean target
@@ -88,31 +88,30 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fitline/preinstall
+	$(MAKE) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fitline/preinstall
+	$(MAKE) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-Fitline/CMakeFiles/LineFitLib.dir/rule:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f CMakeFiles/Makefile2 Fitline/CMakeFiles/LineFitLib.dir/rule
-.PHONY : Fitline/CMakeFiles/LineFitLib.dir/rule
+#=============================================================================
+# Target rules for targets named LineFitLib
 
-# Convenience name for target.
-LineFitLib: Fitline/CMakeFiles/LineFitLib.dir/rule
+# Build rule for target.
+LineFitLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 LineFitLib
 .PHONY : LineFitLib
 
 # fast build rule for target.
 LineFitLib/fast:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/build
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/build
 .PHONY : LineFitLib/fast
 
 LFLineFitter.o: LFLineFitter.cpp.o
@@ -120,7 +119,7 @@ LFLineFitter.o: LFLineFitter.cpp.o
 
 # target to build an object file
 LFLineFitter.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.o
 .PHONY : LFLineFitter.cpp.o
 
 LFLineFitter.i: LFLineFitter.cpp.i
@@ -128,7 +127,7 @@ LFLineFitter.i: LFLineFitter.cpp.i
 
 # target to preprocess a source file
 LFLineFitter.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.i
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.i
 .PHONY : LFLineFitter.cpp.i
 
 LFLineFitter.s: LFLineFitter.cpp.s
@@ -136,7 +135,7 @@ LFLineFitter.s: LFLineFitter.cpp.s
 
 # target to generate assembly for a file
 LFLineFitter.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.s
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/LFLineFitter.cpp.s
 .PHONY : LFLineFitter.cpp.s
 
 LFLineSegment.o: LFLineSegment.cpp.o
@@ -144,7 +143,7 @@ LFLineSegment.o: LFLineSegment.cpp.o
 
 # target to build an object file
 LFLineSegment.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.o
 .PHONY : LFLineSegment.cpp.o
 
 LFLineSegment.i: LFLineSegment.cpp.i
@@ -152,7 +151,7 @@ LFLineSegment.i: LFLineSegment.cpp.i
 
 # target to preprocess a source file
 LFLineSegment.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.i
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.i
 .PHONY : LFLineSegment.cpp.i
 
 LFLineSegment.s: LFLineSegment.cpp.s
@@ -160,7 +159,7 @@ LFLineSegment.s: LFLineSegment.cpp.s
 
 # target to generate assembly for a file
 LFLineSegment.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.s
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/LFLineSegment.cpp.s
 .PHONY : LFLineSegment.cpp.s
 
 fitline.o: fitline.cpp.o
@@ -168,7 +167,7 @@ fitline.o: fitline.cpp.o
 
 # target to build an object file
 fitline.cpp.o:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.o
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/fitline.cpp.o
 .PHONY : fitline.cpp.o
 
 fitline.i: fitline.cpp.i
@@ -176,7 +175,7 @@ fitline.i: fitline.cpp.i
 
 # target to preprocess a source file
 fitline.cpp.i:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.i
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/fitline.cpp.i
 .PHONY : fitline.cpp.i
 
 fitline.s: fitline.cpp.s
@@ -184,7 +183,7 @@ fitline.s: fitline.cpp.s
 
 # target to generate assembly for a file
 fitline.cpp.s:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(MAKE) -f Fitline/CMakeFiles/LineFitLib.dir/build.make Fitline/CMakeFiles/LineFitLib.dir/fitline.cpp.s
+	$(MAKE) -f CMakeFiles/LineFitLib.dir/build.make CMakeFiles/LineFitLib.dir/fitline.cpp.s
 .PHONY : fitline.cpp.s
 
 # Help Target
@@ -216,6 +215,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/rox/Documents/Code/Heni/peugeot/edge_based_tracker && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
