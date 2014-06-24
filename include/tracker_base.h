@@ -38,8 +38,8 @@ public:
     : cam_(NULL)
     , edge_tracker_(NULL)
     , obj_model_(NULL)
-    , th_canny_l_(80) //100
-    , th_canny_h_(100) //120
+    , th_canny_l_(20) //100
+    , th_canny_h_(60) //120
     , sample_step_(0.005f)
     , maxd_(32)
     , dulledge_(false)
