@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     // AKAN
     ("min_keypoint_matches", po::value<int>(&min_keypoint_matches)->default_value(20), "min number of keypoint matches to start tracking")
     ("use_ach_channel", po::value<std::string>(&ach_channel)->default_value("none"), "Use specific ach channel with given name")
-    ("use_tracking", po::value<bool>(&use_tracking)->default_value(false), "Enable tracking after detection of object")
+    ("use_tracking", po::value<bool>(&use_tracking)->default_value(true), "Enable tracking after detection of object")
   ;
   po::variables_map vm;
   po::store(po::parse_command_line(argc, argv, desc), vm);

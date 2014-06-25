@@ -10,7 +10,7 @@ public:
     : ar_param_(0.0f)
     , num_particles_(100)
     , noise_l_(0.0005f)
-    , noise_h_(0.005f)
+    , noise_h_(0.01f)
     , num_annealing_layers_(1)
     , alpha_rate_(0.5f)
     , beta_rate_(0.5f)
@@ -78,7 +78,7 @@ protected:
       obj_model_->setModelviewMatrix(pf_->GetMeanState());
       obj_model_->findVisibleSamplePoints();
     }
-    //obj_model_->displayPoseLine(img_result_, pf_->GetMeanState(), CV_RGB(255, 255, 0), 2);
+    obj_model_->displayPoseLine(img_result_, pf_->GetMeanState(), CV_RGB(255, 255, 0), 2, false);
         
     cvShowImage("Result", img_result_);
     cvShowImage("Edge", img_edge_);

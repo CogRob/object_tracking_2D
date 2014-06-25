@@ -53,7 +53,7 @@ CPoseEstimationSURF::CPoseEstimationSURF(int width, int height, std::string& img
   }
 
   // HACK:
-  cv::initModule_nonfree(); // for SURF feature
+//  cv::initModule_nonfree(); // for SURF feature
 }
 
 CPoseEstimationSURF::~CPoseEstimationSURF(void)
