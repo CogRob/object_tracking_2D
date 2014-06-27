@@ -27,7 +27,7 @@ set(IMAGE_LIBS ${IMAGE_LIBS}
 
 # MESSAGE(  ${EdgeBasedTracker_SOURCE_DIR})
 
-include_directories("${CMAKE_SOURCE_DIR}/3rdparty")
+include_directories("${EdgeBasedTracker_SOURCE_DIR}/3rdparty")
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 include_directories( ${EdgeBasedTracker_SOURCE_DIR}/include)

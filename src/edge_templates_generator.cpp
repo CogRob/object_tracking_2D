@@ -25,7 +25,7 @@
 
 #include <ObjectModel.h>
 
-#include <Fitline/LFLineFitter.h>
+#include "Fitline/LFLineFitter.h"
 
 namespace po = boost::program_options;
 
