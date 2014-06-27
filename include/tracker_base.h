@@ -23,9 +23,6 @@
 //#include <ach.h>
 //#include <sns.h>
 
-
-//#include "/home/acosgun/Downloads/eigen-eigen-36bf2ceaf8f5/Eigen/Geometry"
-
 //#include "pose_msg.h"
 
 

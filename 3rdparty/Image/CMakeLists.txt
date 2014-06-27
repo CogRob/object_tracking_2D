@@ -4,4 +4,5 @@
 #find_package(OpenCV)
 
 # we create a library for line fitting
-add_library(ImageLib DistanceTransform.cpp)
+add_library(ImageLib 
+	DistanceTransform.cpp)

@@ -9,8 +9,8 @@
 
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
-#include "opencv2/features2d/features2d.hpp"
-#include "opencv2/nonfree/nonfree.hpp"
+#include <opencv2/features2d/features2d.hpp>
+#include <opencv2/nonfree/nonfree.hpp>
 
 #include "Image/Image.h"
 #include "Image/ImageIO.h"

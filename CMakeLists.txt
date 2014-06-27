@@ -5,25 +5,27 @@ project(EdgeBasedTracker)
 # Recurse into the "Hello" and "Demo" subdirectories. This does not actually
 # cause another cmake executable to run. The same process will walk through
 # the project's entire directory structure.
-add_subdirectory(3rdparty/Image)
-add_subdirectory(3rdparty/Fitline)
-add_subdirectory(3rdparty/Fdcm)
 
-#set(BULLET_ROOT ${ROOT_DIR}/Downloads/bullet-2.82-r2704) # where to find Bullet
-
-find_package( GLUT )
+find_package( GLUT          REQUIRED )
 find_package( OpenGL        REQUIRED )
 find_package( OpenCV 2.4    REQUIRED )
 find_package( LAPACK        REQUIRED )
 find_package( GLEW          REQUIRED )
 find_package( Boost         REQUIRED )
 #find_package( BULLET        REQUIRED )
-#find_package( Eigen         REQUIRED )
 
-#include_directories(EIGEN3_INCLUDE_DIR)
+add_subdirectory(3rdparty/Image)
+add_subdirectory(3rdparty/Fitline)
+add_subdirectory(3rdparty/Fdcm)
 
+set(FDCM_LIBS ${FDCM_LIBS}
+	${PROJECT_BINARY_DIR}/3rdparty/Fdcm/libFdcmLib.a)
+set(FITLINE_LIBS ${FITLINE_LIBS}
+	${PROJECT_BINARY_DIR}/3rdparty/Fitline/libLineFitLib.a)
+set(IMAGE_LIBS ${IMAGE_LIBS}
+	${PROJECT_BINARY_DIR}/3rdparty/Image/libImageLib.a)
 
-MESSAGE(  ${EdgeBasedTracker_SOURCE_DIR})
+# MESSAGE(  ${EdgeBasedTracker_SOURCE_DIR})
 
 include_directories("${CMAKE_SOURCE_DIR}/3rdparty")
 include_directories( ${OpenCV_INCLUDE_DIRS} )
@@ -31,9 +33,8 @@ INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 include_directories( ${EdgeBasedTracker_SOURCE_DIR}/include)
 include_directories( ${EdgeBasedTracker_SOURCE_DIR})
 
-#include_directories("/usr/lib/")
-
-SET(ADDITIONAL_BOOST_LIBS boost_program_options boost_system boost_thread)
+SET(ADDITIONAL_BOOST_LIBS 
+	boost_program_options boost_system boost_thread)
 
 include_directories(include)
 set(incs
@@ -88,9 +89,9 @@ set(libs
                 ${GLUT_LIBRARIES}
                 ${LAPACK_LIBRARIES}
                 ${OpenCV_LIBS}
-                ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Fdcm/libFdcmLib.a
-                ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Fitline/libLineFitLib.a
-                ${EdgeBasedTracker_SOURCE_DIR}/3rdparty/Image/libImageLib.a)
+				${FDCM_LIBS}
+				${FITLINE_LIBS}
+				${IMAGE_LIBS})
 
 target_link_libraries(ETG ${libs})
 
