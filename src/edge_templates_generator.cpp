@@ -23,7 +23,7 @@
 
 #include <limits.h>
 
-#include <ObjectModel.h>
+#include "object_tracking_2D/ObjectModel.h"
 
 #include "Fitline/LFLineFitter.h"
 

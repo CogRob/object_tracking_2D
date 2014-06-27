@@ -1,4 +1,4 @@
-#include "EdgeTracker.h"
+#include "object_tracking_2D/EdgeTracker.h"
 //#include "ObjectModel.h"
 
 CEdgeTracker::CEdgeTracker(int width, int height, CvMat* intrinsic, int maxd, bool limityrot/*=false*/)

@@ -2,14 +2,14 @@
 #pragma warning( once : 4244 )
 #pragma warning( once : 4267 )
 
-#include "ObjectModel.h"
+#include "object_tracking_2D/ObjectModel.h"
 #include <GL/glu.h>
-#include "EdgeTracker.h"
+#include "object_tracking_2D/EdgeTracker.h"
 #include <algorithm> // sort()
-#include "PoseEstimationSURF.h"
+#include "object_tracking_2D/PoseEstimationSURF.h"
 #include <limits>
 #include <omp.h> // openmp
-#include "Timer.h"
+#include "object_tracking_2D/Timer.h"
 
 CObjectModel::CObjectModel(string obj_name, int width, int height, CvMat* intrinsic, float sample_step, int maxd, bool dulledge, CEdgeTracker* edge_tracker)
   : width_(width)

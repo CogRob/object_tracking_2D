@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include "glm.h"
+#include "object_tracking_2D/glm.h"
 
 
 #define T(x) (model->triangles[(x)])

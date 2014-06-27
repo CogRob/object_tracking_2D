@@ -1,7 +1,7 @@
 
 using namespace std;
 
-#include "epnp.h"
+#include "object_tracking_2D/epnp.h"
 
 epnp::epnp(void)
 {

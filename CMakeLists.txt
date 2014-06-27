@@ -31,30 +31,30 @@ include_directories("${EdgeBasedTracker_SOURCE_DIR}/3rdparty")
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 include_directories( ${EdgeBasedTracker_SOURCE_DIR}/include)
-include_directories( ${EdgeBasedTracker_SOURCE_DIR})
+#include_directories( ${EdgeBasedTracker_SOURCE_DIR})
 
 SET(ADDITIONAL_BOOST_LIBS 
 	boost_program_options boost_system boost_thread)
 
 include_directories(include)
 set(incs
-                include/Camera.h
-                include/EdgeTracker.h
-                include/epnp.h
-                include/glm.h
-                include/HomoTransform.h
-                include/tracker_base.h
-                include/tracker_irls.h
-                include/tracker_pf.h
-                include/tracker_pf_texture.h
-                include/tracker_pf_textureless.h
-                include/ObjectModel.h
-                include/PoseEstimationSURF.h
-                include/Timer.h
-                include/randn.h
-                include/ParticleFilter.h
-                include/imageReceiver.h
-                include/non_randomness.h)
+                include/object_tracking_2D/Camera.h
+                include/object_tracking_2D/EdgeTracker.h
+                include/object_tracking_2D/epnp.h
+                include/object_tracking_2D/glm.h
+                include/object_tracking_2D/HomoTransform.h
+                include/object_tracking_2D/tracker_base.h
+                include/object_tracking_2D/tracker_irls.h
+                include/object_tracking_2D/tracker_pf.h
+                include/object_tracking_2D/tracker_pf_texture.h
+                include/object_tracking_2D/tracker_pf_textureless.h
+                include/object_tracking_2D/ObjectModel.h
+                include/object_tracking_2D/PoseEstimationSURF.h
+                include/object_tracking_2D/Timer.h
+                include/object_tracking_2D/randn.h
+                include/object_tracking_2D/ParticleFilter.h
+                include/object_tracking_2D/imageReceiver.h
+                include/object_tracking_2D/non_randomness.h)
 
 set(EBT_src
                 src/main.cpp

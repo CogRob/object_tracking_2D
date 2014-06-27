@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include "tracker_irls.h"
-#include "tracker_pf_texture.h"
-#include "tracker_pf_textureless.h"
+#include "object_tracking_2D/tracker_irls.h"
+#include "object_tracking_2D/tracker_pf_texture.h"
+#include "object_tracking_2D/tracker_pf_textureless.h"
 
 #include <boost/program_options.hpp>
 #include <boost/algorithm/string.hpp>

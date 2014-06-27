@@ -1,9 +1,9 @@
 
-#include "PoseEstimationSURF.h"
-#include "ObjectModel.h"
-#include "epnp.h"
+#include "object_tracking_2D/PoseEstimationSURF.h"
+#include "object_tracking_2D/ObjectModel.h"
+#include "object_tracking_2D/epnp.h"
 
-#include "Timer.h"
+#include "object_tracking_2D/Timer.h"
 
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
