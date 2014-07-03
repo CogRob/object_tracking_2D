@@ -20,6 +20,7 @@ public:
     , lamda_e_(0.5f)
     , lamda_v_(25.f)
     , pf_(NULL)
+    , th_neff_ratio_(0.2f)
   {
     mean_ = cvCreateMat(4, 4, CV_32F);
     
@@ -43,6 +44,8 @@ public:
 
   inline void setNumAnnealingLayers(int l) { num_annealing_layers_= l; initAnnealing(); };
   inline void setNumParticle(int n) { num_particles_ = n; };
+  inline float getThresholdRatioNeff() { return th_neff_ratio_; }
+  inline void setThresholdRatioNeff(float t) { th_neff_ratio_ = t; }
 
 protected:
   void initAnnealing()
@@ -101,4 +104,5 @@ protected:
   int th_ransac_iter_;
   float lamda_e_;
   float lamda_v_;
+  float th_neff_ratio_;
 };

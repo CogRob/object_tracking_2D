@@ -358,6 +358,14 @@ protected:
     return (true);
   }
 
+  bool setImage(cv::Mat img_input)
+  {
+      img_input_ = img_input;
+      cvCvtColor(img_input_, img_gray_, CV_RGB2GRAY);
+      cvCvtColor(img_gray_, img_result_, CV_GRAY2RGB);
+      return true;
+  }
+
   bool getImage(bool ach)
   {
     if(!ach)

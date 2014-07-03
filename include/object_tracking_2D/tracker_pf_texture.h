@@ -236,7 +236,7 @@ protected:
       else
         valid = pf_->Resample(beta_[l], num_anneal_level == 1? true : false, true); // and calculate particle mean
 
-      if(valid)
+      if(valid && th_neff_ratio_*static_cast<float>(pf_->GetNumOfParticle()) < pf_->GetNeff())
       {
         mutex_.lock();
         cvCopy(pf_->GetMeanState(), pose_);
@@ -245,7 +245,7 @@ protected:
       else
       {
         // particle filter results is not valid
-        //init_ = true; // (re-)init again
+        init_ = true; // (re-)init again
         break; // stop annealing process
       }
     }
