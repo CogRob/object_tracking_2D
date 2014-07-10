@@ -358,9 +358,11 @@ protected:
     return (true);
   }
 
-  bool setImage(cv::Mat img_input)
+  bool setImage(cv::Mat image)
   {
-      img_input_ = img_input;
+      IplImage copy = image;
+      img_input_ = static_cast<IplImage *>(&copy);
+
       cvCvtColor(img_input_, img_gray_, CV_RGB2GRAY);
       cvCvtColor(img_gray_, img_result_, CV_GRAY2RGB);
       return true;

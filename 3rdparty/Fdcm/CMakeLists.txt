@@ -9,7 +9,7 @@ find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 # we create a library for line fitting
-add_library(FdcmLib 
+add_library(FdcmLib SHARED 
 	EIEdgeImage.cpp 
 	LMDirectionalIntegralDistanceImage.cpp 
 	LMDisplay.cpp 
