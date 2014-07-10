@@ -5,6 +5,7 @@ What is EBT?
 --------------
 
 EBT is a library of C++ classes that implement edge based object tracking in robotics and vision, using textureless object detection and tracking of the 3D pose.  
+
 Detection and tracking schemes are coherently integrated in a particle filtering framework on the special Euclidean group, SE(3), in which the visual tracking problem is tackled by maintaining multiple hypotheses of the object pose. For textureless object detection, an efficient chamfer matching is employed so that a set of coarse pose hypotheses is estimated from the matching between 2D edge templates of an object and a query image. Particles are then initialized from the coarse pose hypotheses by randomly drawing based on costs of the matching. To ensure the initialized particles are at or close to the global optimum, an annealing process is performed after the initialization. While a standard edge-based tracking is employed after the annealed initialization, this library emploies a refinement process to establish improved correspondences between projected edge points from the object model and edge points from an input image.
 
 Quickstart
@@ -33,8 +34,8 @@ Prerequisites:
 
 Additional Information
 ----------------------
-# Author
-[***Changhyun Choi***](http://www.cc.gatech.edu/~cchoi/About_Me.html) (@heanylab)  
-# Contributors
-[***Ruffin White***](http://about.me/ruffin) (@ruffsl)
+### Author
+[***Changhyun Choi***](http://www.cc.gatech.edu/~cchoi/About_Me.html) ([heanylab](https://github.com/heanylab))  
+### Contributors
+[***Ruffin White***](http://about.me/ruffin) ([ruffsl](https://github.com/ruffsl))  
 [***Heni Ben Amor***](http://henibenamor.weebly.com/)
