@@ -1,5 +1,5 @@
 # Edge Based Tracker
-project(EBT CXX C)
+project(EBT)
 cmake_minimum_required(VERSION 2.8.10)
 
 # Set the version number for the library
@@ -63,11 +63,9 @@ add_subdirectory(3rdparty/Image)
 add_subdirectory(3rdparty/Fitline)
 # Build Fdcm
 add_subdirectory(3rdparty/Fdcm)
-## Build TooN
-#add_subdirectory(3rdparty/TooN)
 
 
-###############################################################################
+################################################################################
 # Set up CPack
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "EBT")
 set(CPACK_PACKAGE_VENDOR "Henrik Christensen, Georgia Institute of Technology")
@@ -93,7 +91,7 @@ set(CPACK_DEBIAN_PACKAGE_DEPENDS   "libboost-dev    (>= 1.43),
                                     liblapack3      (>= 3.5)")
 
 
-###############################################################################
+################################################################################
 # Print configuration variables
 message(STATUS "===============================================================")
 message(STATUS "================  Configuration Options  ======================")
@@ -114,15 +112,10 @@ message(STATUS "  CPack Generator                : ${CPACK_GENERATOR}")
 message(STATUS "EBT flags                                                      ")
 
 message(STATUS "===============================================================")
+################################################################################
 
 # Include CPack *after* all flags
-include(CPack)
-
-set(ebt_targits
-                3rdparty/Image
-                3rdparty/Fitline
-#                3rdparty/TooN
-                3rdparty/Fdcm)
+#include(CPack)
 
 set(FDCM_LIBS ${FDCM_LIBS}
         ${PROJECT_BINARY_DIR}/3rdparty/Fdcm/libFdcmLib.so)
@@ -130,19 +123,15 @@ set(FITLINE_LIBS ${FITLINE_LIBS}
         ${PROJECT_BINARY_DIR}/3rdparty/Fitline/libLineFitLib.so)
 set(IMAGE_LIBS ${IMAGE_LIBS}
         ${PROJECT_BINARY_DIR}/3rdparty/Image/libImageLib.so)
-#set(TOON_LIBS ${TOON_LIBS}
-#        ${PROJECT_BINARY_DIR}/3rdparty/TooN/libTooNLib.so)
 
-# MESSAGE(  ${EdgeBasedTracker_SOURCE_DIR})
-
-include_directories("${EdgeBasedTracker_SOURCE_DIR}/3rdparty")
+include_directories( ${EBT_SOURCE_DIR}/3rdparty)
 include_directories( ${OpenCV_INCLUDE_DIRS} )
-INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
-include_directories( ${EdgeBasedTracker_SOURCE_DIR}/include)
-#include_directories( ${EdgeBasedTracker_SOURCE_DIR})
+include_directories( ${Boost_INCLUDE_DIR} )
+include_directories( ${EBT_SOURCE_DIR}/include)
+#include_directories( ${EBT_SOURCE_DIR})
 
-SET(ADDITIONAL_BOOST_LIBS 
-	boost_program_options boost_system boost_thread)
+set(ADDITIONAL_BOOST_LIBS
+        boost_program_options boost_system boost_thread)
 
 include_directories(include)
 set(incs
@@ -180,8 +169,6 @@ set(EBT_src     src/main.cpp)
 
 set(ETG_src     src/edge_templates_generator.cpp)
 
-
-add_library (EBT SHARED ${incs} ${srcs})
 add_executable(EBTDemo ${incs} ${EBT_src} ${srcs})
 add_executable(ETGDemo ${incs} ${ETG_src} ${srcs})
 
@@ -195,11 +182,8 @@ set(libs
                 ${OpenCV_LIBS}
                 ${FDCM_LIBS}
                 ${FITLINE_LIBS}
-#                ${TOON_LIBS}
                 ${IMAGE_LIBS})
 
-target_link_libraries(EBT
-                ${libs})
 
 target_link_libraries(ETGDemo
                 ${libs})
@@ -207,7 +191,6 @@ target_link_libraries(ETGDemo
 add_dependencies(ETGDemo
                 ImageLib
                 LineFitLib
-#                TooNLib
                 FdcmLib)
 
 target_link_libraries(EBTDemo
@@ -216,13 +199,9 @@ target_link_libraries(EBTDemo
 add_dependencies(EBTDemo
                 ImageLib
                 LineFitLib
-#                TooNLib
                 FdcmLib)
 
-## Add all targets to the build-tree export set
-#export(TARGETS ebt_targits
-#  FILE "${PROJECT_BINARY_DIR}/EdgeBasedTrackerTargets.cmake")
+#add_library(EBT SHARED ${incs} ${srcs})
 
-## Export the package for use from the build-tree
-## (this registers the build-tree with a global CMake-registry)
-#export(PACKAGE EdgeBasedTracker)
+#target_link_libraries(EBT
+#                ${libs})

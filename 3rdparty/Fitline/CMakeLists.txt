@@ -8,7 +8,7 @@ include_directories(../)
 find_package( OpenCV REQUIRED )
 
 # we create a library for line fitting
-add_library(LineFitLib SHARED 
+add_library(LineFitLib SHARED
 	fitline.cpp 
 	LFLineFitter.cpp 
 	LFLineSegment.cpp)
