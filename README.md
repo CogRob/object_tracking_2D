@@ -28,7 +28,8 @@ Prerequisites:
 - [OpenGL](http://www.opengl.org/) >= 1.10 (Ubuntu: `sudo apt-get install libglew-dev`)
 - [GLEW](http://glew.sourceforge.net/) >= 1.10 (Ubuntu: `sudo apt-get install libglew-dev`)
 - [GLUT](http://www.opengl.org/resources/libraries/glut/) >=2.8.1 (Ubuntu: `sudo apt-get install freeglut3-dev`)
-- [OpenCV](http://opencv.org/downloads.html) >= 2.4 (Ubuntu: `sudo apt-get install libopencv-dev`)
+- [OpenCV](http://opencv.org/downloads.html) = 2.4 to 2.4.9 ~~(Ubuntu: `sudo apt-get install libopencv-dev`)~~ build from source
+ -  Note: OpenCV has changed with respect to nonfree components of the library. Patented features such as SURF have now been moved to https://github.com/Itseez/opencv_contrib, and are thus no longer shipped with the standard Debian package. In 2.4.9, you must enable the `BUILD_opencv_nonfree` flag when compiling. Also, portions of the old C API have also chenged in newer verssions of OpenCV as well (>2.4.9), and is thus not recomended.
 - [LAPACK](http://www.netlib.org/lapack/) >= 3.5 (Ubuntu: `sudo apt-get install liblapack3`)
 - [CMake](http://www.cmake.org/cmake/resources/software.html) >= 2.6 (Ubuntu: `sudo apt-get install cmake`)
 
