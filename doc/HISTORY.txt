@@ -1,0 +1,135 @@
+2010/10/13
+V. change VC2005 to VC2008
+
+2010/06/04
+V. elaborate code
+
+2009/03/02
+V. Tested with OpenCV SURF example code
+
+2009/03/09
+V. Debug the routine using cvFindExtrinsicCameraParams2() for accurate pose results
+V. Draw the projected points with the estimated pose
+V. Change to undistortion version (to rectify the distorted images)
+V. Refine correpondence using H or F with RANSAC
+V. Test with the car door images
+
+2009/03/10
+V. Add OpenGL model drawing and sampling points
+
+2009/03/11
+V. Calculate the normal direction of each sampling point
+
+2009/03/12
+V. Search the normal direction to find nearest edges
+V. Calculate the error 'd' between the sampling points and the near edges
+
+2009/03/20
+V. Add TooN
+V. Calculate Jacobian
+V. Determine pose with WLS
+V. Check why project model is distorted > not distorted
+
+2009/03/22
+V. Change to cpp class form - pose estimation
+
+2009/03/24
+V. Change to cpp class form - object model
+V. Change to cpp class form - camera
+
+2009/03/25
+V. Change to cpp class form - edge tracker
+V. Replace xml load and read with variable passing
+V. Enable sequential tracking
+
+2009/03/26
+V. Test with video stream
+
+2009/03/31
+V. Solve the memory leak
+
+2009/04/06
+V. Improove performance with IPP (60ms -> 40ms)
+
+2009/04/22
+V. Change the origin of model (center -> left bottom)
+V. Add door model
+V. Track door model on screen image
+
+2009/04/23
+V. Update more enhanced car door model data (line model) > better tracking performance
+
+2009/06/02
+V. Add an interface for loading 3D model of Wavefront format (OBJ file)
+
+2009/06/09
+v. Make several sections more optimized (55ms > 53ms)
+
+2009/06/15
+V. Reweight edges with respect to the length of edges > But not so good.
+V. Debug memory leak > Added glDeleteQueriesARB() after glGenQueriesARB()
+
+2009/07/08
+V. Add (starbacks cup, 3D vision book, tea box, and kuka mug) object
+V. Add initial pose estimation data for those new object
+V. Add automatic switching from initial pose estimation mode to tracking mode
+
+2009/07/14
+V. Add TCP socket to communicate with interface service
+V. Change model loading to semi automatic
+V. Add auto-reset to edgeBasedTracker (edge tracking > SURF tracking)
+V. Modify edgeBasedTracker to send identity until being capable of sending reliable pose
+V. Link to robotic arm
+
+2009/07/16
+V. Enable considering silhouette edge for tracking
+
+2009/07/19
+V. Test with gradient maps instead of Canny edge maps
+V. Try multiple hypothesis > but no significant enhancement > return to previous version
+
+2009/07/24
+V. Add texture information (corner features)
+
+2009/07/27 (*special version)
+V. Enable multiple tracking
+
+2009/07/29
+V. Return to GM car door model
+V. Add more simplified car model
+
+2009/08/01
+V. Add carlyle_cup object
+
+2009/08/02
+V. Add FLEA camera mode (flip source image stream)
+V. Modify two cup object to smaller keyframes
+
+2009/08/10
+V. Add k-d tree > faster initial (global) pose estimation
+
+2009/08/14
+V. Add multiple keyframes for the global pose estimation
+
+2009/08/17
+V. Change F to H in RANSAC routine
+
+2009/10/01
+V. Add Prosilica camera in CCamera class
+
+2010/01/14
+V. Debug a network problem (by handling 'carriage return' and 'line feed')
+
+2010/02/25-03/02
+V. Replace the OpenCV pose estimation to EPnP + RANSAC
+
+
+
+. Debug why 1-to-n correspondences are occured in SURF-based matching
+. Add a particle filter for GPE
+. Add a Kalman filter for LPE
+. Debug a bug in Flea camera mode (starting up error w/o VC)
+. Debug memory leak
+. Solve the windows overlap problem in OpenGL occlusion test
+
+. Monitoring tracking by using SURF feature

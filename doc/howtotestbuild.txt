@@ -1,0 +1,3 @@
+mkdir test_build
+cd test_build
+cmake -D CMAKE_PREFIX_PATH=/home/hbenamor/Downloads/opencv-2.4.7/ ..
