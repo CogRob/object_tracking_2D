@@ -206,5 +206,4 @@ add_dependencies(EBTDemo
 
 add_library(object_tracking_2d SHARED ${incs} ${srcs})
 
-#target_link_libraries(EBT
-#                ${libs})
+target_link_libraries(object_tracking_2d ${libs})
