@@ -30,6 +30,7 @@ install_manifest.txt
 
 # Build
 build
+opencv
 
 # Gedit Files
 *~

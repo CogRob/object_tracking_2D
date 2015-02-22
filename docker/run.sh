@@ -8,15 +8,7 @@ if ! version_gt "${docker_version}" "1.2.0"; then
 	exit 1
 fi
 
-if test $# -lt 1; then
-	# Get the latest opengl-nvidia build
-	# and start with an interactive terminal enabled
-	args="-i -t $(docker images | grep ^cogrob/omnimapper-nvidia | head -n 1 | awk '{ print $1":"$2 }')"
-else
-        # Use this script with derived images, and pass your 'docker run' args
-	args="$@"
-fi
-
+args="$@"
 
 USER_UID=$(id -u)
 USER_GID=$(id -g)
@@ -36,13 +28,9 @@ docker run \
 	--volume=$XSOCK:$XSOCK:rw \
 	--volume=$XAUTH:$XAUTH:rw \
 	--privileged -v /dev/video0:/dev/video0 \
-	--device /dev/nvidia0:/dev/nvidia0 \
-	--device /dev/nvidiactl:/dev/nvidiactl \
 	--env="XAUTHORITY=${XAUTH}" \
 	--env="USER_UID=${USER_UID}" \
 	--env="USER_GID=${USER_GID}" \
 	--env="DISPLAY=${DISPLAY}" \
 	-u dox \
 	$args
-	
-#--device=/dev/dri/card0:/dev/dri/card0 \

@@ -9,5 +9,5 @@ if test ! -f nvidia-driver.run; then
   wget -O nvidia-driver.run $nvidia_driver_uri
 fi
 
-# docker build -t cogrob/omnimapper-nvidia:${nvidia_version} .
-# docker tag cogrob/omnimapper-nvidia:${nvidia_version} cogrob/omnimapper-nvidia:latest
+# docker build -t cogrob/ebt-nvidia:${nvidia_version} .
+# docker tag cogrob/ebt-nvidia:${nvidia_version} cogrob/ebt-nvidia:latest
