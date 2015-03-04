@@ -294,6 +294,10 @@ public:
   inline void   setSaveResultText(bool tf)          { save_rslt_txt_ = tf;    }
   inline bool   getSaveResultImage()                { return save_rslt_img_;  }
   inline void   setSaveResultImage(bool tf)         { save_rslt_img_ = tf;    }
+  inline CvMat*   getPose()                           { return pose_;           }
+  inline void   setPose(CvMat* pose)                { pose_ = pose;           }
+  inline IplImage*   getResultImage()               { return img_result_;     }
+  inline IplImage*   getEdgeImage()                 { return img_edge_;       }
   inline void   setMinKeypointMatches(int d)        { min_keypoint_matches = d; }
   inline void   setTracking(bool use_tracking)      { use_tracking_ = use_tracking; }
   inline std::string& getSaveResultPath()           { return str_result_path_; }
@@ -306,6 +310,31 @@ public:
     }
     str_result_path_ = path;
     return true;
+  }
+  virtual void tracking() = 0;
+
+  bool setImage(cv::Mat image)
+  {
+      IplImage copy = image;
+      img_input_ = static_cast<IplImage *>(&copy);
+
+      cvCvtColor(img_input_, img_gray_, CV_RGB2GRAY);
+      cvCvtColor(img_gray_, img_result_, CV_GRAY2RGB);
+      return true;
+  }
+
+  virtual void renderResults()
+  {
+    CvScalar color = cvScalar(0,0,255);
+    obj_model_->displayPoseLine(img_result_, pose_, color, 1, false);
+    obj_model_->displaySamplePointsAndErrors(img_edge_);
+  }
+
+  virtual void displayResults()
+  {
+    renderResults();
+    cvShowImage("Result", img_result_);
+    cvShowImage("Edge", img_edge_);
   }
 
 protected:
@@ -358,15 +387,6 @@ protected:
     return (true);
   }
 
-  bool setImage(cv::Mat image)
-  {
-      IplImage copy = image;
-      img_input_ = static_cast<IplImage *>(&copy);
-
-      cvCvtColor(img_input_, img_gray_, CV_RGB2GRAY);
-      cvCvtColor(img_gray_, img_result_, CV_GRAY2RGB);
-      return true;
-  }
 
   bool getImage(bool ach)
   {
@@ -406,17 +426,6 @@ protected:
   }
 
   virtual void handleKey(char key) = 0;
-
-  virtual void displayResults()
-  {
-    CvScalar color = cvScalar(255,255,0);
-    obj_model_->displayPoseLine(img_result_, pose_, color, 1, false);
-    obj_model_->displaySamplePointsAndErrors(img_edge_);
-    cvShowImage("Result", img_result_);
-    cvShowImage("Edge", img_edge_);
-  }
-
-  virtual void tracking() = 0;
 
   virtual bool initialize()
   {
