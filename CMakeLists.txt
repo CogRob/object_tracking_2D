@@ -2,8 +2,8 @@
 project(EBT)
 cmake_minimum_required(VERSION 2.8.10)
 
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+#set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+#set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 # Set the version number for the library
 set (EBT_VERSION_MAJOR 1)
