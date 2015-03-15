@@ -1,6 +1,6 @@
 # Edge Based Tracker
 project(EBT)
-cmake_minimum_required(VERSION 2.8.10)
+cmake_minimum_required(VERSION 2.8.7)
 
 # Set the version number for the library
 set (EBT_VERSION_MAJOR 1)

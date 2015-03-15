@@ -8,8 +8,8 @@ before_install() {
 	&& mkdir build \
 	&& cd build \
 	&& cmake -BUILD_opencv_nonfree="True" .. \
-	&& make \
-	&& sudo make install
+	&& make -j$(nproc) \
+	&& sudo make -j$(nproc) install
 }
 
 APT_CORE='
