@@ -1,1 +1,1 @@
-make -j$(nproc)
+make -j$(($(nproc)/2))
