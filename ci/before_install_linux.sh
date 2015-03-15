@@ -25,6 +25,6 @@ libgtk2.0-dev
 pkg-config
 '
 
-sudo apt-get -qq --yes --force-yes install $APT
+sudo apt-get -qq --yes --force-yes install $APT_CORE
 
 (before_install)
