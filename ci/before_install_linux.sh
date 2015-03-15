@@ -2,7 +2,9 @@ before_install() {
   cd /tmp
   git clone https://github.com/Itseez/opencv.git
 
-  cd git checkout 2.4.9 \
+  cd opencv/ \
+  	&& ls \
+	&& git checkout 2.4.9 \
 	&& mkdir build \
 	&& cd build \
 	&& cmake -BUILD_opencv_nonfree="True" .. \
