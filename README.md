@@ -38,4 +38,4 @@ Additional Information
 ### Author
 [***Changhyun Choi***](http://www.cc.gatech.edu/~cchoi/About_Me.html) ([heanylab](https://github.com/heanylab))  
 
-
+[![Build Status](https://travis-ci.org/CognitiveRobotics/object_tracking_2D.svg?branch=master)](https://travis-ci.org/CognitiveRobotics/object_tracking_2D)

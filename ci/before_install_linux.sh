@@ -1,7 +1,7 @@
 before_install() {
+  echo Number of cores: $(nproc)
   cd /tmp
   git clone https://github.com/Itseez/opencv.git
-
   cd opencv/ \
   	&& ls \
 	&& git checkout 2.4.9 \
