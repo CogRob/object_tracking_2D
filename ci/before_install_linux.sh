@@ -15,10 +15,9 @@ before_install() {
 
 APT_CORE='
 cmake
-libboost-all-dev
+libboost-dev
 libglew-dev
 freeglut3-dev
-liblapack3
 build-essential
 libxmu-dev
 libxi-dev
@@ -29,6 +28,6 @@ pkg-config
 
 sudo apt-get -qq --yes --force-yes install $APT_CORE
 
-(before_install)
+#(before_install)
 sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/local.conf'
 sudo ldconfig
