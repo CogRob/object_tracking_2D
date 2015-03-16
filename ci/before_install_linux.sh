@@ -28,6 +28,6 @@ pkg-config
 
 sudo apt-get -qq --yes --force-yes install $APT_CORE
 
-#(before_install)
+(before_install)
 sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/local.conf'
 sudo ldconfig
