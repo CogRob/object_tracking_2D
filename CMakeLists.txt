@@ -1,6 +1,6 @@
 # Edge Based Tracker
 project(EBT)
-cmake_minimum_required(VERSION 2.8.10)
+cmake_minimum_required(VERSION 2.8.7)
 
 #set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 #set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})

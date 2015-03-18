@@ -34,7 +34,7 @@ CParticleFilter::CParticleFilter(int NumOfParticle/*=1*/, float AR_param/*=0.0*/
     ar_vel_opt_[i] = cvCreateMat(4, 4, CV_32F);
   }
   ar_param_ = AR_param;
-
+  ar_param_=1;
   dt_ = (float)(1./30.);
 
   neff_ = 0.0f;
@@ -332,7 +332,7 @@ void CParticleFilter::Update_IRLS(int i, CvMat* J, CvMat* e, int NumOfVisibleSam
   // Update on states_pred_
   double inc_data[6];
   for(int j=0; j<6; j++)
-    inc_data[j] = CV_MAT_ELEM(*inc, float, j, 0);
+    inc_data[j] = CV_MAT_ELEM(*inc, float, j, 0);  // try with 2 times as much 
 
   if(limityrot_)
     inc_data[4] = 0.0; // y-axis angle
