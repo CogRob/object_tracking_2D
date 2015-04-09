@@ -45,7 +45,7 @@ public:
   CObjectModel(string obj_name, int width, int height, CvMat* intrinsic, float sample_step, int maxd, bool dulledge, CEdgeTracker* edge_tracker);
   ~CObjectModel(void);
 
-  void loadObjectCADModel(string obj_name);
+  void loadObjectCADModel(const std::string& obj_name);
   void findVisibleSamplePoints(void);
 
   void setProjectionMatrix(CvMat* intrinsic);
@@ -58,7 +58,7 @@ public:
 
   void saveKeyframe(string obj_name, IplImage* imgG, CvMat* pose);
   void loadKeyframes(string obj_name);
-  void loadEdgeTemplates(string obj_name);
+  void loadEdgeTemplates(const std::string& obj_name);
 
   inline std::vector<IplImage*>& getKeyframeImages()    { return keyframe_images_;              }
   inline std::vector<CvMat*>& getKeyframePoses()        { return keyframe_poses_;               }

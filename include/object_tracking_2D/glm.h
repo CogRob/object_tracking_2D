@@ -10,6 +10,11 @@
       coordinate generation (spheremap and planar projections) + more.
 
  */
+
+// Added by arprice
+#ifndef GLM_H
+#define GLM_H
+
 // Added by cchoi
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -278,3 +283,5 @@ glmWeld(GLMmodel* model, GLfloat epsilon);
  */
 GLubyte* 
 glmReadPPM(char* filename, int* width, int* height);
+
+#endif // GLM_H
