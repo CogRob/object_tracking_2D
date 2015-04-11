@@ -2,6 +2,9 @@
 project(EBT)
 cmake_minimum_required(VERSION 2.8.7)
 
+#set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+#set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+
 # Set the version number for the library
 set (EBT_VERSION_MAJOR 1)
 set (EBT_VERSION_MINOR 0)
@@ -201,7 +204,6 @@ add_dependencies(EBTDemo
                 LineFitLib
                 FdcmLib)
 
-#add_library(EBT SHARED ${incs} ${srcs})
+add_library(object_tracking_2d SHARED ${incs} ${srcs})
 
-#target_link_libraries(EBT
-#                ${libs})
+target_link_libraries(object_tracking_2d ${libs})

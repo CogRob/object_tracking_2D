@@ -18,7 +18,7 @@ CPoseEstimationSURF::CPoseEstimationSURF(int width, int height, std::string& img
 {
   ms_ = cvCreateMemStorage(0);
   // tested different hessian threshold (200, 500, 5000), but no significant performance change
-  surf_params_ = cvSURFParams(500, 1);
+  surf_params_ = cvSURFParams(50, 3);
 
   // allocate images
   img_input_ = cvCreateImage(cvSize(width, height), 8, 1);
@@ -40,7 +40,8 @@ CPoseEstimationSURF::CPoseEstimationSURF(int width, int height, std::string& img
   distortion_ = distortion_params;
 
   // check that there is the file
-  string templateFileName("data_" + objName + "/" + objName + ".txt");
+  string templateFileName( img_path + "/" + objName + ".txt");
+  std::cout<<templateFileName.c_str()<<std::endl;
   fstream file;
   file.open(templateFileName.c_str());
   if(file.is_open())
@@ -53,7 +54,7 @@ CPoseEstimationSURF::CPoseEstimationSURF(int width, int height, std::string& img
   }
 
   // HACK:
-//  cv::initModule_nonfree(); // for SURF feature
+  cv::initModule_nonfree(); // for SURF feature
 }
 
 CPoseEstimationSURF::~CPoseEstimationSURF(void)

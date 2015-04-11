@@ -1,3 +1,11 @@
+# CMake
+CMakeCache.txt
+CMakeLists.txt.user
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
 # Compiled Object files
 *.slo
 *.lo
@@ -26,3 +34,10 @@
 *.exe
 *.out
 *.app
+
+# Build
+build
+opencv
+
+# Gedit Files
+*~
