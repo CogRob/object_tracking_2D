@@ -6,7 +6,8 @@ class TextureParticleFilterTracker : public ParticleFilterTracker
 {
 public:
   TextureParticleFilterTracker()
-    : pe_surf_(NULL)
+    : pe_surf_(NULL),
+      init_keyframes_(false)
   {
 
   }
@@ -20,7 +21,7 @@ public:
   {
     TrackerBase::initTracker(obj_name, cam_name, intrinsic, distortion, width, height, pose_init, ach_channel);
 
-    initPoseEstimationSURF(width, height, std::string("data_")+obj_name, obj_name);
+    initPoseEstimationSURF(width, height, obj_name, obj_name);
 
     cvCopy(pose_init_, pose_);
 
@@ -35,6 +36,7 @@ public:
 
 protected:
   CPoseEstimationSURF* pe_surf_;
+  bool init_keyframes_;
 
   virtual bool initObjectModel(std::string name, int width, int height, CvMat* intrinsic, float sample_step, int maxd, bool dulledge, CEdgeTracker* edge_tracker)
   {
@@ -69,6 +71,14 @@ protected:
     return (true);
   }
 
+
+  bool initKeyframes()
+  {
+    initPoseEstimationSURF(width_, height_, std::string("data_")+obj_name_, obj_name_);
+
+    return (true);
+  }
+
   virtual void displayResults()
   {
     ParticleFilterTracker::displayResults();
@@ -90,7 +100,23 @@ protected:
       display_init_result_ = true;
       pe_surf_->setImage(img_gray_);
 
-      if(pf_->GetNumOfParticle() == 1)
+
+      int num_corr = 0;
+      CvMat* pose = pe_surf_->estimatePose(num_corr);
+      if(num_corr > 4)
+      {
+        // 'pose' might be valid
+        pf_->Init(0, pose);
+
+        mutex_.lock();
+        cvCopy(pose, pose_);
+        mutex_.unlock();
+
+        init_ = false;
+        return true;
+      }
+
+    /*  if(pf_->GetNumOfParticle() == 1)
       {
         // init as 'IrlsTracker'
         int num_corr = 0;
@@ -108,7 +134,7 @@ protected:
           return true;
         }
       }
-      else // for more than 1 particle
+     else // for more than 1 particle
       {
         int num_corr = 0;
         pe_surf_->PF_estimatePoses(num_corr, pf_->GetNumOfParticle(), pf_->GetStates());
@@ -127,7 +153,7 @@ protected:
           init_ = false;
           return true;
         }
-      }
+      }*/
     }
     return false;
   }
@@ -159,6 +185,9 @@ protected:
   virtual void tracking()
   {
     // do annealing process only after (re-)initialization
+
+      if(init_keyframes_)
+        initKeyframes();
     int num_anneal_level = frame_num_after_init_ == 0 ? num_annealing_layers_ : 1;
 
     for(int l = num_anneal_level-1; l >= 0; l--)
@@ -172,11 +201,12 @@ protected:
       if(display_)
         cvCvtColor(img_gray_, img_result_, CV_GRAY2BGR); // shoud be changed in better way
 
-      if(num_anneal_level == 1)
+    /*  if(num_anneal_level == 1)
         pf_->Propagate(noise_l_, noise_h_, true);
       else
-        pf_->Propagate(alpha_[l], alpha_[l], l == num_anneal_level-1 ? true : false);
+        pf_->Propagate(alpha_[l], alpha_[l], l == num_anneal_level-1 ? true : false);*/
       
+      pf_->Propagate(noise_l_, noise_h_, true);
       for(int p = 0; p < pf_->GetNumOfParticle(); p++)
       {
         // update the initial pose to object model for displaying
@@ -232,11 +262,11 @@ protected:
       // resampling
       bool valid;
       if(pf_->GetNumOfParticle() > 1)
-        valid = pf_->ResampleOpt(beta_[l], num_anneal_level == 1? true : false, true); // and calculate particle mean
+        valid = pf_->Resample(beta_[l], num_anneal_level == 1? true : false, true); // and calculate particle mean
       else
         valid = pf_->Resample(beta_[l], num_anneal_level == 1? true : false, true); // and calculate particle mean
 
-      if(valid && th_neff_ratio_*static_cast<float>(pf_->GetNumOfParticle()) < pf_->GetNeff())
+      if(valid) // && th_neff_ratio_*static_cast<float>(pf_->GetNumOfParticle()) < pf_->GetNeff())
       {
         mutex_.lock();
         cvCopy(pf_->GetMeanState(), pose_);
@@ -251,10 +281,10 @@ protected:
     }
 
     // reset 'previous state of particles' to 'current state of particles' right after annealing
-    if(num_anneal_level > 1 && !init_)
-    {
+   // if(num_anneal_level > 1 && !init_)
+    //{
       for(int p=0; p<pf_->GetNumOfParticle(); p++)
         cvCopy(pf_->GetState(p), pf_->GetPrevState(p));
-    }
+    //}
   }
 };

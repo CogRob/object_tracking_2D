@@ -194,7 +194,7 @@ void CObjectModel::loadKeyframes(string obj_name)
   }
 
   num_keyframes_ = 0;
-  std::string data_dir = "data_" + obj_name;
+  std::string data_dir =  obj_name;
   fstream fsk;
   fsk.open((data_dir + "/" + "keyframe001.jpg").c_str());
   // count the number of keyframes
@@ -252,7 +252,7 @@ void CObjectModel::saveKeyframe(std::string obj_name, IplImage* imgG, CvMat* pos
   std::stringstream ss;
 
   // keyframe image
-  std::string data_dir = "data_" + obj_name;
+  std::string data_dir = obj_name;
   ss << data_dir << "/" << "keyframe" << std::setw(3) << std::setfill('0') << num_keyframes_+1 << ".jpg";
   cvSaveImage(ss.str().c_str(), imgG);
   
@@ -356,7 +356,7 @@ void CObjectModel::_saveSURFkeypoints(std::string& obj_name, IplImage* imgG, CvM
   CvSeq *imageKeypoints;
   CvSeq *imageDescriptors;
   CvMemStorage* ms = cvCreateMemStorage(0);
-  CvSURFParams params = cvSURFParams(500, 1); // merged in the future
+  CvSURFParams params = cvSURFParams(100, 3); // merged in the future
   cvExtractSURF(imgG, 0, &imageKeypoints, &imageDescriptors, ms, params);
   CvSeqReader reader, kreader;
   int dims = imageDescriptors->elem_size/sizeof(float);
@@ -405,8 +405,8 @@ void CObjectModel::_saveSURFkeypoints(std::string& obj_name, IplImage* imgG, CvM
     assert(0 <= idx && idx <= meshmodel_->numtriangles);
 
     // idx == 0 means black background.
-    //if(idx > 0 && idx <= meshmodel_->numtriangles) // any face
-    if(idx > 0) // any face
+    if(idx > 0 && idx <= meshmodel_->numtriangles) // any face
+    //if(idx > 0) // any face
     {
       int v1 = meshmodel_->triangles[idx-1].vindices[0];
       int v2 = meshmodel_->triangles[idx-1].vindices[1];
@@ -542,7 +542,7 @@ void CObjectModel::loadEdgeTemplates(string obj_name)
 
   num_edge_templates_ = 0;
 
-  string templateFileName("data_" + obj_name + "/" + obj_name + ".txt");
+  string templateFileName(obj_name + "/" + obj_name + ".txt");
 
   fstream file;
   file.open(templateFileName.c_str());
@@ -563,7 +563,7 @@ void CObjectModel::loadEdgeTemplates(string obj_name)
 
 
     // Read templates - png & xml files
-    string data_dir = "data_" + obj_name;
+    string data_dir =  obj_name;
     char buf[50];
     edge_template_poses_.resize(num_edge_templates_);
     for(int i=0; i<num_edge_templates_; i++)
@@ -585,11 +585,9 @@ void CObjectModel::findVisibleSamplePoints(void)
   glEnable(GL_POLYGON_OFFSET_FILL);
   glPolygonOffset(1.0, 1.0);
   glColor3f(0.0, 0.0, 0.0);
-
   glCallList(dl_); // draw object model saved in display list
 
   glDisable(GL_POLYGON_OFFSET_FILL);
-
   // Occlusion test
   vector<CvPoint3D32f> visible_sharpedge_samplepoint; // sample points after visibility test
   vector<int> visible_sharpedge_samplepoint_edge_membership;
@@ -840,6 +838,19 @@ void CObjectModel::findVisibleSamplePoints(void)
   //glutSwapBuffers();
   //glFlush();
 
+	// remove all points that are out of
+	// visible z-area
+  /*std::vector<SamplePoint> newSamplepoints;
+  for(int i=0; i< visible_sample_points_.size(); i++)
+	{
+		//std::cout << visible_sample_points_[i].coord2.x ;
+		unsigned short val = depth.at<unsigned short>(visible_sample_points_[i].coord2.y,visible_sample_points_[i].coord2.x);
+
+		if(val < max && val > min)
+				newSamplepoints.push_back(visible_sample_points_[i]);
+	}
+	visible_sample_points_ = newSamplepoints;*/
+
   visible_sharpedge_samplepoint.clear();
   visible_sharpedge_samplepoint_edge_membership.clear();
   visible_dulledge_samplepoint.clear();
@@ -911,6 +922,10 @@ void CObjectModel::setProjectionMatrix(CvMat* intrinsic)
 
 void CObjectModel::setModelviewMatrix(CvMat* pose)
 {
+//  printf("reached 0\n"); fflush(stdout);
+  GLenum e = glCheckFramebufferStatus(GL_DRAW_FRAMEBUFFER);
+  if (e != GL_FRAMEBUFFER_COMPLETE)
+    printf("There is a problem with the FBO\n");
   glMatrixMode(GL_MODELVIEW);
   GLfloat Mm[16];
 

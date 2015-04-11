@@ -23,7 +23,7 @@ public:
   {
     TrackerBase::initTracker(obj_name, cam_name, intrinsic, distortion, width, height, pose_init, ach_channel);
 
-    initPoseEstimationSURF(width, height, std::string("data_")+obj_name, obj_name);
+    initPoseEstimationSURF(width, height, obj_name, obj_name);
 
     return (true);
   }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <boost/signals2/mutex.hpp> 
+#include <boost/signals2/mutex.hpp>
 #include <boost/thread.hpp>
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
@@ -23,9 +23,7 @@
 //#include <ach.h>
 //#include <sns.h>
 
-//#include "pose_msg.h"
-
-
+using namespace cv;
 using boost::asio::ip::tcp;
 
 class TrackerBase
@@ -35,8 +33,8 @@ public:
     : cam_(NULL)
     , edge_tracker_(NULL)
     , obj_model_(NULL)
-    , th_canny_l_(20) //100
-    , th_canny_h_(60) //120
+    , th_canny_l_(100) //100
+    , th_canny_h_(120) //120
     , sample_step_(0.005f)
     , maxd_(32)
     , dulledge_(false)
@@ -47,14 +45,18 @@ public:
     , th_valid_sample_points_ratio_(0.01)
     , img_input_(NULL)
     , img_gray_(NULL)
+    , img_gray_tracking(NULL)
     , img_result_(NULL)
     , img_edge_(NULL)
-    , display_(true)
+    , display_(true)    , display_result_(true)
+    , display_init_result_(false)
+    , display_edge_result_(true)
+    , display_grayscale_image_(false)
     , smooth_size_(1)
     , obj_name_("")
-    , display_init_result_(false)
     , frame_num_(0)
     , frame_num_after_init_(0)
+    , hsvFilt(NULL)
     , net_(false)
     , save_rslt_txt_(false)
     , save_rslt_img_(false)
@@ -78,6 +80,7 @@ public:
 
     // 'img_input_' is aleady released
     if(img_gray_)       cvReleaseImage(&img_gray_);
+    if(img_gray_tracking)       cvReleaseImage(&img_gray_tracking);
     if(img_result_)     cvReleaseImage(&img_result_);
     if(img_edge_)       cvReleaseImage(&img_edge_);
 
@@ -171,7 +174,17 @@ public:
 		{
 			printf("[%1.3f %1.3f %1.3f %1.3f]\n", CV_MAT_ELEM(*p, float, cur_row, 0), CV_MAT_ELEM(*p, float, cur_row, 1) ,CV_MAT_ELEM(*p, float, cur_row, 2), CV_MAT_ELEM(*p, float, cur_row, 3));
     }
-    return; 
+    return;
+  }
+
+  cv::Mat filterOutColor(Mat inputImage, int iLowH, int iLowS, int iLowV, int iHighH, int iHighS, int iHighV)
+  {
+    Mat imgHSV;
+    Mat imgThresholded;
+    cvtColor(inputImage, imgHSV, COLOR_BGR2HSV);
+    inRange(imgHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imgThresholded); //Threshold the image
+
+    return imgThresholded;
   }
 
   void run()
@@ -201,6 +214,18 @@ public:
       if(init_) initialize();
 
       //time_init_ = timer_.printTimeMilliSec("initializing");
+
+      // filter color from image
+      if(hsvFilt!=NULL)
+      {
+        IplImage* tmp = new IplImage(filterOutColor(img_input_, hsvFilt[0], hsvFilt[1], hsvFilt[2], hsvFilt[3], hsvFilt[4], hsvFilt[5]));
+        img_gray_tracking = cvCloneImage(tmp);
+        //cvCvtColor(img_gray_tracking, img_result_, CV_GRAY2RGB);
+      }
+      else
+      {
+        img_gray_tracking = cvCloneImage(img_gray_);
+      }
 
       // do processing
       //timer_.start();
@@ -294,6 +319,10 @@ public:
   inline void   setSaveResultText(bool tf)          { save_rslt_txt_ = tf;    }
   inline bool   getSaveResultImage()                { return save_rslt_img_;  }
   inline void   setSaveResultImage(bool tf)         { save_rslt_img_ = tf;    }
+  inline CvMat*   getPose()                           { return pose_;           }
+  inline void   setPose(CvMat* pose)                { pose_ = pose;           }
+  inline IplImage*   getResultImage()               { return img_result_;     }
+  inline IplImage*   getEdgeImage()                 { return img_edge_;       }
   inline void   setMinKeypointMatches(int d)        { min_keypoint_matches = d; }
   inline void   setTracking(bool use_tracking)      { use_tracking_ = use_tracking; }
   inline std::string& getSaveResultPath()           { return str_result_path_; }
@@ -306,6 +335,36 @@ public:
     }
     str_result_path_ = path;
     return true;
+  }
+  virtual void tracking() = 0;
+
+  void setColorFilter(int* thresholds)
+  {
+    hsvFilt = thresholds;
+  }
+
+  bool setImage(cv::Mat image)
+  {
+      IplImage copy = image;
+      img_input_ = static_cast<IplImage *>(&copy);
+
+      cvCvtColor(img_input_, img_gray_, CV_RGB2GRAY);
+      cvCvtColor(img_gray_, img_result_, CV_GRAY2RGB);
+      return true;
+  }
+
+  virtual void renderResults()
+  {
+    CvScalar color = cvScalar(0,0,255);
+    obj_model_->displayPoseLine(img_result_, pose_, color, 1, false);
+    obj_model_->displaySamplePointsAndErrors(img_edge_);
+  }
+
+  virtual void displayResults()
+  {
+    renderResults();
+    cvShowImage("Result", img_result_);
+    cvShowImage("Edge", img_edge_);
   }
 
 protected:
@@ -358,15 +417,6 @@ protected:
     return (true);
   }
 
-  bool setImage(cv::Mat image)
-  {
-      IplImage copy = image;
-      img_input_ = static_cast<IplImage *>(&copy);
-
-      cvCvtColor(img_input_, img_gray_, CV_RGB2GRAY);
-      cvCvtColor(img_gray_, img_result_, CV_GRAY2RGB);
-      return true;
-  }
 
   bool getImage(bool ach)
   {
@@ -406,17 +456,6 @@ protected:
   }
 
   virtual void handleKey(char key) = 0;
-
-  virtual void displayResults()
-  {
-    CvScalar color = cvScalar(255,255,0);
-    obj_model_->displayPoseLine(img_result_, pose_, color, 1, false);
-    obj_model_->displaySamplePointsAndErrors(img_edge_);
-    cvShowImage("Result", img_result_);
-    cvShowImage("Edge", img_edge_);
-  }
-
-  virtual void tracking() = 0;
 
   virtual bool initialize()
   {
@@ -531,10 +570,16 @@ protected:
   float ransac_th_;
   bool limityrot_;
   bool display_;
+  bool display_result_;
+  bool display_edge_result_;
+  bool display_grayscale_image_;
+
   int smooth_size_;
 
   IplImage* img_input_;
   IplImage* img_gray_;
+  IplImage* img_gray_tracking;
+  IplImage* img_mask_;
   IplImage* img_result_;
   IplImage* img_edge_;
 
@@ -553,4 +598,6 @@ protected:
   bool use_tracking_;
   //ImageReceiver rec;
   cv::Mat image;
+
+  int* hsvFilt;
 };
