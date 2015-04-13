@@ -10,6 +10,12 @@
 #include <limits>
 #include <omp.h> // openmp
 #include "object_tracking_2D/Timer.h"
+#include "object_tracking_2D/ModelImport.h"
+
+#include <boost/filesystem.hpp>
+#include <stdexcept>
+
+namespace fs = boost::filesystem;
 
 CObjectModel::CObjectModel(string obj_name, int width, int height, CvMat* intrinsic, float sample_step, int maxd, bool dulledge, CEdgeTracker* edge_tracker)
   : width_(width)
@@ -532,7 +538,7 @@ void CObjectModel::_saveSURFkeypoints(std::string& obj_name, IplImage* imgG, CvM
   glFlush();
 }
 
-void CObjectModel::loadEdgeTemplates(string obj_name)
+void CObjectModel::loadEdgeTemplates(const std::string& obj_name)
 {
   // Release the previous data
   for(int i=0; i<num_edge_templates_; i++)
@@ -542,7 +548,9 @@ void CObjectModel::loadEdgeTemplates(string obj_name)
 
   num_edge_templates_ = 0;
 
-  string templateFileName(obj_name + "/" + obj_name + ".txt");
+  // Compute filename
+  fs::path path(obj_name);
+  string templateFileName(path.parent_path().string() + "/" + path.stem().string() + ".txt");
 
   fstream file;
   file.open(templateFileName.c_str());
@@ -563,7 +571,7 @@ void CObjectModel::loadEdgeTemplates(string obj_name)
 
 
     // Read templates - png & xml files
-    string data_dir =  obj_name;
+    string data_dir = path.parent_path().string() + "/";
     char buf[50];
     edge_template_poses_.resize(num_edge_templates_);
     for(int i=0; i<num_edge_templates_; i++)
@@ -1853,14 +1861,31 @@ void CObjectModel::determineSharpEdges_slow(GLMmodel* model, float th_sharp, std
   }
 }
 
-void CObjectModel::loadObjectCADModel(string obj_name)
+void CObjectModel::loadObjectCADModel(const std::string& obj_name)
 {
   // Load CAD model from obj file & generate a display list for fast drawing
 
   if(meshmodel_ != NULL)
     free(meshmodel_);
 
-  meshmodel_ = glmReadOBJ((char *)(obj_name + std::string(".obj")).c_str());
+  // Check path existance
+  fs::path path(obj_name);
+  if (!fs::exists(path) || !fs::is_regular_file(path))
+  {
+    throw std::runtime_error("File path '" + obj_name + "' is invalid.");
+  }
+
+#ifdef USE_ASSIMP
+  meshmodel_ = loadObject(obj_name);
+#else
+  // Check file extension
+  if (path.extension() != ".obj")
+  {
+    throw std::runtime_error("File path '" + obj_name + "' is does not have extension '.obj'.\n"
+                             "Build with Assimp support for other model types.");
+  }
+  meshmodel_ = glmReadOBJ((char *)(obj_name).c_str());
+#endif
 
   if(!meshmodel_)
   {
