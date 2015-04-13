@@ -52,9 +52,15 @@ find_package( Boost    1.43 REQUIRED )
 find_package( OpenGL   1.10 REQUIRED )
 find_package( GLEW     1.10 REQUIRED )
 find_package( GLUT    2.8.1 REQUIRED )
-find_package( OpenCV    2.4 REQUIRED )
+find_package( OpenCV  2.4.9 REQUIRED )
 find_package( LAPACK    3.5 REQUIRED )
 #find_package( BULLET        REQUIRED )
+find_package(ASSIMP 3.0 QUIET)
+if (${ASSIMP_FOUND})
+  include_directories(${ASSIMP_INCLUDE_DIR})
+  link_libraries(${ASSIMP_LIBRARIES})
+  add_definitions(-DUSE_ASSIMP)
+endif (${ASSIMP_FOUND})
 
 
 ###############################################################################
@@ -134,7 +140,7 @@ include_directories( ${EBT_SOURCE_DIR}/include)
 #include_directories( ${EBT_SOURCE_DIR})
 
 set(ADDITIONAL_BOOST_LIBS
-        boost_program_options boost_system boost_thread)
+        boost_program_options boost_system boost_thread boost_filesystem)
 
 include_directories(include)
 set(incs
@@ -143,6 +149,7 @@ set(incs
                 include/object_tracking_2D/epnp.h
                 include/object_tracking_2D/glm.h
                 include/object_tracking_2D/HomoTransform.h
+                include/object_tracking_2D/ModelImport.h
                 include/object_tracking_2D/tracker_base.h
                 include/object_tracking_2D/tracker_irls.h
                 include/object_tracking_2D/tracker_pf.h
@@ -163,6 +170,7 @@ set(srcs
                 src/epnp.cpp
                 src/glm.cpp
                 src/HomoTransform.cpp
+                src/ModelImport.cpp
                 src/objectmodel.cpp
                 src/ParticleFilter.cpp
                 src/PoseEstimationSURF.cpp)
