@@ -73,6 +73,11 @@ add_subdirectory(3rdparty/Fitline)
 # Build Fdcm
 add_subdirectory(3rdparty/Fdcm)
 
+set(3rdparty_libs 
+    ImageLib
+    LineFitLib
+    FdcmLib)
+
 
 ################################################################################
 # Set up CPack
@@ -200,18 +205,17 @@ target_link_libraries(ETGDemo
                 ${libs})
 
 add_dependencies(ETGDemo
-                ImageLib
-                LineFitLib
-                FdcmLib)
+                3rdparty_libs)
 
 target_link_libraries(EBTDemo
                 ${libs})
 
 add_dependencies(EBTDemo
-                ImageLib
-                LineFitLib
-                FdcmLib)
+                3rdparty_libs)
 
 add_library(object_tracking_2d SHARED ${incs} ${srcs})
 
 target_link_libraries(object_tracking_2d ${libs})
+
+add_dependencies(object_tracking_2d
+                3rdparty_libs)
