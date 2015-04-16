@@ -36,7 +36,8 @@ protected:
   {
     TrackerBase::initObjectModel(name, width, height, intrinsic, sample_step, maxd, dulledge, edge_tracker);
 
-    obj_model_->loadKeyframes(name);
+    std::string path = boost::filesystem::path(name).parent_path().string();
+    obj_model_->loadKeyframes(path);
 
     return (true);
   }
@@ -105,7 +106,7 @@ protected:
         // 'pose' might be valid
         mutex_.lock();
         cvCopy(pose, pose_);
-	sendPoseACH(pose_); //AKAN	
+        sendPoseACH(pose_); //AKAN
         mutex_.unlock();
         init_ = false;
 

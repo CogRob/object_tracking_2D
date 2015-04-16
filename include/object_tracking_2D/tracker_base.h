@@ -4,6 +4,7 @@
 #include <boost/thread.hpp>
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
+#include <boost/filesystem.hpp>
 
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
@@ -326,6 +327,7 @@ public:
   inline void   setMinKeypointMatches(int d)        { min_keypoint_matches = d; }
   inline void   setTracking(bool use_tracking)      { use_tracking_ = use_tracking; }
   inline std::string& getSaveResultPath()           { return str_result_path_; }
+  bool init_;
   bool setSaveResultPath(std::string& path)
   { 
     if(mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) == -1 && errno != EEXIST)
@@ -365,6 +367,17 @@ public:
     renderResults();
     cvShowImage("Result", img_result_);
     cvShowImage("Edge", img_edge_);
+  }
+
+  virtual bool initialize()
+  {
+    if(!init_)
+    {
+      std::cerr << "Initialization flag is not set." << std::endl;
+    }
+
+    frame_num_after_init_ = 0;
+    return false;
   }
 
 protected:
@@ -457,16 +470,7 @@ protected:
 
   virtual void handleKey(char key) = 0;
 
-  virtual bool initialize()
-  {
-    if(!init_)
-    {
-      std::cerr << "Initialization flag is not set." << std::endl;
-    }
 
-    frame_num_after_init_ = 0;
-    return false;
-  }
 
     std::string handleRequest(std::string& req)
   {
@@ -549,7 +553,6 @@ protected:
   int width_;
   int height_;
   bool run_;
-  bool init_;
   bool display_init_result_;
   double th_valid_sample_points_ratio_;
   std::string obj_name_;

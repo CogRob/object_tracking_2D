@@ -42,7 +42,8 @@ protected:
   {
     TrackerBase::initObjectModel(name, width, height, intrinsic, sample_step, maxd, dulledge, edge_tracker);
 
-    obj_model_->loadKeyframes(name);
+    std::string path = boost::filesystem::path(name).parent_path().string();
+    obj_model_->loadKeyframes(path);
 
     return (true);
   }
