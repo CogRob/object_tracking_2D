@@ -156,9 +156,17 @@ protected:
   
   virtual void tracking()
   {
+    if(saveKeyframe_){
+      // Save keyframe into files - gray jpeg file and pose xml file
+      obj_model_->saveKeyframe(obj_name_, img_gray_, pose_);
+      init_keyframes_ = true;
+    }
+
     // when a new keyfram is saved, init keyframe related sutff
-    if(init_keyframes_)
+    if(init_keyframes_){
       initKeyframes();
+      saveKeyframe_ = false;
+    }
 
     // 'getEdge' returns Berkeley edge if it is available, otherwise returns NULL
     // 'extractEdge' extracts Canny edge if the fourth edge is NULL

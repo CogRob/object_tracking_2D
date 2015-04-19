@@ -258,7 +258,10 @@ void CObjectModel::saveKeyframe(std::string obj_name, IplImage* imgG, CvMat* pos
   std::stringstream ss;
 
   // keyframe image
-  std::string data_dir = obj_name;
+  boost::filesystem::path p(obj_name);
+  std::string data_dir = p.parent_path().string();
+//  std::string data_dir = obj_name;
+
   ss << data_dir << "/" << "keyframe" << std::setw(3) << std::setfill('0') << num_keyframes_+1 << ".jpg";
   cvSaveImage(ss.str().c_str(), imgG);
   

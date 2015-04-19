@@ -327,6 +327,7 @@ public:
   inline void   setMinKeypointMatches(int d)        { min_keypoint_matches = d; }
   inline void   setTracking(bool use_tracking)      { use_tracking_ = use_tracking; }
   inline std::string& getSaveResultPath()           { return str_result_path_; }
+  inline void   saveKeyframe()                      { saveKeyframe_ = true;}
   bool init_;
   bool setSaveResultPath(std::string& path)
   { 
@@ -599,6 +600,7 @@ protected:
   //ach_channel_t channel;
   bool use_ach_;
   bool use_tracking_;
+  bool saveKeyframe_;
   //ImageReceiver rec;
   cv::Mat image;
 
