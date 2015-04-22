@@ -55,12 +55,12 @@ find_package( GLUT    2.8.1 REQUIRED )
 find_package( OpenCV  2.4.9 REQUIRED )
 find_package( LAPACK    3.5 REQUIRED )
 #find_package( BULLET        REQUIRED )
-find_package(ASSIMP 3.0 QUIET)
-if (${ASSIMP_FOUND})
-  include_directories(${ASSIMP_INCLUDE_DIR})
-  link_libraries(${ASSIMP_LIBRARIES})
-  add_definitions(-DUSE_ASSIMP)
-endif (${ASSIMP_FOUND})
+#find_package(ASSIMP 3.0 QUIET)
+#if (${ASSIMP_FOUND})
+#  include_directories(${ASSIMP_INCLUDE_DIR})
+#  link_libraries(${ASSIMP_LIBRARIES})
+#  add_definitions(-DUSE_ASSIMP)
+#endif (${ASSIMP_FOUND})
 
 
 ###############################################################################
