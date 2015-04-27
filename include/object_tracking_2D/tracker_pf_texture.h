@@ -25,7 +25,8 @@ public:
 
     cvCopy(pose_init_, pose_);
 
-    pf_->Init(pose_init_);
+    for(int i=0;i<this->num_particles_; i++)
+        pf_->Init(i,pose_init_);
 
     frame_num_after_init_ = 0;
 
