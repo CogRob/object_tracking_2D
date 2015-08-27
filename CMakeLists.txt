@@ -200,23 +200,23 @@ target_link_libraries(ETGDemo
                 ${libs})
 
 add_dependencies(ETGDemo
-77      ImageLib
-78      LineFitLib
-79      FdcmLib)
+    ImageLib
+    LineFitLib
+    FdcmLib)
 
 target_link_libraries(EBTDemo
                 ${libs})
 
 add_dependencies(EBTDemo
-77      ImageLib
-78      LineFitLib
-79      FdcmLib)
+    ImageLib
+    LineFitLib
+    FdcmLib)
 
 add_library(object_tracking_2d SHARED ${incs} ${srcs})
 
 target_link_libraries(object_tracking_2d ${libs})
 
 add_dependencies(object_tracking_2d
-77      ImageLib
-78      LineFitLib
-79      FdcmLib)
+    ImageLib
+    LineFitLib
+    FdcmLib)
