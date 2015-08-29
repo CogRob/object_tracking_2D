@@ -55,12 +55,12 @@ find_package( GLUT    2.8.1 REQUIRED )
 find_package( OpenCV  2.4.9 REQUIRED )
 find_package( LAPACK    3.5 REQUIRED )
 #find_package( BULLET        REQUIRED )
-find_package(ASSIMP 3.0 QUIET)
-if (${ASSIMP_FOUND})
-  include_directories(${ASSIMP_INCLUDE_DIR})
-  link_libraries(${ASSIMP_LIBRARIES})
-  add_definitions(-DUSE_ASSIMP)
-endif (${ASSIMP_FOUND})
+#find_package(ASSIMP 3.0 QUIET)
+#if (${ASSIMP_FOUND})
+#  include_directories(${ASSIMP_INCLUDE_DIR})
+#  link_libraries(${ASSIMP_LIBRARIES})
+#  add_definitions(-DUSE_ASSIMP)
+#endif (${ASSIMP_FOUND})
 
 
 ###############################################################################
@@ -200,23 +200,23 @@ target_link_libraries(ETGDemo
                 ${libs})
 
 add_dependencies(ETGDemo
-77      ImageLib
-78      LineFitLib
-79      FdcmLib)
+    ImageLib
+    LineFitLib
+    FdcmLib)
 
 target_link_libraries(EBTDemo
                 ${libs})
 
 add_dependencies(EBTDemo
-77      ImageLib
-78      LineFitLib
-79      FdcmLib)
+    ImageLib
+    LineFitLib
+    FdcmLib)
 
 add_library(object_tracking_2d SHARED ${incs} ${srcs})
 
 target_link_libraries(object_tracking_2d ${libs})
 
 add_dependencies(object_tracking_2d
-77      ImageLib
-78      LineFitLib
-79      FdcmLib)
+    ImageLib
+    LineFitLib
+    FdcmLib)
