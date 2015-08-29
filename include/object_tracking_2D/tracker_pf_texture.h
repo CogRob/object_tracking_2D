@@ -101,13 +101,16 @@ protected:
       display_init_result_ = true;
       pe_surf_->setImage(img_gray_);
 
-
+      std::cout<<"Reinitializing"<<std::endl;
       int num_corr = 0;
       CvMat* pose = pe_surf_->estimatePose(num_corr);
-      if(num_corr > 4)
+      std::cout<<num_corr<<std::endl;
+      if(num_corr > min_keypoint_matches)
       {
         // 'pose' might be valid
-        pf_->Init(0, pose);
+        for(int i=0;i<this->num_particles_; i++)
+          pf_->Init(i,pose);
+     //   pf_->Init(0, pose);
 
         mutex_.lock();
         cvCopy(pose, pose_);
@@ -168,7 +171,8 @@ protected:
       if(!init_)
         init_ = true;
       cvCopy(pose_init_, pose_);
-      pf_->Init(pose_init_);
+      for(int i=0;i<this->num_particles_; i++)
+         pf_->Init(i,pose_init_);
       frame_num_after_init_ = 0;
       pf_->calculateMeanState();
       break;
