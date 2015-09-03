@@ -201,6 +201,7 @@ void CObjectModel::loadKeyframes(string obj_name)
 
   num_keyframes_ = 0;
   std::string data_dir =  obj_name;
+  //data_dir = "/home/prateek/git/object_data/Objects/ronzoni1";
   fstream fsk;
   fsk.open((data_dir + "/" + "keyframe001.jpg").c_str());
   // count the number of keyframes
@@ -226,6 +227,7 @@ void CObjectModel::loadKeyframes(string obj_name)
   for(int i=0; i<num_keyframes_; i++)
   {
     ss.str(std::string()); // cleaning ss
+    std::cout<<data_dir<<std::endl;
     ss << data_dir << "/" << "keyframe" << std::setw(3) << std::setfill('0') << i + 1 << ".jpg";
     keyframe_images_[i] = cvLoadImage(ss.str().c_str(), CV_LOAD_IMAGE_GRAYSCALE);
     assert(keyframe_images_[i]);
@@ -1872,6 +1874,7 @@ void CObjectModel::loadObjectCADModel(const std::string& obj_name)
     free(meshmodel_);
 
   // Check path existance
+
   fs::path path(obj_name);
   if (!fs::exists(path) || !fs::is_regular_file(path))
   {

@@ -44,6 +44,7 @@ protected:
     TrackerBase::initObjectModel(name, width, height, intrinsic, sample_step, maxd, dulledge, edge_tracker);
 
     std::string path = boost::filesystem::path(name).parent_path().string();
+    std::cout<<path<<std::endl;
     obj_model_->loadKeyframes(path);
 
     return (true);
@@ -231,6 +232,7 @@ protected:
         CvMat *J = NULL, *e = NULL;
         edge_tracker_->PF_getJacobianAndError(pf_->GetPropState(p), obj_model_->getVisibleSamplePoints(), &J, &e);
         pf_->Update_IRLS(p, J, e, obj_model_->getNumberOfVisibleSamplePoints());
+      //  std::cout<<"in particke filtering before"<<obj_model_->getNumberOfVisibleSamplePoints()<<std::endl;
         // calculate weights
         pf_->calculateWeights(p, e, obj_model_->getVisibleSamplePoints(), maxd_, lamda_e_, lamda_v_);
         // release after use them
@@ -272,10 +274,25 @@ protected:
       else
         valid = pf_->Resample(beta_[l], num_anneal_level == 1? true : false, true); // and calculate particle mean
 
+     //calculating variance
+      cvCopy(pf_->GetMeanState(), pose_);
+
+      CvMat *J = NULL, *e = NULL;
+      edge_tracker_->PF_getJacobianAndError(pf_->GetMeanState(), obj_model_->getVisibleSamplePoints(), &J, &e);
+
+      pf_->Update(1, J, e, obj_model_->getNumberOfVisibleSamplePoints());
+      cvCopy(pf_->GetVariance(), covariance_);
+      cv::Mat poset = Mat(covariance_);
+     // std::cout<<"in particke filtering after "<<poset<<std::endl;
+      if(J) cvReleaseMat(&J);
+      if(e) cvReleaseMat(&e);
+
+
       if(valid) // && th_neff_ratio_*static_cast<float>(pf_->GetNumOfParticle()) < pf_->GetNeff())
       {
         mutex_.lock();
         cvCopy(pf_->GetMeanState(), pose_);
+        cvCopy(pf_->GetVariance(), covariance_);
         mutex_.unlock();
       }
       else

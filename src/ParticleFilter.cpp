@@ -232,11 +232,12 @@ void CParticleFilter::Update(int i, CvMat* J, CvMat* e, int NumOfVisibleSamplePo
   CvMat* sigma_12_sigma_22_inv = cvCreateMat(6, J->rows, CV_32F);
   CvMat* inc = cvCreateMat(6, 1, CV_32F);
 
-  cvCopy(state_cov_, sigma_11);
+  //cvCopy(state_cov_, sigma_11);
+  cvSetIdentity(sigma_11, cvScalar(1));
   cvGEMM(sigma_11, J, 1.0, NULL, 0.0, sigma_12, CV_GEMM_B_T); // sigma_12 = sigma_11 * J';
   // get mean_e
   CvScalar mean_e = cvAvg(e);
-  cvSetIdentity(measure_cov, cvRealScalar(mean_e.val[0]*mean_e.val[0]));
+  cvSetIdentity(measure_cov, cvScalar(1)/*cvRealScalar(mean_e.val[0]*mean_e.val[0])*/);
   cvMatMul(J, sigma_11, J_sigma_11);
   cvGEMM(J_sigma_11, J, 1.0, measure_cov, 1.0, sigma_22, CV_GEMM_B_T); // sigma_22 = J*sigma_11*J' + measure_cov;
   cvInvert(sigma_22, sigma_22_inv);
@@ -245,8 +246,18 @@ void CParticleFilter::Update(int i, CvMat* J, CvMat* e, int NumOfVisibleSamplePo
 
   cvMatMul(sigma_12, sigma_22_inv, sigma_12_sigma_22_inv);
   cvGEMM(sigma_12_sigma_22_inv, sigma_12, -1.0, sigma_11, 1.0, Cov, CV_GEMM_B_T);
+
+  cvCopy(Cov,state_cov_);
+  double covm_data[6][6];
+  for(int r=0; r<6; r++)
+  {  for(int c=0; c<6; c++)
+      {covm_data[r][c] = (double)CV_MAT_ELEM(*Cov, float, r, c);
+     //  std::cout<<covm_data[r][c];
+      }
+     // std::cout<<std::endl;
+  }
   // update on states_pred_
-  double inc_data[6];
+  /*double inc_data[6];
   for(int j=0; j<6; j++)
     inc_data[j] = CV_MAT_ELEM(*inc, float, j, 0);
   Vector<6> inc_vec(inc_data);
@@ -276,7 +287,7 @@ void CParticleFilter::Update(int i, CvMat* J, CvMat* e, int NumOfVisibleSamplePo
   CvMat* state_inv = cvCreateMat(4, 4, CV_32F);
   cvInvert(states_[i], state_inv, CV_SVD);
   cvMatMul(state_inv, states_pred_[i], ar_vel_[i]);
-  cvReleaseMat(&state_inv);
+  cvReleaseMat(&state_inv);*/
 
   cvReleaseMat(&sigma_11);
   cvReleaseMat(&sigma_12);
@@ -305,7 +316,10 @@ void CParticleFilter::Update_IRLS(int i, CvMat* J, CvMat* e, int NumOfVisibleSam
   assert(J->cols == 6);
   assert(J->rows == e->rows);
 
+
   int N = J->rows;
+ // std::cout<<"in the uodate IROLS"<< N<<std::endl;
+
 
   float c = 64.f;
 
@@ -322,11 +336,13 @@ void CParticleFilter::Update_IRLS(int i, CvMat* J, CvMat* e, int NumOfVisibleSam
     CV_MAT_ELEM(*W, float, j, j) = 1.0f/(c+CV_MAT_ELEM(*e, float, j, 0));
   }
 
+  //cvCopy(state_cov_,W);
   cvGEMM(J, W, 1.0, NULL, 0.0, Jt_W, CV_GEMM_A_T); // J'*W
   cvGEMM(Jt_W, J, 1.0, NULL, 0.0, Jt_W_J); // J'*W*J
   cvInvert(Jt_W_J, Jt_W_J_inv); // inv(J'*W*J)
   cvGEMM(Jt_W, e, 1.0, NULL, 0.0, Jt_W_e); // J'*W*e
   cvMatMul(Jt_W_J_inv, Jt_W_e, inc);
+ // cvCopy(Jt_W_J,state_cov_);
 
   CvScalar mean_e = cvAvg(e);
   // Update on states_pred_
