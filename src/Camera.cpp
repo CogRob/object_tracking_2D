@@ -8,14 +8,15 @@ CCamera::CCamera(std::string &img_path, bool color, int imgIdx, std::string &int
   // load saved images from disk
   m_strImgPath  = img_path;
   color_        = color;
-  m_nImgIdx     = imgIdx;
+  m_nImgIdx     = imgIdx+1;
   intrinsic_    = (CvMat*)cvLoad(intrinsic.c_str());
   distortion_   = (CvMat*)cvLoad(distortion.c_str());
   img_ext_      = imgext;
 
   // Check the image resolution and save it
   std::stringstream ss;
-  ss << m_strImgPath << "/" << "img" << std::setw(4) << std::setfill('0') << m_nImgIdx << "." << img_ext_;
+  ss << m_strImgPath << "/" << /*"img" << */std::setw(4) << std::setfill('0') << m_nImgIdx << "." << img_ext_;
+  std::cout<<ss.str().c_str()<<std::endl;
   IplImage* image = cvLoadImage(ss.str().c_str(), color_ ? CV_LOAD_IMAGE_COLOR : CV_LOAD_IMAGE_GRAYSCALE);
   width_ = image->width;
   height_ = image->height;
@@ -160,7 +161,7 @@ IplImage* CCamera::getImage()
   else // image sequence
   {
     std::stringstream ss;
-    ss << m_strImgPath << "/" << "img" << std::setw(4) << std::setfill('0') << m_nImgIdx << "." << img_ext_;
+    ss << m_strImgPath << "/" << /*"img" <<*/ std::setw(4) << std::setfill('0') << m_nImgIdx << "." << img_ext_;
     if(verbose_) std::cout << "Load image: " << ss.str() << std::endl;
     // Read an image from the saved image sequence
     IplImage* image = cvLoadImage(ss.str().c_str(), color_ ? CV_LOAD_IMAGE_COLOR : CV_LOAD_IMAGE_GRAYSCALE);
@@ -168,7 +169,7 @@ IplImage* CCamera::getImage()
     // Read edge image if there are edge images in the same folder. (e.g. Berkeley edges, scale space edges)
     // If there are no edge images, 'img_edge_' would be NULL
     ss.str(std::string());
-    ss << m_strImgPath << "/" << "img" << std::setw(4) << std::setfill('0') << m_nImgIdx << "bedges." << "png";
+    ss << m_strImgPath << "/" << /*"img" <<*/ std::setw(4) << std::setfill('0') << m_nImgIdx << "bedges." << "png";
     img_edge_ = cvLoadImage(ss.str().c_str(), CV_LOAD_IMAGE_GRAYSCALE);
 
     // Increase the image index

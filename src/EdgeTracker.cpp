@@ -126,6 +126,8 @@ void CEdgeTracker::PF_getJacobianAndError(CvMat* Mprev, std::vector<CObjectModel
       nov++;
     }
   }
+
+
 }
 
 void CEdgeTracker::PF_getError(CvMat* Mprev, std::vector<CObjectModel::SamplePoint>& vSamplePt, CvMat** e)
@@ -187,4 +189,101 @@ Vector<6> CEdgeTracker::calcJacobian(CvPoint3D32f& pts3, CvPoint2D32f& pts2, CvP
   }
 
   return J;
+}
+
+CvMat* CEdgeTracker::Update( CvMat* J, CvMat* e, int NumOfVisibleSamplePoint, CvMat* covariance_old)
+{
+  double ct = (double)cvGetTickCount();
+
+  /*if(J == NULL && e == NULL)
+  {
+    prob_[i] = 0.0f;
+    return;
+  }*/
+ //std::cout<<"in the update step"<<J->rows<<std::endl;
+
+  CvMat* sigma_11 = cvCreateMat(6, 6, CV_32F);
+  CvMat* sigma_12 = cvCreateMat(6, J->rows, CV_32F);
+  CvMat* sigma_22 = cvCreateMat(J->rows, J->rows, CV_32F);
+  CvMat* sigma_22_inv = cvCreateMat(J->rows, J->rows, CV_32F);
+  CvMat* J_sigma_11 = cvCreateMat(J->rows, 6, CV_32F);
+  CvMat* measure_cov = cvCreateMat(J->rows, J->rows, CV_32F);
+  CvMat* Cov = cvCreateMat(6, 6, CV_32F);
+  CvMat* sigma_22_inv_e = cvCreateMat(J->rows, 1, CV_32F);
+  CvMat* sigma_12_sigma_22_inv = cvCreateMat(6, J->rows, CV_32F);
+  CvMat* inc = cvCreateMat(6, 1, CV_32F);
+ // std::cout<<"getting covariance"<<std::endl;
+  //cvCopy(covariance_old, sigma_11);
+  cvSetIdentity(sigma_11, cvScalar(1));
+  //std::cout<<"getting covariance"<<std::endl;
+  cvGEMM(sigma_11, J, 1.0, NULL, 0.0, sigma_12, CV_GEMM_B_T); // sigma_12 = sigma_11 * J';
+  // get mean_e
+  //CvScalar mean_e = cvAvg(e);
+  //cvSetIdentity(measure_cov, cvRealScalar(mean_e.val[0]*mean_e.val[0]));
+  cvSetIdentity(measure_cov, cvScalar(1));
+  cvMatMul(J, sigma_11, J_sigma_11);
+  cvGEMM(J_sigma_11, J, 1.0, measure_cov, 1.0, sigma_22, CV_GEMM_B_T); // sigma_22 = J*sigma_11*J' + measure_cov;
+  cvInvert(sigma_22, sigma_22_inv);
+  cvMatMul(sigma_22_inv, e, sigma_22_inv_e);
+  cvMatMul(sigma_12, sigma_22_inv_e, inc);
+
+  cvMatMul(sigma_12, sigma_22_inv, sigma_12_sigma_22_inv);
+  cvGEMM(sigma_12_sigma_22_inv, sigma_12, -1.0, sigma_11, 1.0, Cov, CV_GEMM_B_T);
+  //cvCopy(&Cov,&covariance_cur);
+  //covariance_cur = cv::Mat(Cov);
+
+  double covm_data[6][6];
+  for(int r=0; r<6; r++)
+  {  for(int c=0; c<6; c++)
+      { //CV_MAT_ELEM(*covariance_cur, float, r, c) = CV_MAT_ELEM(*Cov, float, r, c);
+          covm_data[r][c] = (double)CV_MAT_ELEM(*Cov, float, r, c);
+   //    std::cout<<covm_data[r][c];
+      }
+   //   std::cout<<std::endl;
+  }
+  return Cov;
+
+  // update on states_pred_
+  /*double inc_data[6];
+  for(int j=0; j<6; j++)
+    inc_data[j] = CV_MAT_ELEM(*inc, float, j, 0);
+  Vector<6> inc_vec(inc_data);
+
+  if(limityrot_)
+    inc_vec[4] = 0.0; // y-axis angle
+  SE3 M_inc = SE3::exp(inc_vec);
+
+  // states_pred_[i] = states_prop_[i] x M_inc x M_rnd
+  double covm_data[6][6];
+  for(int r=0; r<6; r++)
+    for(int c=0; c<6; c++)
+      covm_data[r][c] = (double)CV_MAT_ELEM(*Cov, float, r, c);
+
+  Matrix<4> M_prop;
+  for(int r=0; r<4; r++)
+    for(int c=0; c<4; c++)
+      M_prop[r][c] = (double)CV_MAT_ELEM(*states_prop_[i], float, r, c);
+
+  Matrix<4> M_pred = M_prop * M_inc;
+
+  for(int r=0; r<4; r++)
+    for(int c=0; c<4; c++)
+      CV_MAT_ELEM(*states_pred_[i], float, r, c) = (float)M_pred[r][c];
+
+  // calculate AR velocity
+  CvMat* state_inv = cvCreateMat(4, 4, CV_32F);
+  cvInvert(states_[i], state_inv, CV_SVD);
+  cvMatMul(state_inv, states_pred_[i], ar_vel_[i]);
+  cvReleaseMat(&state_inv);*/
+
+  cvReleaseMat(&sigma_11);
+  cvReleaseMat(&sigma_12);
+  cvReleaseMat(&sigma_22);
+  cvReleaseMat(&sigma_22_inv);
+  cvReleaseMat(&J_sigma_11);
+  cvReleaseMat(&measure_cov);
+  cvReleaseMat(&Cov);
+  cvReleaseMat(&sigma_22_inv_e);
+  cvReleaseMat(&sigma_12_sigma_22_inv);
+  cvReleaseMat(&inc);
 }

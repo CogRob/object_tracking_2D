@@ -184,10 +184,19 @@ protected:
     if(obj_model_->isEnoughValidSamplePoints(th_valid_sample_points_ratio_))
     {
       edge_tracker_->getEstimatedPoseIRLS(edge_tracker_->getPose(), pose_, obj_model_->getVisibleSamplePoints());
+      CvMat *J = NULL, *e = NULL;
+      edge_tracker_->PF_getJacobianAndError(edge_tracker_->getPose(), obj_model_->getVisibleSamplePoints(),&J,&e);
+      std::cout<<(J->rows)<<std::endl;
+      covariance_= edge_tracker_->Update(J, e, obj_model_->getNumberOfVisibleSamplePoints(),covariance_);
+
       mutex_.lock();
       //cvCopy(pose_optimized, pose_);
       cvCopy(edge_tracker_->getPose(), pose_);
+    //  cvCopy(edge_tracker_->getVariance(), covariance_);
+
       mutex_.unlock();
+      //cv::Mat poset = Mat(covariance_);
+      //std::cout<<<<std::endl;
     }
     else
     {

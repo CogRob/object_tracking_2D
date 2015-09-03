@@ -69,7 +69,8 @@ public:
     pose_ = cvCreateMat(4, 4, CV_32F);
     pose_init_ = cvCreateMat(4, 4, CV_32F);
     cvSetIdentity(pose_);
-
+    covariance_ = cvCreateMat(6, 6, CV_32F);
+    cvSetIdentity(covariance_);
     displayOpenCVInfo();
   }
   
@@ -87,6 +88,7 @@ public:
 
     cvReleaseMat(&pose_);
     cvReleaseMat(&pose_init_);
+    cvReleaseMat(&covariance_);
 
     if(ofs_pose_.is_open())      ofs_pose_.close();
     if(ofs_time_.is_open())      ofs_time_.close();
@@ -210,7 +212,9 @@ public:
       if(!getImage(use_ach_))
         break;
       
-      //timer_.start();      
+      //timer_.start();
+
+      std::cout<<"initialization and run "<<init_<<run_<<std::endl;
       
       if(init_) initialize();
 
@@ -254,7 +258,7 @@ public:
       // release image if it's loaded from file
       if(!cam_->IsCamera()) cvReleaseImage(&img_input_);
 
-      char key = (char)cvWaitKey(5); // get keyboard input
+      char key = (char)cvWaitKey(1); // get keyboard input
       handleKey(key);
 
       frame_num_++;
@@ -320,7 +324,8 @@ public:
   inline void   setSaveResultText(bool tf)          { save_rslt_txt_ = tf;    }
   inline bool   getSaveResultImage()                { return save_rslt_img_;  }
   inline void   setSaveResultImage(bool tf)         { save_rslt_img_ = tf;    }
-  inline CvMat*   getPose()                           { return pose_;           }
+  inline CvMat*   getPose()                         { return pose_;           }
+  inline CvMat*   getCovariance()                   { return covariance_;                        }
   inline void   setPose(CvMat* pose)                { pose_ = pose;           }
   inline IplImage*   getResultImage()               { return img_result_;     }
   inline IplImage*   getEdgeImage()                 { return img_edge_;       }
@@ -589,6 +594,8 @@ protected:
 
   CvMat* pose_;
   CvMat* pose_init_;
+  CvMat* covariance_;
+
 
   boost::signals2::mutex mutex_; // For syncronization between main function and network thread
   Timer timer_;

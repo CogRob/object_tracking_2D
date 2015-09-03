@@ -58,6 +58,7 @@ public:
   CvMat* GetPredState(int i)  { return states_pred_[i];  }
   CvMat* GetOptState(int i)   { return states_opt_[i];   }
   CvMat* GetMeanState()       { return mean_state_;       }
+  CvMat* GetVariance()        { return state_cov_;    }
   float GetNeff()             { return neff_;            }
   int GetBestParticle();
   void CorrectWeights();
