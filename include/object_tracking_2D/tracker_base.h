@@ -43,7 +43,7 @@ public:
     , limityrot_(false)
     , run_(true)
     , init_(true)
-    , th_valid_sample_points_ratio_(0.01)
+    , th_valid_sample_points_ratio_(0.1)
     , img_input_(NULL)
     , img_gray_(NULL)
     , img_gray_tracking(NULL)

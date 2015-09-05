@@ -2100,13 +2100,14 @@ bool CObjectModel::isEnoughValidSamplePoints(double th_ratio/*=0.5*/)
   // Check # of visible sample points are enough
   // return 0: not enough
   // return 1: enough
+
   int count = 0;
 
   for(int i=0; i<int(visible_sample_points_.size()); i++)
     if(visible_sample_points_[i].dist < maxd_) // only valid points
       count++;
 
-  if(double(count) >= th_ratio*double(visible_sample_points_.size()))
+  if(double(count) >= th_ratio*double(visible_sample_points_.size()) && count != 0)
     return true;
   else
     return false;

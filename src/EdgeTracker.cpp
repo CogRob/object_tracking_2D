@@ -237,11 +237,11 @@ CvMat* CEdgeTracker::Update( CvMat* J, CvMat* e, int NumOfVisibleSamplePoint, Cv
   {  for(int c=0; c<6; c++)
       { //CV_MAT_ELEM(*covariance_cur, float, r, c) = CV_MAT_ELEM(*Cov, float, r, c);
           covm_data[r][c] = (double)CV_MAT_ELEM(*Cov, float, r, c);
-   //    std::cout<<covm_data[r][c];
+       // std::cout<<covm_data[r][c];
       }
    //   std::cout<<std::endl;
   }
-  return Cov;
+
 
   // update on states_pred_
   /*double inc_data[6];
@@ -282,8 +282,11 @@ CvMat* CEdgeTracker::Update( CvMat* J, CvMat* e, int NumOfVisibleSamplePoint, Cv
   cvReleaseMat(&sigma_22_inv);
   cvReleaseMat(&J_sigma_11);
   cvReleaseMat(&measure_cov);
-  cvReleaseMat(&Cov);
+  //cvReleaseMat(&Cov);
   cvReleaseMat(&sigma_22_inv_e);
   cvReleaseMat(&sigma_12_sigma_22_inv);
   cvReleaseMat(&inc);
+
+
+  return Cov;
 }
