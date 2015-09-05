@@ -231,6 +231,7 @@ protected:
         // consider edge sample points only
         CvMat *J = NULL, *e = NULL;
         edge_tracker_->PF_getJacobianAndError(pf_->GetPropState(p), obj_model_->getVisibleSamplePoints(), &J, &e);
+        cvConvertScale(e,e,0.2);
         pf_->Update_IRLS(p, J, e, obj_model_->getNumberOfVisibleSamplePoints());
       //  std::cout<<"in particke filtering before"<<obj_model_->getNumberOfVisibleSamplePoints()<<std::endl;
         // calculate weights

@@ -1488,7 +1488,7 @@ int CObjectModel::refineEdgeCorrespondences_RANSAC(CvMat *E, int N/*=1000*/, dou
       sp[i] = visible_sample_points_[valid_idx[rand_idx[i]]];
     }
     //CvMat* Mcur = edge_tracker_->getEstimatedPoseLS(*E, sp);
-    edge_tracker_->getEstimatedPoseIRLS(pose_cur, E, sp);
+    edge_tracker_->getEstimatedPoseIRLS(pose_cur, E, sp,sp.size());
     for(int r=0; r<3; r++)
       for(int c=0; c<4; c++)
         //CV_MAT_ELEM(*P, float, r, c) = CV_MAT_ELEM(*Mcur, float, r, c);
@@ -2095,13 +2095,13 @@ float CObjectModel::getTriangleArea(GLMmodel* m, int tri_idx)
   return area;
 }
 
-bool CObjectModel::isEnoughValidSamplePoints(double th_ratio/*=0.5*/)
+bool CObjectModel::isEnoughValidSamplePoints(double th_ratio/*=0.5*/, int &count)
 {
   // Check # of visible sample points are enough
   // return 0: not enough
   // return 1: enough
 
-  int count = 0;
+ count = 0;
 
   for(int i=0; i<int(visible_sample_points_.size()); i++)
     if(visible_sample_points_[i].dist < maxd_) // only valid points

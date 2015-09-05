@@ -30,7 +30,7 @@ CEdgeTracker::~CEdgeTracker(void)
   if(intrinsic_) cvReleaseMat(&intrinsic_);
 }
 
-void CEdgeTracker::getEstimatedPoseIRLS(CvMat* pose_cur, CvMat* pose_pre, std::vector<CObjectModel::SamplePoint> &vSamplePt)
+void CEdgeTracker::getEstimatedPoseIRLS(CvMat* pose_cur, CvMat* pose_pre, std::vector<CObjectModel::SamplePoint> &vSamplePt, int vs)
 {
   // use a numerical non-linear optimization (weighted least square) to find pose (P)
   double m_prev[4][4];

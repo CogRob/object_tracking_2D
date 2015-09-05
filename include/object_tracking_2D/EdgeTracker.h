@@ -20,7 +20,7 @@ public:
   CEdgeTracker(int width, int height, CvMat* intrinsic, int maxd, bool limityrot = false);
   ~CEdgeTracker(void);
 
-  void getEstimatedPoseIRLS(CvMat* pose_cur, CvMat* pose_pre, std::vector<CObjectModel::SamplePoint>& vSamplePt);
+  void getEstimatedPoseIRLS(CvMat* pose_cur, CvMat* pose_pre, std::vector<CObjectModel::SamplePoint>& vSamplePt, int vs);
   void PF_getJacobianAndError(CvMat* Mprev, std::vector<CObjectModel::SamplePoint>& vSamplePt, CvMat** J, CvMat** e);
   void PF_getError(CvMat* Mprev, std::vector<CObjectModel::SamplePoint>& vSamplePt, CvMat** e);
   Vector<6> calcJacobian(CvPoint3D32f& pts3, CvPoint2D32f& pts2, CvPoint2D32f& ptsnv, double ptsd, const SE3 &E);

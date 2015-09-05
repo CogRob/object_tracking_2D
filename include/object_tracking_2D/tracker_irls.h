@@ -181,10 +181,10 @@ protected:
     // calculate error between sampling points and nearest edge
     obj_model_->findEdgeCorrespondences();
    // std::cout<<"Number of valid points"<<obj_model_->getNumberOfVisibleSamplePoints()<<" "<<obj_model_->isEnoughValidSamplePoints(th_valid_sample_points_ratio_)<<std::endl;
-
-    if(obj_model_->isEnoughValidSamplePoints(th_valid_sample_points_ratio_))
+    int ValidSamplePoints;
+    if(obj_model_->isEnoughValidSamplePoints(th_valid_sample_points_ratio_,ValidSamplePoints))
     {
-      edge_tracker_->getEstimatedPoseIRLS(edge_tracker_->getPose(), pose_, obj_model_->getVisibleSamplePoints());
+      edge_tracker_->getEstimatedPoseIRLS(edge_tracker_->getPose(), pose_, obj_model_->getVisibleSamplePoints(),ValidSamplePoints);
       CvMat *J = NULL, *e = NULL;
       edge_tracker_->PF_getJacobianAndError(edge_tracker_->getPose(), obj_model_->getVisibleSamplePoints(),&J,&e);
    //   std::cout<<(J->rows)<<std::endl;

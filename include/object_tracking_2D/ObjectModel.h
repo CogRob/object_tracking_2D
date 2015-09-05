@@ -71,7 +71,7 @@ public:
 
   inline vector<SamplePoint>& getVisibleSamplePoints()  { return visible_sample_points_;        }
   inline int getNumberOfVisibleSamplePoints()           { return visible_sample_points_.size(); }
-  bool isEnoughValidSamplePoints(double th_ratio = 0.5);
+  bool isEnoughValidSamplePoints(double th_ratio, int& count );
   double GetValidVisibleSamplePointsRatio();
 
   void findEdgeCorrespondences();
