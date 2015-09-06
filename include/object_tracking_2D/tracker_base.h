@@ -310,6 +310,8 @@ public:
   inline void   setCannyLow(int th)                 { th_canny_l_ = th;       }
   inline int    getCannyHigh()                      { return th_canny_h_;     }
   inline void   setCannyHigh(int th)                { th_canny_h_ = th;       }
+  inline void   setValidSamplePointsRatio(double th){th_valid_sample_points_ratio_ = th;}
+  inline double getValidSamplePointsRatio()         {return th_valid_sample_points_ratio_;}
   inline float  getSampleStep()                     { return sample_step_;    }
   inline void   setSampleStep(float ss)             { sample_step_ = ss;      }
   inline int    getMaxSearchDistance()              { return maxd_;           }
