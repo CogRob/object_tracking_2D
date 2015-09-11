@@ -130,7 +130,7 @@ void CEdgeTracker::getEstimatedPoseIRLS_cov(CvMat* pose_cur, CvMat* pose_pre, st
       wls.add_df(
         vSamplePt[i].dist,
         calcJacobian(vSamplePt[i].coord3, vSamplePt[i].coord2, vSamplePt[i].nuv, vSamplePt[i].dist, se3_prev),
-        1/(static_cast<double>(alpha_) + abs(vSamplePt[i].dist)/*vSamplePt[i].dist>0 ? vSamplePt[i].dist : -vSamplePt[i].dist)*/)
+        1/((static_cast<double>(alpha_) + abs(vSamplePt[i].dist))/*vSamplePt[i].dist>0 ? vSamplePt[i].dist : -vSamplePt[i].dist)*/)
       );
     }
   }
@@ -142,8 +142,8 @@ void CEdgeTracker::getEstimatedPoseIRLS_cov(CvMat* pose_cur, CvMat* pose_pre, st
 
  // std::cout<<"The inv cov "<<inv_cov<<std::endl;
 
-  cvInvert(covariance_pre,covariance_pre);
-
+  //cvInvert(covariance_pre,covariance_pre);
+  cvSetIdentity(covariance_pre,cvRealScalar(0.1));
   std::cout<<"The covariance from the poses"<<std::endl;
   for(int i=0;i<6;i++)
   {
@@ -155,6 +155,7 @@ void CEdgeTracker::getEstimatedPoseIRLS_cov(CvMat* pose_cur, CvMat* pose_pre, st
 
 
  cvInvert(covariance_,covariance_);
+ cvAdd(covariance_,covariance_pre,covariance_);
  // std::cout<<std::endl;
 
   if(limityrot_)
