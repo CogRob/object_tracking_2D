@@ -96,7 +96,8 @@ protected:
       int num_corr = 0;      
            
       CvMat* pose = pe_surf_->estimatePose(num_corr);
-
+      CvMat* cov = cvCreateMat(6, 6, CV_32F);
+      cvSetIdentity(cov, cvScalar(1));
       printf("# of matches...(%d)\n", num_corr);
       //printf("Threshold...(%d)\n", min_keypoint_matches);
 
@@ -106,6 +107,7 @@ protected:
         // 'pose' might be valid
         mutex_.lock();
         cvCopy(pose, pose_);
+        cvCopy(cov,covariance_);
         sendPoseACH(pose_); //AKAN
         mutex_.unlock();
         init_ = false;
@@ -184,20 +186,20 @@ protected:
     int ValidSamplePoints;
     if(obj_model_->isEnoughValidSamplePoints(th_valid_sample_points_ratio_,ValidSamplePoints))
     {
-      edge_tracker_->getEstimatedPoseIRLS(edge_tracker_->getPose(), pose_, obj_model_->getVisibleSamplePoints(),ValidSamplePoints);
-      CvMat *J = NULL, *e = NULL;
-      edge_tracker_->PF_getJacobianAndError(edge_tracker_->getPose(), obj_model_->getVisibleSamplePoints(),&J,&e);
+      edge_tracker_->getEstimatedPoseIRLS_cov(edge_tracker_->getPose(), pose_, obj_model_->getVisibleSamplePoints(),ValidSamplePoints,covariance_);
+   //   CvMat *J = NULL, *e = NULL;
+   //   edge_tracker_->PF_getJacobianAndError(edge_tracker_->getPose(), obj_model_->getVisibleSamplePoints(),&J,&e);
    //   std::cout<<(J->rows)<<std::endl;
-      covariance_= edge_tracker_->Update(J, e, obj_model_->getNumberOfVisibleSamplePoints(),covariance_);
+   //  covariance_= edge_tracker_->Update(J, e, obj_model_->getNumberOfVisibleSamplePoints(),covariance_);
 
       mutex_.lock();
       //cvCopy(pose_optimized, pose_);
       cvCopy(edge_tracker_->getPose(), pose_);
-    //  cvCopy(edge_tracker_->getVariance(), covariance_);
+      cvCopy(edge_tracker_->getVariance(), covariance_);
 
       mutex_.unlock();
-   //   cv::Mat poset = Mat(covariance_);
-  //    std::cout<<poset<<std::endl;
+      cv::Mat poset = Mat(covariance_);
+      std::cout<<poset.diag(0)<<std::endl;
     }
     else
     {

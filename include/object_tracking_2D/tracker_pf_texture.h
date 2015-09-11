@@ -231,7 +231,7 @@ protected:
         // consider edge sample points only
         CvMat *J = NULL, *e = NULL;
         edge_tracker_->PF_getJacobianAndError(pf_->GetPropState(p), obj_model_->getVisibleSamplePoints(), &J, &e);
-        cvConvertScale(e,e,0.2);
+      //  cvConvertScale(e,e,0.2);
         pf_->Update_IRLS(p, J, e, obj_model_->getNumberOfVisibleSamplePoints());
       //  std::cout<<"in particke filtering before"<<obj_model_->getNumberOfVisibleSamplePoints()<<std::endl;
         // calculate weights
@@ -286,14 +286,14 @@ protected:
       cv::Mat poset = Mat(covariance_);
      // std::cout<<"in particke filtering after "<<poset<<std::endl;
       if(J) cvReleaseMat(&J);
-      if(e) cvReleaseMat(&e);
+      if(e) cvReleaseMat(&e);//*/
 
 
       if(valid) // && th_neff_ratio_*static_cast<float>(pf_->GetNumOfParticle()) < pf_->GetNeff())
       {
         mutex_.lock();
         cvCopy(pf_->GetMeanState(), pose_);
-        cvCopy(pf_->GetVariance(), covariance_);
+ /*       cvCopy(pf_->GetVariance(), covariance_);*/
         mutex_.unlock();
       }
       else

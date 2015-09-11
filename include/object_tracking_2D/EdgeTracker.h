@@ -21,16 +21,17 @@ public:
   ~CEdgeTracker(void);
 
   void getEstimatedPoseIRLS(CvMat* pose_cur, CvMat* pose_pre, std::vector<CObjectModel::SamplePoint>& vSamplePt, int vs);
+  void getEstimatedPoseIRLS_cov(CvMat* pose_cur, CvMat* pose_pre, std::vector<CObjectModel::SamplePoint>& vSamplePt, int vs,CvMat* covariance_pre);
   void PF_getJacobianAndError(CvMat* Mprev, std::vector<CObjectModel::SamplePoint>& vSamplePt, CvMat** J, CvMat** e);
   void PF_getError(CvMat* Mprev, std::vector<CObjectModel::SamplePoint>& vSamplePt, CvMat** e);
   Vector<6> calcJacobian(CvPoint3D32f& pts3, CvPoint2D32f& pts2, CvPoint2D32f& ptsnv, double ptsd, const SE3 &E);
   inline CvMat* getPose() { return pose_; }
-  inline cv::Mat getVariance() { return covariance_;}
+  inline CvMat* getVariance() { return covariance_;}
   CvMat* Update(CvMat* J, CvMat* e, int NumOfVisibleSamplePoint, CvMat *covariance_old);
 
 protected:
   CvMat *pose_;
-  cv::Mat covariance_;
+  CvMat* covariance_;
   int width_;
   int height_;
   CvMat* intrinsic_;

@@ -34,7 +34,8 @@ CParticleFilter::CParticleFilter(int NumOfParticle/*=1*/, float AR_param/*=0.0*/
     ar_vel_opt_[i] = cvCreateMat(4, 4, CV_32F);
   }
   ar_param_ = AR_param;
-  ar_param_=1;
+  std::cout<<"AR param"<<ar_param_<<std::endl;
+  ar_param_=0.0;
   dt_ = (float)(1./30.);
 
   neff_ = 0.0f;
@@ -105,8 +106,8 @@ void CParticleFilter::Init(CvMat* X/*=NULL*/)
     {
       cvSetIdentity(ar_vel_[i]);
       cvSetIdentity(ar_vel_opt_[i]);
-      weight_[i] = 0.0f;
-      weight_opt_[i] = 0.0f;
+      weight_[i] = 1/num_particle_; // 0.0f;
+      weight_opt_[i] = 1/num_particle_;//0.0f;
       prob_[i] = 0.0f;
       prob_opt_[i] = 0.0f;
       eta_[i] = 0.0f;
@@ -156,7 +157,7 @@ void CParticleFilter::Propagate(float noiseRateLow, float noiseRateHigh, bool bC
   {
     for(int r=0; r<4; r++)
       for(int c=0; c<4; c++)
-        m[r][c] = CV_MAT_ELEM(*ar_vel_[i], float, r, c);
+        m[r][c] = CV_MAT_ELEM(*ar_vel_opt_[i], float, r, c);
 
     Matrix<4> M(m);
     M_SE3 = M;
@@ -198,6 +199,7 @@ void CParticleFilter::Propagate(float noiseRateLow, float noiseRateHigh, bool bC
 
     Rot = M_rnd.getRot();
     Trans = M_rnd.getTrans();
+    //std::cout<<"Rand movement"<<Rot<<Trans<<std::endl;
 
     for(int r=0; r<3; r++)
       for(int c=0; c<3; c++)
@@ -237,7 +239,7 @@ void CParticleFilter::Update(int i, CvMat* J, CvMat* e, int NumOfVisibleSamplePo
   cvGEMM(sigma_11, J, 1.0, NULL, 0.0, sigma_12, CV_GEMM_B_T); // sigma_12 = sigma_11 * J';
   // get mean_e
   CvScalar mean_e = cvAvg(e);
-  cvSetIdentity(measure_cov, cvScalar(1)/*cvRealScalar(mean_e.val[0]*mean_e.val[0])*/);
+  cvSetIdentity(measure_cov, cvRealScalar(mean_e.val[0]*mean_e.val[0]));
   cvMatMul(J, sigma_11, J_sigma_11);
   cvGEMM(J_sigma_11, J, 1.0, measure_cov, 1.0, sigma_22, CV_GEMM_B_T); // sigma_22 = J*sigma_11*J' + measure_cov;
   cvInvert(sigma_22, sigma_22_inv);
@@ -252,10 +254,12 @@ void CParticleFilter::Update(int i, CvMat* J, CvMat* e, int NumOfVisibleSamplePo
   for(int r=0; r<6; r++)
   {  for(int c=0; c<6; c++)
       {covm_data[r][c] = (double)CV_MAT_ELEM(*Cov, float, r, c);
-     //  std::cout<<covm_data[r][c];
+      if(r == c) std::cout<<covm_data[r][c];
       }
-     // std::cout<<std::endl;
-  }
+   }
+  std::cout<<std::endl;
+
+     //   }
   // update on states_pred_
   /*double inc_data[6];
   for(int j=0; j<6; j++)
@@ -343,6 +347,8 @@ void CParticleFilter::Update_IRLS(int i, CvMat* J, CvMat* e, int NumOfVisibleSam
   cvGEMM(Jt_W, e, 1.0, NULL, 0.0, Jt_W_e); // J'*W*e
   cvMatMul(Jt_W_J_inv, Jt_W_e, inc);
  // cvCopy(Jt_W_J,state_cov_);
+
+ // std::cout<<"Cov"<<cv::Mat(Jt_W_J_inv).diag()<<std::endl;
 
   CvScalar mean_e = cvAvg(e);
   // Update on states_pred_
@@ -488,7 +494,7 @@ bool CParticleFilter::ResampleOpt(float beta, bool bCompAR/*=false*/, bool bComp
 
   for(int i=0; i<num_particle_; i++)
   {
-    sum += prob_[i];
+  //  sum += prob_[i];
     sum += prob_opt_[i];
   }
   // When opengl window is occluded, all of 'prob_' will be zero. In that case, we set uniform weight.
@@ -501,7 +507,7 @@ bool CParticleFilter::ResampleOpt(float beta, bool bCompAR/*=false*/, bool bComp
   {
     for(int i=0; i<num_particle_; i++)
     {
-      weight_[i] = pow(prob_[i]/sum, beta); // normalize
+  //    weight_[i] = pow(prob_[i]/sum, beta); // normalize
       weight_opt_[i] = pow(prob_opt_[i]/sum, beta); // normalize
     }
   }
@@ -510,36 +516,36 @@ bool CParticleFilter::ResampleOpt(float beta, bool bCompAR/*=false*/, bool bComp
   sum = 0.0f;
   for(int i=0; i<num_particle_; i++)
   {
-    sum += weight_[i];
+    //sum += weight_[i];
     sum += weight_opt_[i];
   }
   for(int i=0; i<num_particle_; i++)
   {
-    weight_[i] /= sum;
+   // weight_[i] /= sum;
     weight_opt_[i] /= sum;
   }
 
   neff_ = 0.0f;
   for(int i=0; i<num_particle_; i++)
   {
-    neff_ += weight_[i]*weight_[i];
+   // neff_ += weight_[i]*weight_[i];
     neff_ += weight_opt_[i]*weight_opt_[i];
   }
   neff_ = 1.0f/neff_;
 
   float *idx = new float[num_particle_];
-  float *cumsum = new float[num_particle_*2+1];
+  float *cumsum = new float[num_particle_+1];
   assert(num_particle_>0);
   idx[0] = (float)rand()/(float)RAND_MAX/(float)(num_particle_);
   for(int i=1; i<num_particle_; i++)
     idx[i] = idx[i-1] + 1.0f/(float)(num_particle_);
   cumsum[0] = 0.0f;
-  for(int i=1; i<2*num_particle_+1; i++)
+  for(int i=1; i<num_particle_+1; i++)
   {
-    if(i<num_particle_+1)
-      cumsum[i] = cumsum[i-1] + weight_[i-1];
-    else
-      cumsum[i] = cumsum[i-1] + weight_opt_[i-num_particle_-1];
+   // if(i<num_particle_+1)
+  //    cumsum[i] = cumsum[i-1] + weight_[i-1];
+  //  else
+      cumsum[i] = cumsum[i-1] + weight_opt_[i-1];
   }
 
   int *outindex = new int[num_particle_];
@@ -549,7 +555,7 @@ bool CParticleFilter::ResampleOpt(float beta, bool bCompAR/*=false*/, bool bComp
   }
   for(int i=0; i<num_particle_; i++)
   {
-    for(int j=1; j<2*num_particle_+1; j++)
+    for(int j=1; j<num_particle_+1; j++)
     {
       if(idx[i] > cumsum[j-1] && idx[i] <= cumsum[j])
       {
@@ -562,19 +568,11 @@ bool CParticleFilter::ResampleOpt(float beta, bool bCompAR/*=false*/, bool bComp
   // Update resampled results to states
   for(int i=0; i<num_particle_; i++)
   {
-    if(outindex[i] < num_particle_)
-    {
-      cvCopy(states_pred_[outindex[i]], states_[i]);
-      cvCopy(ar_vel_[outindex[i]], ar_vel_[i]);
-      if(bCompAR) cvCopy(states_[i], states_prev_[i]); // save for later
-    }
-    else
-    {
-      int idx = outindex[i] - num_particle_;
-      cvCopy(states_opt_[idx], states_[i]);
-      cvCopy(ar_vel_opt_[idx], ar_vel_[i]);
-      if(bCompAR) cvCopy(states_[i], states_prev_[i]); // save for later
-    }
+    //cvCopy(states_pred_[outindex[i]], states_[i]); // Just predicted states based on AR states
+  //  std::cout<<outindex[i]<<" "<<i<<std::endl;
+    cvCopy(states_opt_[outindex[i]], states_[i]); // IRLS optimized states
+    cvCopy(ar_vel_[outindex[i]], ar_vel_[i]);
+    if(bCompAR) cvCopy(states_[i], states_prev_[i]); // save for later
   }
 
   // compute particle mean
@@ -758,8 +756,11 @@ void CParticleFilter::CorrectWeights()
     if(i<num_particle_)
       prob_[i] *= correct_term;
     else
-      prob_opt_[i-num_particle_] *= correct_term;
+     // prob_opt_[i-num_particle_] *= correct_term;
 
+        prob_opt_[i-num_particle_] = prob_opt_[i-num_particle_]*correct_term;
+      //  std::cout<<i-num_particle_<<" "<<prob_opt_[i-num_particle_]<<" ";
+      
     if(correct_term > c_max)    c_max = correct_term;
     if(correct_term < c_min)    c_min = correct_term;
   }

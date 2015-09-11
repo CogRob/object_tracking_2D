@@ -336,6 +336,7 @@ public:
   inline std::string& getSaveResultPath()           { return str_result_path_; }
   inline void   saveKeyframe()                      { saveKeyframe_ = true;}
   bool init_;
+  bool label_;
   bool setSaveResultPath(std::string& path)
   { 
     if(mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) == -1 && errno != EEXIST)
