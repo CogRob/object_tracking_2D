@@ -144,7 +144,7 @@ void CEdgeTracker::getEstimatedPoseIRLS_cov(CvMat* pose_cur, CvMat* pose_pre, st
 
   //cvInvert(covariance_pre,covariance_pre);
   cvSetIdentity(covariance_pre,cvRealScalar(0.1));
-  std::cout<<"The covariance from the poses"<<std::endl;
+//  std::cout<<"The covariance from the poses"<<std::endl;
   for(int i=0;i<6;i++)
   {
      for(int j=0;j<6;j++)

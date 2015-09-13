@@ -65,6 +65,7 @@ public:
     , time_tracking_(0.f)
     , time_init_(0.f)
     , time_run_(0.f)
+    , saveKeyframe_(false)
   {
     pose_ = cvCreateMat(4, 4, CV_32F);
     pose_init_ = cvCreateMat(4, 4, CV_32F);

@@ -199,7 +199,6 @@ protected:
 
       mutex_.unlock();
       cv::Mat poset = Mat(covariance_);
-      std::cout<<poset.diag(0)<<std::endl;
     }
     else
     {
