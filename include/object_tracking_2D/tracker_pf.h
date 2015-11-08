@@ -3,6 +3,7 @@
 #include "tracker_base.h"
 #include "ParticleFilter.h"
 
+
 class ParticleFilterTracker : public TrackerBase
 {
 public:
@@ -21,6 +22,7 @@ public:
     , lamda_v_(25.f)
     , pf_(NULL)
     , th_neff_ratio_(0.2f)
+    , increment(0)
   {
     mean_ = cvCreateMat(4, 4, CV_32F);
     
@@ -62,7 +64,16 @@ protected:
 
   virtual void displayResults()
   {
-    // draw particles
+
+     /* std::string name = "results_video2/frame";
+      increment+= 1;
+      std::string result;
+      std::stringstream sstm;
+      sstm << name <<std::setw(5)<<std::setfill('0')<<increment<<".jpg";
+      result = sstm.str();*/
+
+
+      // draw particles
     for(int i = 0; i < pf_->GetNumOfParticle(); i++)
     {
       if(dulledge_) // for valid display, occlusion reasioning is required
@@ -71,7 +82,7 @@ protected:
         obj_model_->findVisibleSamplePoints();
       }
       obj_model_->displayPoseLine(img_result_, pf_->GetPropState(i), CV_RGB(0, 255, 0), 1, false);
-    }
+    }//*/
 
     obj_model_->displaySamplePointsAndErrors(img_edge_); // display data of the last particle
 
@@ -81,7 +92,9 @@ protected:
       obj_model_->setModelviewMatrix(pf_->GetMeanState());
       obj_model_->findVisibleSamplePoints();
     }
-    obj_model_->displayPoseLine(img_result_, pf_->GetMeanState(), CV_RGB(255, 255, 0), 2, false);
+    obj_model_->displayPoseLine(img_result_, pf_->GetMeanState(), CV_RGB(255, 0, 0), 2, false);
+
+ //   cv::imwrite(result,cv::Mat(img_result_));
         
     cvShowImage("Result", img_result_);
     cvShowImage("Edge", img_edge_);
@@ -105,4 +118,5 @@ protected:
   float lamda_e_;
   float lamda_v_;
   float th_neff_ratio_;
+  int increment;
 };

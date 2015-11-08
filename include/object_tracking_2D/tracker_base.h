@@ -35,7 +35,7 @@ public:
     , edge_tracker_(NULL)
     , obj_model_(NULL)
     , th_canny_l_(100) //100
-    , th_canny_h_(120) //120
+    , th_canny_h_(200) //120t
     , sample_step_(0.005f)
     , maxd_(32)
     , dulledge_(false)
@@ -210,12 +210,14 @@ public:
       }
 
       // capture or load an image
+
+   //   std::cout<<"initialization and run "<<init_<<run_<<std::endl;
       if(!getImage(use_ach_))
         break;
       
       //timer_.start();
 
-      std::cout<<"initialization and run "<<init_<<run_<<std::endl;
+
       
       if(init_) initialize();
 

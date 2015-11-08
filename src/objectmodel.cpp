@@ -201,7 +201,7 @@ void CObjectModel::loadKeyframes(string obj_name)
 
   num_keyframes_ = 0;
   std::string data_dir =  obj_name;
-  //data_dir = "/home/prateek/git/object_data/Objects/ronzoni1";
+  //data_dir = "/home/prateek/git/object_data/Objects/soft_scrub";
   fstream fsk;
   fsk.open((data_dir + "/" + "keyframe001.jpg").c_str());
   // count the number of keyframes
@@ -263,8 +263,9 @@ void CObjectModel::saveKeyframe(std::string obj_name, IplImage* imgG, CvMat* pos
   boost::filesystem::path p(obj_name);
   std::string data_dir = p.parent_path().string();
 //  std::string data_dir = obj_name;
-
+ // data_dir = "/home/prateek/git/object_data/Objects/soft_scrub";
   ss << data_dir << "/" << "keyframe" << std::setw(3) << std::setfill('0') << num_keyframes_+1 << ".jpg";
+  std::cout<<"saving keyframes"<<ss.str().c_str()<<std::endl;
   cvSaveImage(ss.str().c_str(), imgG);
   
   // pose
@@ -2107,6 +2108,7 @@ bool CObjectModel::isEnoughValidSamplePoints(double th_ratio/*=0.5*/, int &count
     if(visible_sample_points_[i].dist < maxd_) // only valid points
       count++;
 
+  std::cout<<"The ratior for visible points"<<(double(count)/double(visible_sample_points_.size()))<<std::endl;
   if(double(count) >= th_ratio*double(visible_sample_points_.size()) && count != 0)
     return true;
   else

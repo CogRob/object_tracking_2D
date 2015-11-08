@@ -20,7 +20,7 @@ public:
   virtual bool initTracker(std::string &obj_name, std::string &cam_name, std::string &intrinsic, std::string &distortion, int width, int height, CvMat* pose_init, std::string ach_channel)
   {
     TrackerBase::initTracker(obj_name, cam_name, intrinsic, distortion, width, height, pose_init, ach_channel);
-    std::cout<<"it ttracker"<<std::endl;
+
     initPoseEstimationSURF(width, height, obj_name, obj_name);
 
     pf_->Init(pose_init);

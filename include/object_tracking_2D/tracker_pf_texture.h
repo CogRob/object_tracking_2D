@@ -44,9 +44,9 @@ protected:
     TrackerBase::initObjectModel(name, width, height, intrinsic, sample_step, maxd, dulledge, edge_tracker);
 
     std::string path = boost::filesystem::path(name).parent_path().string();
-    std::cout<<path<<std::endl;
-    obj_model_->loadKeyframes(path);
 
+    obj_model_->loadKeyframes(path);
+   // std::cout<<"adter the nit"<<path<<std::endl;
     return (true);
   }
 
@@ -214,6 +214,8 @@ protected:
         pf_->Propagate(alpha_[l], alpha_[l], l == num_anneal_level-1 ? true : false);*/
       
       pf_->Propagate(noise_l_, noise_h_, true);
+     // std::cout<<"weights";
+
       for(int p = 0; p < pf_->GetNumOfParticle(); p++)
       {
         // update the initial pose to object model for displaying
@@ -235,7 +237,7 @@ protected:
         pf_->Update_IRLS(p, J, e, obj_model_->getNumberOfVisibleSamplePoints());
       //  std::cout<<"in particke filtering before"<<obj_model_->getNumberOfVisibleSamplePoints()<<std::endl;
         // calculate weights
-        pf_->calculateWeights(p, e, obj_model_->getVisibleSamplePoints(), maxd_, lamda_e_, lamda_v_);
+        pf_->calculateWeights(p, e, obj_model_->getVisibleSamplePoints(), maxd_, lamda_e_, lamda_v_,false);
         // release after use them
         if(J) cvReleaseMat(&J);
         if(e) cvReleaseMat(&e);
@@ -264,6 +266,8 @@ protected:
 #endif
       }
 
+   //   std::cout<<std::endl;
+
       // correct weights caused from considering optimized states
       if(pf_->GetNumOfParticle() > 1)
         pf_->CorrectWeights();
@@ -271,12 +275,12 @@ protected:
       // resampling
       bool valid;
       if(pf_->GetNumOfParticle() > 1)
-        valid = pf_->Resample(beta_[l], num_anneal_level == 1? true : false, true); // and calculate particle mean
+       valid = pf_->ResampleOpt(beta_[l], num_anneal_level == 1? true : false, true); // and calculate particle mean
       else
-        valid = pf_->Resample(beta_[l], num_anneal_level == 1? true : false, true); // and calculate particle mean
+        valid = pf_->Resample(beta_[l], true /*num_anneal_level == 1? true : false*/, true); // and calculate particle mean
 
      //calculating variance
-      cvCopy(pf_->GetMeanState(), pose_);
+   /*   cvCopy(pf_->GetMeanState(), pose_);
 
       CvMat *J = NULL, *e = NULL;
       edge_tracker_->PF_getJacobianAndError(pf_->GetMeanState(), obj_model_->getVisibleSamplePoints(), &J, &e);

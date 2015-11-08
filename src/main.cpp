@@ -60,7 +60,7 @@ int main(int argc, char **argv)
     ("th_cm", po::value<float>(&th_cm)->default_value(0.2f), "threshold of chamfer matching")
     ("init_pose", po::value<std::string>(&pose_init_str), "init pose")
     // AKAN
-    ("min_keypoint_matches", po::value<int>(&min_keypoint_matches)->default_value(20), "min number of keypoint matches to start tracking")
+    ("min_keypoint_matches,m", po::value<int>(&min_keypoint_matches)->default_value(20), "min number of keypoint matches to start tracking")
     ("use_ach_channel", po::value<std::string>(&ach_channel)->default_value("none"), "Use specific ach channel with given name")
     ("use_tracking", po::value<bool>(&use_tracking)->default_value(true), "Enable tracking after detection of object")
   ;
@@ -163,6 +163,7 @@ int main(int argc, char **argv)
   tracker->setTracking(use_tracking);
     
   tracker->initTracker(obj_name, input, intrinsic, distortion, width, height, pose_init , ach_channel);
+//  std::cout<<"after intilaization"<<std::endl;
   tracker->run();
   delete tracker;
 

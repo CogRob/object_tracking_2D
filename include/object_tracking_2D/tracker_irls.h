@@ -198,6 +198,7 @@ protected:
       cvCopy(edge_tracker_->getVariance(), covariance_);
 
       mutex_.unlock();
+     // std::cout<<"THe init in tracking is "<<init_<<std::endl;
       cv::Mat poset = Mat(covariance_);
     }
     else

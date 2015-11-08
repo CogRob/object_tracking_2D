@@ -6,7 +6,7 @@ CEdgeTracker::CEdgeTracker(int width, int height, CvMat* intrinsic, int maxd, bo
   , height_(height)
   , pose_(NULL)
   , intrinsic_(NULL)
-  , alpha_(64.f)
+  , alpha_(1.f)
 {
   pose_ = cvCreateMat(4, 4, CV_32F);
   covariance_ = cvCreateMat(6,6,CV_32F);
@@ -51,8 +51,8 @@ void CEdgeTracker::getEstimatedPoseIRLS(CvMat* pose_cur, CvMat* pose_pre, std::v
       // INVERSE 1/(alpha_ + dist)
       wls.add_df(
         vSamplePt[i].dist, 
-        calcJacobian(vSamplePt[i].coord3, vSamplePt[i].coord2, vSamplePt[i].nuv, vSamplePt[i].dist, se3_prev), 
-        1/(static_cast<double>(alpha_) + abs(vSamplePt[i].dist)/*vSamplePt[i].dist>0 ? vSamplePt[i].dist : -vSamplePt[i].dist)*/)
+        calcJacobian(vSamplePt[i].coord3, vSamplePt[i].coord2, vSamplePt[i].nuv, (vSamplePt[i].dist), se3_prev),
+        1.0/(static_cast<double>(alpha_) + (vSamplePt[i].dist>0 ? vSamplePt[i].dist : -vSamplePt[i].dist))
       );
     }
   }
