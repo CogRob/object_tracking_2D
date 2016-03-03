@@ -34,8 +34,8 @@ public:
     : cam_(NULL)
     , edge_tracker_(NULL)
     , obj_model_(NULL)
-    , th_canny_l_(100) //100
-    , th_canny_h_(200) //120t
+    , th_canny_l_(50) //100
+    , th_canny_h_(150) //120t
     , sample_step_(0.005f)
     , maxd_(32)
     , dulledge_(false)
@@ -47,14 +47,18 @@ public:
     , img_input_(NULL)
     , img_gray_(NULL)
     , img_gray_tracking(NULL)
+    , img_in_edge_(NULL)
     , img_result_(NULL)
     , img_edge_(NULL)
-    , display_(true)    , display_result_(true)
+    , image_num_(1)
+    , display_(true)
+    , display_result_(true)
     , display_init_result_(false)
     , display_edge_result_(true)
     , display_grayscale_image_(false)
     , smooth_size_(1)
     , obj_name_("")
+    , edge_path_("")
     , frame_num_(0)
     , frame_num_after_init_(0)
     , hsvFilt(NULL)
@@ -86,6 +90,7 @@ public:
     if(img_gray_tracking)       cvReleaseImage(&img_gray_tracking);
     if(img_result_)     cvReleaseImage(&img_result_);
     if(img_edge_)       cvReleaseImage(&img_edge_);
+    if(img_in_edge_)    cvReleaseImage(&img_in_edge_);
 
     cvReleaseMat(&pose_);
     cvReleaseMat(&pose_init_);
@@ -220,6 +225,7 @@ public:
 
       
       if(init_) initialize();
+     // init_ = false;
 
       //time_init_ = timer_.printTimeMilliSec("initializing");
 
@@ -232,7 +238,7 @@ public:
       }
       else
       {
-        img_gray_tracking = cvCloneImage(img_gray_);
+        //img_gray_tracking = cvCloneImage(img_gray_);
       }
 
       // do processing
@@ -294,7 +300,7 @@ public:
   void saveResultImage()
   {
     std::stringstream ss;
-    ss << str_result_path_ << "/" << "track" << std::setw(4) << std::setfill('0') << frame_num_ << ".jpg";
+    ss << "/home/prateek/data_wo_mod" << "/" << "track" << std::setw(4) << std::setfill('0') << frame_num_ << ".jpg";
     cvSaveImage(ss.str().c_str(), img_result_);
   }
 
@@ -338,6 +344,8 @@ public:
   inline void   setTracking(bool use_tracking)      { use_tracking_ = use_tracking; }
   inline std::string& getSaveResultPath()           { return str_result_path_; }
   inline void   saveKeyframe()                      { saveKeyframe_ = true;}
+  inline void   setimagenum(int image_num)          { image_num_ = image_num; std::cout<<"The edge num is "<<image_num_<<std::endl;}
+  inline void   setedgeimagepath(string path)       { edge_path_ = path;}
   bool init_;
   bool label_;
   bool setSaveResultPath(std::string& path)
@@ -359,6 +367,8 @@ public:
 
   bool setImage(cv::Mat image)
   {
+
+   //   std::cout<<"the gray image"<<std::endl;
       IplImage copy = image;
       img_input_ = static_cast<IplImage *>(&copy);
 
@@ -366,6 +376,32 @@ public:
       cvCvtColor(img_gray_, img_result_, CV_GRAY2RGB);
       return true;
   }
+
+  bool setedgeImage(cv::Mat image)
+  {
+
+  //    std::cout<<"the edge image"<<std::endl;
+  //    std::cout<<image<<std::endl;
+//      cv::imshow("img",image);
+ //     cv::waitKey(0);
+
+      IplImage copy = image;
+      img_in_edge_ = static_cast<IplImage *>(&copy);
+//      cvShowImage("imges",img_gray_tracking);
+ //     cvWaitKey(0);
+
+       img_gray_tracking = cvCloneImage(img_in_edge_);
+       //cvCopy(img_in_edge_,img_gray_tracking);
+     //  cvShowImage("imges",img_in_edge_);
+     //  cvWaitKey(0);
+
+
+      //cvCvtColor(img_input_, img_gray_, CV_RGB2GRAY);
+     // cvCvtColor(img_gray_, img_result_, CV_GRAY2RGB);
+      return true;
+  }
+
+
 
   virtual void renderResults()
   {
@@ -391,6 +427,21 @@ public:
     frame_num_after_init_ = 0;
     return false;
   }
+
+  virtual bool reinitialize()
+  {
+    if(!init_)
+    {
+      std::cerr << "Initialization flag is not set." << std::endl;
+    }
+
+    frame_num_after_init_ = 0;
+    return false;
+  }
+
+
+
+
 
 protected:
   void displayOpenCVInfo()
@@ -438,6 +489,10 @@ protected:
     img_result_ = cvCreateImage(cvSize(width, height), 8, 3);
     if(img_edge_) cvReleaseImage(&img_edge_);
     img_edge_ = cvCreateImage(cvSize(width, height), 8, 3);
+   // if(img_in_edge_) cvReleaseImage(&img_in_edge_);
+   // img_in_edge_ = cvCreateImage(cvSize(width, height), 8, 1);
+
+
 
     return (true);
   }
@@ -593,6 +648,7 @@ protected:
 
   IplImage* img_input_;
   IplImage* img_gray_;
+  IplImage* img_in_edge_;
   IplImage* img_gray_tracking;
   IplImage* img_mask_;
   IplImage* img_result_;
@@ -616,6 +672,8 @@ protected:
   bool saveKeyframe_;
   //ImageReceiver rec;
   cv::Mat image;
+  std::string edge_path_;
+  int image_num_;
 
   int* hsvFilt;
 };

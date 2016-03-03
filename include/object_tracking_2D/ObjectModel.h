@@ -71,7 +71,7 @@ public:
 
   inline vector<SamplePoint>& getVisibleSamplePoints()  { return visible_sample_points_;        }
   inline int getNumberOfVisibleSamplePoints()           { return visible_sample_points_.size(); }
-  bool isEnoughValidSamplePoints(double th_ratio, int& count );
+  bool isEnoughValidSamplePoints(double th_ratio);
   double GetValidVisibleSamplePointsRatio();
 
   void findEdgeCorrespondences();
@@ -79,6 +79,7 @@ public:
   void findEdgeCorrespondencesFineOri();
   int refineEdgeCorrespondences_RANSAC(CvMat *E, int N=1000, double th=10.0);
   void extractEdge(IplImage* img, int smoothSize=1, int cannyLow=20, int cannyHigh=40, IplImage* edge = NULL);
+  void extractEdges(IplImage* img, int smoothSize=1, int cannyLow=20, int cannyHigh=40, IplImage* edge = NULL, int image_num =0, string path = "");
   void extractEdgeOri(IplImage* img, int smoothSize=1);
   void drawPointsAndErrorCoarseOri(IplImage* img_dest);
   void drawPointsAndErrorFineOri(IplImage* img_dest);
@@ -157,6 +158,8 @@ protected:
   float sample_step_;
   int maxd_;
   bool dulledge_;
+  int image_number;
+
 
   CEdgeTracker* edge_tracker_;
   bool use_fine_orientation_;

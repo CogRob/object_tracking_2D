@@ -102,7 +102,7 @@ protected:
       //printf("Threshold...(%d)\n", min_keypoint_matches);
 
 
-      if(num_corr > min_keypoint_matches)
+      if(num_corr > 10 ) // change back to min_keypoint_matches
       {
         // 'pose' might be valid
         mutex_.lock();
@@ -172,7 +172,15 @@ protected:
 
     // 'getEdge' returns Berkeley edge if it is available, otherwise returns NULL
     // 'extractEdge' extracts Canny edge if the fourth edge is NULL
-    obj_model_->extractEdge(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, cam_->getEdge());
+    //obj_model_->extractEdge(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, cam_->getEdge());
+    /*if(!edge_path_.compare("canny"))
+        obj_model_->extractEdge(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, cam_->getEdge());
+    else
+        obj_model_->extractEdges(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, cam_->getEdge(),image_num_,edge_path_);//*/
+
+
+    obj_model_->extractEdge(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, img_gray_tracking);
+    obj_model_->extractEdgeOri(img_gray_, smooth_size_);
     obj_model_->extractEdgeOri(img_gray_, smooth_size_);
     // update the initial pose to object model for displaying
     obj_model_->setModelviewMatrix(pose_);
@@ -183,23 +191,21 @@ protected:
     // calculate error between sampling points and nearest edge
     obj_model_->findEdgeCorrespondences();
    // std::cout<<"Number of valid points"<<obj_model_->getNumberOfVisibleSamplePoints()<<" "<<obj_model_->isEnoughValidSamplePoints(th_valid_sample_points_ratio_)<<std::endl;
-    int ValidSamplePoints;
-    if(obj_model_->isEnoughValidSamplePoints(th_valid_sample_points_ratio_,ValidSamplePoints))
+  //  int ValidSamplePoints;
+    if(obj_model_->isEnoughValidSamplePoints(th_valid_sample_points_ratio_))
     {
-      edge_tracker_->getEstimatedPoseIRLS_cov(edge_tracker_->getPose(), pose_, obj_model_->getVisibleSamplePoints(),ValidSamplePoints,covariance_);
+      //edge_tracker_->getEstimatedPoseIRLS_cov(edge_tracker_->getPose(), pose_, obj_model_->getVisibleSamplePoints(),ValidSamplePoints,covariance_);
+      edge_tracker_->getEstimatedPoseIRLS(edge_tracker_->getPose(), pose_, obj_model_->getVisibleSamplePoints(),obj_model_->getNumberOfVisibleSamplePoints());
    //   CvMat *J = NULL, *e = NULL;
-   //   edge_tracker_->PF_getJacobianAndError(edge_tracker_->getPose(), obj_model_->getVisibleSamplePoints(),&J,&e);
-   //   std::cout<<(J->rows)<<std::endl;
-   //  covariance_= edge_tracker_->Update(J, e, obj_model_->getNumberOfVisibleSamplePoints(),covariance_);
 
       mutex_.lock();
       //cvCopy(pose_optimized, pose_);
       cvCopy(edge_tracker_->getPose(), pose_);
-      cvCopy(edge_tracker_->getVariance(), covariance_);
-
+     // cvCopy(edge_tracker_->getVariance(), covariance_);
+      init_= false;
       mutex_.unlock();
      // std::cout<<"THe init in tracking is "<<init_<<std::endl;
-      cv::Mat poset = Mat(covariance_);
+   //   cv::Mat poset = Mat(covariance_);
     }
     else
     {

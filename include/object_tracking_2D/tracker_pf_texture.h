@@ -21,12 +21,45 @@ public:
   {
     TrackerBase::initTracker(obj_name, cam_name, intrinsic, distortion, width, height, pose_init, ach_channel);
 
-    initPoseEstimationSURF(width, height, obj_name, obj_name);
+   initPoseEstimationSURF(width, height, obj_name, obj_name);
+
+ /*  std::cout<<"Tracker init"<<std::endl;
+
+
+
+    CV_MAT_ELEM(*pose_init, float, 0, 0) = static_cast<float>(0.97799975);
+    CV_MAT_ELEM(*pose_init, float, 0, 1) = static_cast<float>(0.0071759271);
+    CV_MAT_ELEM(*pose_init, float, 0, 2) = static_cast<float>(0.20848271);
+    CV_MAT_ELEM(*pose_init, float, 0, 3) = static_cast<float>( 0.044565815);
+    CV_MAT_ELEM(*pose_init, float, 1, 0) = static_cast<float>(0.079831615);
+    CV_MAT_ELEM(*pose_init, float, 1, 1) = static_cast<float>(0.91045511);
+    CV_MAT_ELEM(*pose_init, float, 1, 2) = static_cast<float>(-0.40583053);
+    CV_MAT_ELEM(*pose_init, float, 1, 3) = static_cast<float>(0.032641906);
+    CV_MAT_ELEM(*pose_init, float, 2, 0) = static_cast<float>(-0.19272636);
+    CV_MAT_ELEM(*pose_init, float, 2, 1) = static_cast<float>(0.41354567);
+    CV_MAT_ELEM(*pose_init, float, 2, 2) = static_cast<float>(0.88985199);
+    CV_MAT_ELEM(*pose_init, float, 2, 3) = static_cast<float>(0.4663074);
+    CV_MAT_ELEM(*pose_init, float, 3, 0) = 0.0f;
+    CV_MAT_ELEM(*pose_init, float, 3, 1) = 0.0f;
+    CV_MAT_ELEM(*pose_init, float, 3, 2) = 0.0f;
+    CV_MAT_ELEM(*pose_init, float, 3, 3) = 1.0f;*/
+
 
     cvCopy(pose_init_, pose_);
 
-    for(int i=0;i<this->num_particles_; i++)
-        pf_->Init(i,pose_init_);
+
+   //std::cout<<"The pose"<<cv::Mat(pose_)<<cv::Mat(pose_init_)<<std::endl;
+
+
+
+
+
+
+
+
+
+   // for(int i=0;i<this->num_particles_; i++)
+    pf_->Init(pose_init_);
 
     frame_num_after_init_ = 0;
 
@@ -93,6 +126,20 @@ protected:
     }
   }
 
+  virtual bool reinitialize()
+  {
+      TrackerBase::reinitialize();
+     // for(int i=0;i<this->num_particles_; i++)
+      pf_->Init(pose_);
+
+      init_ = false;
+  }
+
+
+
+
+
+
   virtual bool initialize()
   {
     TrackerBase::initialize();
@@ -110,12 +157,12 @@ protected:
       if(num_corr > min_keypoint_matches)
       {
         // 'pose' might be valid
-        for(int i=0;i<this->num_particles_; i++)
-          pf_->Init(i,pose);
+    //    for(int i=0;i<this->num_particles_; i++)
+         pf_->Init(pose);
      //   pf_->Init(0, pose);
 
         mutex_.lock();
-        cvCopy(pose, pose_);
+   //     cvCopy(pose, pose_);
         mutex_.unlock();
 
         init_ = false;
@@ -173,8 +220,8 @@ protected:
       if(!init_)
         init_ = true;
       cvCopy(pose_init_, pose_);
-      for(int i=0;i<this->num_particles_; i++)
-         pf_->Init(i,pose_init_);
+   //   for(int i=0;i<this->num_particles_; i++)
+      pf_->Init(pose_init_);
       frame_num_after_init_ = 0;
       pf_->calculateMeanState();
       break;
@@ -201,7 +248,19 @@ protected:
     {
       // 'getEdge' returns Berkeley edge if it is available, otherwise returns NULL
       // 'extractEdge' extracts Canny edge if the fourth edge is NULL
-      obj_model_->extractEdge(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, cam_->getEdge());
+   //   obj_model_->extractEdge(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, cam_->getEdge(),image_num_);
+
+    /*  if(!edge_path_.compare("canny"))
+          obj_model_->extractEdge(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, cam_->getEdge());
+      else
+          obj_model_->extractEdges(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, cam_->getEdge(),image_num_,edge_path_);//*/
+
+   //  std::cout<<cv::Mat(img_gray_tracking)<<std::endl;
+
+    //  cvShowImage("img",img_gray_tracking);
+    //  cvWaitKey(0);
+
+      obj_model_->extractEdge(img_gray_, smooth_size_, th_canny_l_, th_canny_h_, img_gray_tracking);
       obj_model_->extractEdgeOri(img_gray_, smooth_size_);
 
       // reset previous drawn image
@@ -222,22 +281,31 @@ protected:
         obj_model_->setModelviewMatrix(pf_->GetPropState(p));
         // draw object model with visibility test
         obj_model_->findVisibleSamplePoints();
+      //  std::cout<<"valid points"<<obj_model_->getNumberOfVisibleSamplePoints()<<std::endl;
         // find normal of each sampling point
         obj_model_->findNormalUsingEdgeCoord();
         // calculate error between sampling points and nearest edge
         obj_model_->findEdgeCorrespondences();
-
+        //std::cout<<"the ransac is"<<th_ransac_<<std::endl;
         if(th_ransac_ > 0.0f)
           obj_model_->refineEdgeCorrespondences_RANSAC(pf_->GetPropState(p), th_ransac_iter_, th_ransac_);
 
         // consider edge sample points only
         CvMat *J = NULL, *e = NULL;
         edge_tracker_->PF_getJacobianAndError(pf_->GetPropState(p), obj_model_->getVisibleSamplePoints(), &J, &e);
+      /*  std::vector<CObjectModel::SamplePoint> visible_points =  obj_model_->getVisibleSamplePoints();
+        for(int numi = 0;numi<visible_points.size();numi++)
+        {
+            std::cout<<visible_points[numi].dist<<" "<<visible_points[numi].dx<<" "<<visible_points[numi].dy<<" "<<visible_points[numi].normal_ang_deg<<" "<<visible_points[numi].coord2.x<<" "<<visible_points[numi].coord2.y<<std::endl;
+        }*/
+
+
+
       //  cvConvertScale(e,e,0.2);
         pf_->Update_IRLS(p, J, e, obj_model_->getNumberOfVisibleSamplePoints());
       //  std::cout<<"in particke filtering before"<<obj_model_->getNumberOfVisibleSamplePoints()<<std::endl;
         // calculate weights
-        pf_->calculateWeights(p, e, obj_model_->getVisibleSamplePoints(), maxd_, lamda_e_, lamda_v_,false);
+        pf_->calculateWeights(p, e, obj_model_->getVisibleSamplePoints(), maxd_, lamda_e_, lamda_v_,true);
         // release after use them
         if(J) cvReleaseMat(&J);
         if(e) cvReleaseMat(&e);
@@ -272,15 +340,17 @@ protected:
       if(pf_->GetNumOfParticle() > 1)
         pf_->CorrectWeights();
 
+
+
       // resampling
       bool valid;
       if(pf_->GetNumOfParticle() > 1)
-       valid = pf_->ResampleOpt(beta_[l], num_anneal_level == 1? true : false, true); // and calculate particle mean
+       valid = pf_->ResampleOpt(1, num_anneal_level == 1? true : false, true); // and calculate particle mean
       else
         valid = pf_->Resample(beta_[l], true /*num_anneal_level == 1? true : false*/, true); // and calculate particle mean
 
      //calculating variance
-   /*   cvCopy(pf_->GetMeanState(), pose_);
+   /* cvCopy(pf_->GetMeanState(), pose_);
 
       CvMat *J = NULL, *e = NULL;
       edge_tracker_->PF_getJacobianAndError(pf_->GetMeanState(), obj_model_->getVisibleSamplePoints(), &J, &e);
@@ -293,11 +363,20 @@ protected:
       if(e) cvReleaseMat(&e);//*/
 
 
-      if(valid) // && th_neff_ratio_*static_cast<float>(pf_->GetNumOfParticle()) < pf_->GetNeff())
+      obj_model_->setModelviewMatrix(pf_->GetMeanState());
+      // draw object model with visibility test
+      obj_model_->findVisibleSamplePoints();
+      obj_model_->findNormalUsingEdgeCoord();
+      // calculate error between sampling points and nearest edge
+      obj_model_->findEdgeCorrespondences();
+
+
+      if(valid && obj_model_->isEnoughValidSamplePoints(th_valid_sample_points_ratio_))
       {
         mutex_.lock();
         cvCopy(pf_->GetMeanState(), pose_);
  /*       cvCopy(pf_->GetVariance(), covariance_);*/
+        std::cout<<cv::Mat(pose_)<<std::endl;
         mutex_.unlock();
       }
       else

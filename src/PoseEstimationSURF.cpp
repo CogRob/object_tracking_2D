@@ -599,7 +599,7 @@ int CPoseEstimationSURF::refineCorrespondenceEpnpRANSAC(const vector<int>& ptpai
     }
 
     iter++;
-    if(verbose_) printf("(%d/%d) iter: %d/%d\n", iter, k, best_noi, n);
+    if(0) printf("(%d/%d) iter: %d/%d\n", iter, k, best_noi, n);
   }
 
   if(best_noi > 0)

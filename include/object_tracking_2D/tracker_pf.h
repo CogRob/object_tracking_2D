@@ -16,7 +16,7 @@ public:
     , alpha_rate_(0.5f)
     , beta_rate_(0.5f)
     , noise_an_(0.05f)
-    , th_ransac_(0.f)
+    , th_ransac_(10.f)
     , th_ransac_iter_(1000)
     , lamda_e_(0.5f)
     , lamda_v_(25.f)
@@ -65,16 +65,16 @@ protected:
   virtual void displayResults()
   {
 
-     /* std::string name = "results_video2/frame";
+      std::string name = "/home/prateek/results_ss/frame";
       increment+= 1;
       std::string result;
       std::stringstream sstm;
-      sstm << name <<std::setw(5)<<std::setfill('0')<<increment<<".jpg";
-      result = sstm.str();*/
+      sstm << name <<std::setw(4)<<std::setfill('0')<<increment<<".jpg";
+      result = sstm.str();//*/
 
 
       // draw particles
-    for(int i = 0; i < pf_->GetNumOfParticle(); i++)
+  /*  for(int i = 0; i < pf_->GetNumOfParticle(); i++)
     {
       if(dulledge_) // for valid display, occlusion reasioning is required
       {
@@ -92,9 +92,9 @@ protected:
       obj_model_->setModelviewMatrix(pf_->GetMeanState());
       obj_model_->findVisibleSamplePoints();
     }
-    obj_model_->displayPoseLine(img_result_, pf_->GetMeanState(), CV_RGB(255, 0, 0), 2, false);
+    obj_model_->displayPoseLine(img_result_,pf_->GetMeanState(), CV_RGB(255, 0, 0), 2, false);
 
- //   cv::imwrite(result,cv::Mat(img_result_));
+    cv::imwrite(result,cv::Mat(img_result_));
         
     cvShowImage("Result", img_result_);
     cvShowImage("Edge", img_edge_);

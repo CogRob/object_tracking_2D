@@ -40,7 +40,7 @@
 
 /******************************************************************************/
 //	"Polar" version without trigonometric calls
-double randn_notrig(double mu=0.0, double sigma=1.0) {
+double randn_notrig(double mu=0.0, double sigma=1.0, int i =0) {
     static bool deviateAvailable=false;	//	flag
     static float storedDeviate;			//	deviate from previous calculation
     double polar, rsquared, var1, var2;
@@ -48,6 +48,8 @@ double randn_notrig(double mu=0.0, double sigma=1.0) {
     //	If no deviate has been stored, the polar Box-Muller transformation is 
     //	performed, producing two independent normally-distributed random
     //	deviates.  One is stored for the next round, and one is returned.
+    srand(i);
+
     if (!deviateAvailable) {
 
         //	choose pairs of uniformly distributed deviates, discarding those 

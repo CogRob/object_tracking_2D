@@ -85,7 +85,7 @@ int main(int argc, char **argv)
     return 1;
   }
 
-  if(save_rslt_txt || save_rslt_img)
+  if(save_rslt_txt && save_rslt_img)
   {
     if(str_result_path.empty())
     {
@@ -136,9 +136,13 @@ int main(int argc, char **argv)
   }
   else if(tracker_name.compare("pf") == 0)
   {
+    std::cout<<"The particle filer is "<<std::endl;
     tracker = new TextureParticleFilterTracker ();
+    std::cout<<"The particle filer is "<<std::endl;
     ((TextureParticleFilterTracker*)tracker)->setNumParticle(n);
+    std::cout<<"The particle filer is "<<std::endl;
     ((TextureParticleFilterTracker*)tracker)->initParticleFilter();
+    std::cout<<"The particle filer is "<<std::endl;
   }
   else if(tracker_name.compare("pf_textureless") == 0)
   {
@@ -153,6 +157,8 @@ int main(int argc, char **argv)
     return 1;
   }
 
+
+  //std::cout<<"THe values"<<std::endl;
   tracker->setSampleStep(sample_step);
   tracker->setDisplay(display);
   tracker->setNetworkMode(net);
@@ -161,8 +167,10 @@ int main(int argc, char **argv)
   tracker->setSaveResultPath(str_result_path);
   tracker->setConsideringDullEdges(dull_edge);
   tracker->setTracking(use_tracking);
+//  std::cout<<"THe values"<<std::endl;
     
   tracker->initTracker(obj_name, input, intrinsic, distortion, width, height, pose_init , ach_channel);
+ // std::cout<<"THe values"<<std::endl;
 //  std::cout<<"after intilaization"<<std::endl;
   tracker->run();
   delete tracker;

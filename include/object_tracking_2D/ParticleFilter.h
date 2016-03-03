@@ -58,7 +58,7 @@ public:
   CvMat* GetPredState(int i)  { return states_pred_[i];  }
   CvMat* GetOptState(int i)   { return states_opt_[i];   }
   CvMat* GetMeanState()       { return mean_state_;       }
-  CvMat* GetVariance()        { return state_cov_;    }
+ // CvMat* GetVariance()        { return state_cov_[1];    }
   float GetNeff()             { return neff_;            }
   int GetBestParticle();
   void CorrectWeights();
@@ -79,9 +79,11 @@ protected:
   vector<float>   prob_opt_;        // probability of each particle
   vector<float>   eta_;             // penalizing term for covered area of sample points 
   float           ar_param_;        // Auto-regressive velocity parameter
-  CvMat*          state_cov_;       // state covariance
+  vector<CvMat*>  state_cov_;       // state covariance
   float           dt_;
   float           neff_;            // number of effective particles
   bool            limityrot_;
   bool            verbose_;
+  //vector<CvMat*>  state_cov_;
+
 };

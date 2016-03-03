@@ -32,6 +32,7 @@ CObjectModel::CObjectModel(string obj_name, int width, int height, CvMat* intrin
   , th_sharp_(0.9f)
   , include_starting_point_(true)
   , dl_(0)
+  ,image_number(1)
 {
   img_edge_ = cvCreateImage(cvSize(width_, height_), IPL_DEPTH_8U, 1);
   img_gx_   = cvCreateImage(cvSize(width_, height_), IPL_DEPTH_32F, 1);
@@ -201,7 +202,9 @@ void CObjectModel::loadKeyframes(string obj_name)
 
   num_keyframes_ = 0;
   std::string data_dir =  obj_name;
-  //data_dir = "/home/prateek/git/object_data/Objects/soft_scrub";
+  //data_dir = "/home/prateek/git/object_data/Objects/tide";
+ // data_dir = "/home/prateek/git/object_data/Objects/orange_juice_carton_flo";
+  //data_dir = "/home/prateek/git/object_data/Objects/ronzoni1";
   fstream fsk;
   fsk.open((data_dir + "/" + "keyframe001.jpg").c_str());
   // count the number of keyframes
@@ -214,7 +217,7 @@ void CObjectModel::loadKeyframes(string obj_name)
     fsk.open(ss.str().c_str());
   }
 
-  //std::cout<<"(AKAN) Num of Keyframes: "<<num_keyframes_<<std::endl;
+  std::cout<<"(AKAN) Num of Keyframes: "<<num_keyframes_<<std::endl;
 
   // Read keyframes - jpg & xml files
   keyframe_images_.resize(num_keyframes_);
@@ -612,7 +615,7 @@ void CObjectModel::findVisibleSamplePoints(void)
   {
     //#pragma omp parallel for private(N)
     for(i=0; i<set_dull_sample_points_.size(); i++)
-    {
+    {	
       N += (int)set_dull_sample_points_[i].size();
     }
   }
@@ -1126,6 +1129,10 @@ void CObjectModel::extractEdge(IplImage* img, int smoothSize/*=1*/, int cannyLow
   // Use Canny edge detector and calculate error (d)
   IplImage* imgG = cvCreateImage(cvSize(img->width, img->height), 8, 1);
 
+
+  /*cvShowImage("img",edge);
+   cvWaitKey(0);//*/
+
   if(img->nChannels == 1) // Gray image
     cvCopy(img, imgG);
   else
@@ -1145,6 +1152,86 @@ void CObjectModel::extractEdge(IplImage* img, int smoothSize/*=1*/, int cannyLow
     // ICRA exp setting: 20, 40
     // ICCV'11 transparent object: 20, 60
     cvCanny(imgG, img_edge_, cannyLow, cannyHigh);
+    //cvShowImage("img",img_edge_);
+    //cvWaitKey(0.01);
+
+    //cvCopy(edge, img_edge_)
+
+   /* cvThreshold(edge, img_edge_, 12, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
+
+    cvShowImage("img",edge);
+     cvWaitKey(0.01);//*/
+
+    /*std::cout<<"edge image "<<std::endl;
+
+    std::stringstream ss;
+    ss << "/home/prateek/edge_images_ojflo/"<< std::setw(4) << std::setfill('0') << image_number<< ".png";
+    std::cout<<"The edge iamge is"<<ss.str().c_str()<<std::endl;
+    IplImage* img_edge1 = cvLoadImage(ss.str().c_str(),CV_LOAD_IMAGE_GRAYSCALE);
+    std::cout<<imgG->depth<<" "<<img_edge1->width<<" "<<img_edge1->height<<" "<<img_edge1->depth<<" "<<img_edge1->nChannels<<std::endl;
+
+    //cvCopy(img_edge1,img_edge_);
+    image_number+=1;
+    cvThreshold(img_edge1, img_edge_, 12, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);//*/
+   // cvShowImage("img",img_edge_);
+   // cvWaitKey(0.01);//*/
+
+  }
+  else
+  {
+    // Copy edges and use it
+  //  std::cout<<"edge image "<<std::endl;
+    cvThreshold(edge, img_edge_, 12, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
+  //  cvCopy(edge, img_edge_);
+  }
+
+  cvReleaseImage(&imgG);
+}
+
+void CObjectModel::extractEdges(IplImage* img, int smoothSize/*=1*/, int cannyLow/*=20*/, int cannyHigh/*=40*/, IplImage* edge/*=NULL*/, int image_num, string path)
+{
+  assert(img->nChannels == 1);
+
+  // Use Canny edge detector and calculate error (d)
+  IplImage* imgG = cvCreateImage(cvSize(img->width, img->height), 8, 1);
+
+  if(img->nChannels == 1) // Gray image
+    cvCopy(img, imgG);
+  else
+  {
+    cvCvtColor(img, imgG, CV_BGR2GRAY);
+  }
+
+  if(edge == NULL)
+  {
+    // Smooth image first
+
+    if(smoothSize > 0)
+      cvSmooth(imgG, imgG, CV_GAUSSIAN, smoothSize, smoothSize);
+
+    // Extract Canny edges
+    // GM shield model: 20, 120
+    // ICRA exp setting: 20, 40
+    // ICCV'11 transparent object: 20, 60
+    //cvCanny(imgG, img_edge_, cannyLow, cannyHigh);
+    //cvShowImage("img",img_edge_);
+    //cvWaitKey(0.01);
+
+    std::stringstream ss;
+    ss << path<< std::setw(4) << std::setfill('0') << image_num<< ".png";
+    std::cout<<"The edge iamge is"<<ss.str().c_str()<<std::endl;
+    IplImage* img_edge1 = cvLoadImage(ss.str().c_str(),CV_LOAD_IMAGE_GRAYSCALE);
+    std::cout<<imgG->depth<<" "<<img_edge1->width<<" "<<img_edge1->height<<" "<<img_edge1->depth<<" "<<img_edge1->nChannels<<std::endl;
+
+    //cvCopy(img_edge1,img_edge_);
+    std::cout<<"the edge iamge from reading is "<<image_number<<std::endl;
+    image_number+=1;
+
+
+    cvThreshold(img_edge1, img_edge_, 12, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
+   // cvShowImage("img",img_edge_);
+   // cvWaitKey(0.01);//*/
+
   }
   else
   {
@@ -1154,6 +1241,10 @@ void CObjectModel::extractEdge(IplImage* img, int smoothSize/*=1*/, int cannyLow
 
   cvReleaseImage(&imgG);
 }
+
+
+
+
 
 bool CObjectModel::_withinOri(float o1, float o2, float oth)
 {
@@ -1347,7 +1438,7 @@ void CObjectModel::findEdgeCorrespondencesCoarseOri()
 
 void CObjectModel::findEdgeCorrespondencesFineOri()
 {
-  const float oth = 15.f; // +- 15 degree
+  const float oth = 40.f; // +- 15 degree
   const int max_step = static_cast<int>(maxd_);
 
 //#pragma omp parallel for
@@ -1378,10 +1469,23 @@ void CObjectModel::findEdgeCorrespondencesFineOri()
       {
         const float* ptr_gx = (const float*)(img_gx_->imageData + y*img_gx_->widthStep);
         const float* ptr_gy = (const float*)(img_gy_->imageData + y*img_gy_->widthStep);
+
+    //    cv::Mat img_gx = cv::Mat(img_gx_);
+    //    cv::Mat img_gy = cv::Mat(img_gy_);
+
+    //    const float ptr_gx = img_gx.at<float>(x,y); //(const float*)(img_gx_->imageData + y*img_gx_->widthStep);
+     //   const float ptr_gy = img_gy.at<float>(x,y);//(const float*)(img_gy_->imageData + y*img_gy_->widthStep);
+
+
+
         float ori = atan2(ptr_gy[x], ptr_gx[x])*180.f/M_PI;
+
+  //      std::cout<<i<<" "<<j<<" "<<ori<<" "<<visible_sample_points_[i].normal_ang_deg<<" "<<ptr_gx<<" "<<ptr_gy<<" "<<std::endl;
         if(_withinOri(ori, visible_sample_points_[i].normal_ang_deg, oth)) // check orientation
         {
-          visible_sample_points_[i].dist = sqrt(double(j)*dx*double(j)*dx + double(j)*dy*double(j)*dy);
+ //         std::cout<<i<<" "<<j<<" "<<x<<" "<<y<<" "<<dx<<" "<<dy<<" "<<sqrt(double(j)*dx*double(j)*dx + double(j)*dy*double(j)*dy)<<std::endl;
+          double dist1 = sqrt(double(j)*dx*double(j)*dx + double(j)*dy*double(j)*dy);
+          visible_sample_points_[i].dist = dist1;
           visible_sample_points_[i].edge_pt2 = cvPoint2D32f(static_cast<float>(x), static_cast<float>(y));
           break;
         }
@@ -1398,10 +1502,29 @@ void CObjectModel::findEdgeCorrespondencesFineOri()
       {
         const float* ptr_gx = (const float*)(img_gx_->imageData + y*img_gx_->widthStep);
         const float* ptr_gy = (const float*)(img_gy_->imageData + y*img_gy_->widthStep);
+
+  //      cv::Mat img_gx = cv::Mat(img_gx_);
+  //      cv::Mat img_gy = cv::Mat(img_gy_);
+
+
+
+ //       const float ptr_gx = img_gx.at<float>(x,y); //(const float*)(img_gx_->imageData + y*img_gx_->widthStep);
+ //       const float ptr_gy = img_gy.at<float>(x,y);//(const float*)(img_gy_->imageData + y*img_gy_->widthStep);
+
+
+
         float ori = atan2(ptr_gy[x], ptr_gx[x])*180.f/M_PI;
+
+
+
+      //  std::cout<<i<<" "<<j<<" "<<x<<" "<<y<<" "<<*ptr_gx<<" "<<*ptr_gy<<" "<<std::endl;
+        //std::cout<<i<<" "<<j<<" "<<ori<<" "<<visible_sample_points_[i].normal_ang_deg<<" "<<ptr_gx<<" "<<ptr_gy<<" "<<std::endl;
         if(_withinOri(ori, visible_sample_points_[i].normal_ang_deg, oth)) // check orientation
         {
-          visible_sample_points_[i].dist = sqrt(double(j)*dx*double(j)*dx + double(j)*dy*double(j)*dy);
+
+//          std::cout<<i<<" "<<j<<" "<<x<<" "<<y<<" "<<dx<<" "<<dy<<" "<<sqrt(double(j)*dx*double(j)*dx + double(j)*dy*double(j)*dy)<<std::endl;
+          double dist = sqrt(double(j)*dx*double(j)*dx + double(j)*dy*double(j)*dy);
+          visible_sample_points_[i].dist = dist;
           visible_sample_points_[i].edge_pt2 = cvPoint2D32f(static_cast<float>(x), static_cast<float>(y));
           // flip direction
           visible_sample_points_[i].nuv.x = -1*visible_sample_points_[i].nuv.x;
@@ -1433,6 +1556,7 @@ int CObjectModel::refineEdgeCorrespondences_RANSAC(CvMat *E, int N/*=1000*/, dou
   double k = 100000.00;
   const double p = 0.99;
   int nop = valid_idx.size();
+ // std::cout<<"valid id"<<nop<<std::endl;
   if(nop < nom)
   {
     cout << "Insufficient num of points in RANSAC ..." << endl;
@@ -1440,7 +1564,8 @@ int CObjectModel::refineEdgeCorrespondences_RANSAC(CvMat *E, int N/*=1000*/, dou
   }
 
   int best_noi = 0;
-  CvRNG rng = cvRNG(cvGetTickCount());
+  CvRNG rng = cvRNG(1/*cvGetTickCount()*/);
+  //std::cout<<
   int rand_idx[nom];
   vector<SamplePoint> sp;
   sp.resize(nom);
@@ -1470,10 +1595,12 @@ int CObjectModel::refineEdgeCorrespondences_RANSAC(CvMat *E, int N/*=1000*/, dou
     for(int i=0; i<nom; i++)
     {
       int temp_idx = 0;
+
       bool found = true;
       while(found)
       {
         temp_idx = cvRandInt(&rng) % nop;
+  //      std::cout<<temp_idx<<" ";
         found = false;
         for(int j=0; j<i; j++)
         {
@@ -1481,8 +1608,10 @@ int CObjectModel::refineEdgeCorrespondences_RANSAC(CvMat *E, int N/*=1000*/, dou
             found = true;
         }
       }
+
       rand_idx[i] = temp_idx;
     }
+  //  std::cout<<std::endl;
     // estimate pose
     for(int i=0; i<nom; i++)
     {
@@ -1490,10 +1619,18 @@ int CObjectModel::refineEdgeCorrespondences_RANSAC(CvMat *E, int N/*=1000*/, dou
     }
     //CvMat* Mcur = edge_tracker_->getEstimatedPoseLS(*E, sp);
     edge_tracker_->getEstimatedPoseIRLS(pose_cur, E, sp,sp.size());
+
+  //  std::cout<<"ransac"<<std::endl;
     for(int r=0; r<3; r++)
-      for(int c=0; c<4; c++)
-        //CV_MAT_ELEM(*P, float, r, c) = CV_MAT_ELEM(*Mcur, float, r, c);
-        CV_MAT_ELEM(*P, float, r, c) = CV_MAT_ELEM(*E, float, r, c);
+    { for(int c=0; c<4; c++)
+      {   //CV_MAT_ELEM(*P, float, r, c) = CV_MAT_ELEM(*Mcur, float, r, c);
+        CV_MAT_ELEM(*P, float, r, c) = CV_MAT_ELEM(*pose_cur, float, r, c);
+  //      std::cout<<CV_MAT_ELEM(*P, float, r, c)<<" ";
+       }
+    }
+
+   // std::cout<<std::endl;
+
     cvGEMM(intrinsic_, P, 1, NULL, 0, P2, 0);
     //cvReleaseMat(&Mcur);
 
@@ -1531,6 +1668,7 @@ int CObjectModel::refineEdgeCorrespondences_RANSAC(CvMat *E, int N/*=1000*/, dou
 
     if(noi > best_noi) 
     {
+
       best_noi = noi;
       best_inlier_idx = inlier_idx;
       // Determine adaptive number of iteration
@@ -1549,6 +1687,8 @@ int CObjectModel::refineEdgeCorrespondences_RANSAC(CvMat *E, int N/*=1000*/, dou
       visible_sample_points_[valid_idx[i]].dist = maxd_; // maxd_ distance sample points will be ignored
     }
   }
+
+  // std::cout<<"Pose ransac"<<cv::Mat(pose_cur)<<cv::Mat(E)<<std::endl;
 
   int noi2 = 0;
   for(int i=0; i<visible_sample_points_.size(); i++)
@@ -1871,6 +2011,11 @@ void CObjectModel::loadObjectCADModel(const std::string& obj_name)
 {
   // Load CAD model from obj file & generate a display list for fast drawing
 
+    std::string delimiter = ".";
+    std::string token = obj_name.substr(0, obj_name.find(delimiter));
+
+  //  std::cout<<"object model name"<<(token + std::string(".xml")).c_str()<<std::endl;
+
   if(meshmodel_ != NULL)
     free(meshmodel_);
 
@@ -1905,6 +2050,12 @@ void CObjectModel::loadObjectCADModel(const std::string& obj_name)
   // Load or generate sampling points along the sharp edges
 
   // load sharp edges (tracking edges) if exist
+
+
+  //std::string delimiter = ".";
+  //std::string token = s.substr(0, s.find(delimiter));
+
+
   CvMat* Mobj = (CvMat*)cvLoad((obj_name + std::string(".xml")).c_str());
   if(Mobj)
   {
@@ -2096,13 +2247,13 @@ float CObjectModel::getTriangleArea(GLMmodel* m, int tri_idx)
   return area;
 }
 
-bool CObjectModel::isEnoughValidSamplePoints(double th_ratio/*=0.5*/, int &count)
+bool CObjectModel::isEnoughValidSamplePoints(double th_ratio/*=0.5*/)
 {
   // Check # of visible sample points are enough
   // return 0: not enough
   // return 1: enough
 
- count = 0;
+ int count = 0;
 
   for(int i=0; i<int(visible_sample_points_.size()); i++)
     if(visible_sample_points_[i].dist < maxd_) // only valid points
