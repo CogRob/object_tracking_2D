@@ -85,7 +85,9 @@ void EIEdgeImage::Read(const char* fileName)
 	
 
 	//AKANSEL: FIX NEEDED FOR FILES CREATED IN WINDOWS
-	string prelude = "./";
+        // jiaming hu modified
+	//string prelude = "./";
+	string prelude = "/home/jiaming/catkin_ws/";
 	string fileName_str(fileName);
 	std::string combo = prelude + fileName_str;
 	if (!combo.empty() && combo[combo.size() - 1] == '\r')

@@ -40,15 +40,20 @@ CPoseEstimationSURF::CPoseEstimationSURF(int width, int height, std::string& img
   distortion_ = distortion_params;
 
   // check that there is the file
-  string templateFileName( img_path + "/" + objName + ".txt");
+  //string templateFileName( img_path + "/" + objName + ".txt");
+  string templateFileName( objName);
+  templateFileName[templateFileName.size()-3] = 't';
+  templateFileName[templateFileName.size()-2] = 'x';
+  templateFileName[templateFileName.size()-1] = 't';
+  cout << templateFileName << endl;
   std::cout<<templateFileName.c_str()<<std::endl;
   fstream file;
   file.open(templateFileName.c_str());
   if(file.is_open())
   {
     file.close();
-    lf_.Configure("para_line_fitter.txt");
-    lm_.Configure("para_line_matcher.txt");
+    lf_.Configure("/home/jiaming/catkin_ws/para_line_fitter.txt");
+    lm_.Configure("/home/jiaming/catkin_ws/para_line_matcher.txt");
     lf_.Init();
     lm_.Init(templateFileName.c_str());
   }
@@ -240,6 +245,7 @@ int CPoseEstimationSURF::PF_estimatePosesFDCM(float maxThreshold, int numOfParti
   lf_.FitLine(edgeImage);
   //lf_.FitLine_omp(edgeImage);
 
+  cvSaveImage("/home/jiaming/catkin_ws/edgeImage.png", edgeImage);
 #if 0
   lf_.DisplayEdgeMap(edgeImage);
 #endif

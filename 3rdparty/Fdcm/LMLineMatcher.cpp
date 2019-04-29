@@ -1194,6 +1194,7 @@ void LMLineMatcher::MultiShapeDetectionWithVaryingTemplateSize(LFLineFitter &lf,
     vector<MatchingCostMap> matchingCostMap;
     matchingCostMap.resize(ndbImages_);
     int nCostMap = (maxSearchScale_-minSearchScale_+1)*(maxSearchAspect_-minSearchAspect_+1);
+
     for(int t=0; t<ndbImages_; t++)
     {
         matchingCostMap[t].Init(nCostMap);

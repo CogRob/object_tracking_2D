@@ -213,6 +213,7 @@ void LFLineFitter::FitLine(IplImage *inputImage)
 
     width_ = inputImage->width;
     height_ = inputImage->height;
+    cvSaveImage("/home/jiaming/catkin_ws/check.png", inputImage);
 
     map<int,CvPoint> edgeMap;
 
