@@ -16,7 +16,7 @@ public:
     , alpha_rate_(0.5f)
     , beta_rate_(0.5f)
     , noise_an_(0.05f)
-    , th_ransac_(0.f)
+    , th_ransac_(5.0f) // todo
     , th_ransac_iter_(1000)
     , lamda_e_(0.5f)
     , lamda_v_(25.f)

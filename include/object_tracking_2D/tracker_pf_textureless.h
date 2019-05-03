@@ -173,8 +173,9 @@ protected:
         // calculate error between sampling points and nearest edge
         obj_model_->findEdgeCorrespondences();
 
-        if(th_ransac_ > 0.0f)
+        if(th_ransac_ > 0.0f){
           obj_model_->refineEdgeCorrespondences_RANSAC(pf_->GetPropState(p), th_ransac_iter_, th_ransac_);
+        }
 
         // consider edge sample points only
         CvMat *J = NULL, *e = NULL;
